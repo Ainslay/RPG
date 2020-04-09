@@ -9,10 +9,10 @@ namespace RPG.Character.Stats
         protected int BaseValue;
         protected int CurrentValue;
 
-        public BaseStatistic(int baseValue, int currentValue)
+        public BaseStatistic(int baseValue)
         {
             BaseValue = baseValue;
-            CurrentValue = currentValue;
+            CurrentValue = baseValue;
         }
     }
 }

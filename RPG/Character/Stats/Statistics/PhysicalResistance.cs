@@ -6,7 +6,8 @@ namespace RPG.Character.Stats
 {
     class PhysicalResistance : BaseStatistic
     {
-        public PhysicalResistance(int baseValue, int currentValue) : base(baseValue, currentValue)
+        public PhysicalResistance(int baseValue) 
+            : base(baseValue)
         {
         }
     }

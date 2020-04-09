@@ -9,5 +9,12 @@ namespace RPG.Character.Stats
         private Strength _strength;
         private Dexterity _dexterity;
         private Intelligence _intelligence;
+
+        public Attributes(int strength, int dexterity, int intelligence)
+        {
+            _strength = new Strength(strength);
+            _dexterity = new Dexterity(dexterity);
+            _intelligence = new Intelligence(intelligence);
+        }
     }
 }

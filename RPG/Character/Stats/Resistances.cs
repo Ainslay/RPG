@@ -8,7 +8,5 @@ namespace RPG.Character.Stats
     {
         private PhysicalResistance _physicalResistance;
         private MagicResistance _magicResistance;
-    
-        
     }
 }

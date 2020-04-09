@@ -6,9 +6,12 @@ namespace RPG.Character.Stats
 {
     class Health : BaseStatistic
     {
-        public Health(int baseValue, int currentValue) 
-            : base(baseValue, currentValue)
-        { }
+        private int _maxValue;
+        public Health(int baseValue) 
+            : base(baseValue)
+        {
+            _maxValue = baseValue;
+        }
 
         public void Calculate()
         { 
@@ -17,12 +20,23 @@ namespace RPG.Character.Stats
 
         public void Heal(uint amount)
         {
+            CurrentValue += (int)amount;
 
+            if(CurrentValue > _maxValue)
+            {
+                CurrentValue = _maxValue;
+            }
         }
 
-        public void TakeDamage(uint amount)
+        public void TakeDamage(BaseCharacter character, uint amount)
         {
+            CurrentValue -= (int)amount;
 
+            if(CurrentValue <= 0)
+            {
+                CurrentValue = 0;
+                character.IsAlive = false;
+            }
         }
     }
 }

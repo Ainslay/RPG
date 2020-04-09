@@ -6,8 +6,8 @@ namespace RPG.Character.Stats
 {
     class HitChance : BaseStatistic
     {
-        public HitChance(int baseValue, int currentValue) : base(baseValue, currentValue)
-        {
-        }
+        public HitChance(int baseValue) 
+            : base(baseValue)
+        { }
     }
 }
