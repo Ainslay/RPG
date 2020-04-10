@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RPG.Character.Stats
+﻿namespace RPG.Character.Stats
 {
     abstract class BaseAttribute
     {

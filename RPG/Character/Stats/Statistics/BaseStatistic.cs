@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPG.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,13 +7,15 @@ namespace RPG.Character.Stats
 {
     abstract class BaseStatistic
     {
-        protected int BaseValue;
-        protected int CurrentValue;
+        public int BaseValue { get; protected set; }
+        public int CurrentValue { get; protected set; }
 
-        public BaseStatistic(int baseValue)
+        public BaseStatistic(BaseAttribute baseAttribute)
         {
-            BaseValue = baseValue;
-            CurrentValue = baseValue;
+            ParamCheck.IsNull(baseAttribute);
+
+            BaseValue = baseAttribute.Value;
+            CurrentValue = baseAttribute.Value;
         }
     }
 }

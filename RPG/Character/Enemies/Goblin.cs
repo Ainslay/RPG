@@ -10,6 +10,8 @@ namespace RPG.Character.Enemies
             ThreatLevel = threatLevel;
             Name = Enemies.Goblin.ToString();
             Attributes = new Attributes(3 * statMultiplier, 4 * statMultiplier, 2 * statMultiplier);
+            Health = new Health(Attributes.Strength);
+            Statistics = new Statistics(Attributes);
             Resource = new Rage(CharacterResources.Rage, 100, 20);
         }
     }

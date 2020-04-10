@@ -6,8 +6,8 @@ namespace RPG.Character.Stats
 {
     class MagicResistance : BaseStatistic
     {
-        public MagicResistance(int baseValue) 
-            : base(baseValue)
+        public MagicResistance(Intelligence intelligence) 
+            : base(intelligence)
         { }
     }
 }

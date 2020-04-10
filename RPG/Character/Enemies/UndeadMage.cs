@@ -11,6 +11,8 @@ namespace RPG.Character.Enemies
             ThreatLevel = threatLevel;
             Name = Enemies.UndeadMage.ToString();
             Attributes = new Attributes(2 * statMultiplier, 2 * statMultiplier, 4 * statMultiplier);
+            Health = new Health(Attributes.Strength);
+            Statistics = new Statistics(Attributes);
             Resource = new Mana(CharacterResources.Mana, 100);
         }
     }

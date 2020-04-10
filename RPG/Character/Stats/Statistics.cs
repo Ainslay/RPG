@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RPG.Character.Stats
+﻿namespace RPG.Character.Stats
 {
     class Statistics
     {
-        private Resistances _resistances;
-        private AttackStrength _attackStrength;
-        private Iniciative _iniciative;
-        private HitChance _hitChance;
+        public Resistances Resistances { get; set; }
+        public AttackStrength AttackStrength { get; set; }
+        public Iniciative Iniciative { get; set; }
+        public HitChance HitChance { get; set; }
+
+        public Statistics(Attributes attributes)
+        {
+            Resistances = new Resistances(attributes.Intelligence);
+            AttackStrength = new AttackStrength(attributes.Strength, attributes.Intelligence);
+            Iniciative = new Iniciative(attributes.Dexterity);
+            HitChance = new HitChance(attributes.Dexterity);
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using RPG.Character.Enemies;
+﻿using RPG.Character.Enemies;
 using RPG.Character.Player;
 using RPG.Utilities;
 
@@ -8,28 +7,44 @@ namespace RPG.Combat
     class Battle
     {
         private Player _player;
-        private List<Enemy> _enemies;
+        private Enemy _enemy;
         private int _turn;
         
-        public Battle(Player player, List<Enemy> enemies)
+        public Battle(Player player)
         {
             ParamCheck.IsNull(player);
-            ParamCheck.IsNullOrEmpty(enemies);
 
             _player = player;
-            _enemies = enemies;
             _turn = 1;
+
+            _enemy = EnemyFactory.Create(player.Level);
         }
 
         public void Fight()
         {
-            while (_player.IsAlive && _enemies.Exists(enemy => enemy.IsAlive))
+            bool isPlayerTurn = (_player.Statistics.Iniciative.CurrentValue >= _enemy.Statistics.Iniciative.CurrentValue);
+
+            while (_player.IsAlive && _enemy.IsAlive)
             {
-                // pętla walki
+                if(isPlayerTurn)
+                {
+                    // Działa gracz
+                    _enemy.Health.TakeDamage(10);
+                    isPlayerTurn = false;
+                }
+                else
+                {
+                    // Działa przeciwnik
+                    _player.Health.TakeDamage(10);
 
-                // input od użytkownika
+                    isPlayerTurn = true;
+                }
 
-                // zadanie obrażeń i rekalkulacja statystyk
+                // rekalkulacja statystyk
+                _player.RecalculateStats();
+                _enemy.RecalculateStats();
+
+                _turn++;
             }
         }
     }

@@ -4,7 +4,11 @@ using System.Runtime.CompilerServices;
 using RPG.Character.Enemies;
 using RPG.Character.Player;
 using RPG.Character.Proffesions;
+using RPG.Combat;
 
+// !!!!!!!!
+// POKAZAĆ JAK SIĘ COFA COMMITA!!!!
+// !!!!!!!!
 [assembly: InternalsVisibleTo("RPG.Tests")]
 namespace RPG
 {
@@ -13,9 +17,13 @@ namespace RPG
     {
         static void Main(string[] args)
         {
-            var player = PlayerFactory.Create("JohnatanJoestar", PlayerProffesions.Monk);
+            var player = PlayerFactory.Create("Johnatan Joestar", PlayerProffesions.Monk);
 
             var enemy = EnemyFactory.Create(player.Level);
+
+            var battle = new Battle(player);
+
+            battle.Fight();
 
             Console.ReadKey();
         }
