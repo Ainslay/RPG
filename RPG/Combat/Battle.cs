@@ -44,6 +44,7 @@ namespace RPG.Combat
                 }
             }
 
+            // Jeśli gracz żyje znaczy, że wygrał
             System.Console.WriteLine("Battle has ended.");
         }
 

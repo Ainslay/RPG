@@ -12,11 +12,10 @@ namespace RPG.Character.Stats
         {
             ParamCheck.IsNull(strength);
 
-            BaseValue = strength.Value * 10;
+            BaseValue = strength.Value * 2;
             CurrentValue = BaseValue;
         }
 
-        // Nie jestem pewien czy tą funkcjonalność powinno udostępniać zdorwie czy raczej postać
         public void RestoreHealth(int amount)
         {
             CurrentValue += amount;
