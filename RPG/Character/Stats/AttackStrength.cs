@@ -1,4 +1,6 @@
-﻿namespace RPG.Character.Stats
+﻿using RPG.Utilities;
+
+namespace RPG.Character.Stats
 {
     class AttackStrength
     {
@@ -7,6 +9,9 @@
 
         public AttackStrength(Strength strength, Intelligence intelligence)
         {
+            ParamCheck.IsNull(strength);
+            ParamCheck.IsNull(intelligence);
+
             Physical = strength.Value;
             Magic = intelligence.Value;
         }

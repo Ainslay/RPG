@@ -1,6 +1,9 @@
-﻿using RPG.Character.Enemies;
+﻿using RPG.Character;
+using RPG.Character.Enemies;
 using RPG.Character.Player;
 using RPG.Utilities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RPG.Combat
 {
@@ -8,44 +11,45 @@ namespace RPG.Combat
     {
         private Player _player;
         private Enemy _enemy;
-        private int _turn;
-        
-        public Battle(Player player)
+        private List<BaseCharacter> _fighters;
+
+        public Battle(Player player, Enemy enemy)
         {
             ParamCheck.IsNull(player);
-
+            ParamCheck.IsNull(enemy);
+            
             _player = player;
-            _turn = 1;
-
-            _enemy = EnemyFactory.Create(player.Level);
+            _enemy = enemy;
+            _fighters = new List<BaseCharacter> { player, enemy };
         }
 
         public void Fight()
         {
-            bool isPlayerTurn = (_player.Statistics.Iniciative.CurrentValue >= _enemy.Statistics.Iniciative.CurrentValue);
-
-            while (_player.IsAlive && _enemy.IsAlive)
+            while (StillFighting())
             {
-                if(isPlayerTurn)
+                var turns = TurnManager.Build(_fighters);
+
+                foreach (var turn in turns.ToList())
                 {
-                    // Działa gracz
-                    _enemy.Health.TakeDamage(10);
-                    isPlayerTurn = false;
+                    if(turn.GetCharacter().Equals(_player))
+                    {
+                        _player.Attack(_enemy);
+                    }
+                    else
+                    {
+                        turn.GetCharacter().Attack(_player);
+                    }
+
+                    TurnManager.Remove();
                 }
-                else
-                {
-                    // Działa przeciwnik
-                    _player.Health.TakeDamage(10);
-
-                    isPlayerTurn = true;
-                }
-
-                // rekalkulacja statystyk
-                _player.RecalculateStats();
-                _enemy.RecalculateStats();
-
-                _turn++;
             }
+
+            System.Console.WriteLine("Battle has ended.");
+        }
+
+        private bool StillFighting()
+        {
+            return _player.IsAlive() && _enemy.IsAlive();
         }
     }
 }

@@ -5,35 +5,31 @@ using System.Text;
 
 namespace RPG.Character.Stats
 {
-    // Zastanawiam się czy Health na pewno powinno dziedziczyć z BaseStatistic, może powinna być standalone?
-
     class Health : BaseStatistic
     {
-        private int _maxValue;
         public Health(Strength strength)
             : base(strength)
         {
             ParamCheck.IsNull(strength);
 
-            _maxValue = strength.Value * 10;
-            BaseValue = _maxValue;
-            CurrentValue = _maxValue;
+            BaseValue = strength.Value * 10;
+            CurrentValue = BaseValue;
         }
 
         // Nie jestem pewien czy tą funkcjonalność powinno udostępniać zdorwie czy raczej postać
-        public void Heal(uint amount)
+        public void RestoreHealth(int amount)
         {
-            CurrentValue += (int)amount;
+            CurrentValue += amount;
 
-            if(CurrentValue > _maxValue)
+            if(CurrentValue > BaseValue)
             {
-                CurrentValue = _maxValue;
+                CurrentValue = BaseValue;
             }
         }
 
-        public void TakeDamage(uint amount)
+        public void SubstractHealth(int amount)
         {
-            CurrentValue -= (int)amount;
+            CurrentValue -= amount;
 
             if(CurrentValue <= 0)
             {

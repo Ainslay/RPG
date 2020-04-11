@@ -1,6 +1,8 @@
-﻿using RPG.Character.Proffesions;
+﻿using RPG.Character.Enemies;
+using RPG.Character.Proffesions;
 using RPG.Character.Stats;
 using RPG.Utilities;
+using System;
 
 namespace RPG.Character.Player
 {

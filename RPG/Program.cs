@@ -12,7 +12,6 @@ using RPG.Combat;
 [assembly: InternalsVisibleTo("RPG.Tests")]
 namespace RPG
 {
-
     class Program
     {
         static void Main(string[] args)
@@ -21,7 +20,7 @@ namespace RPG
 
             var enemy = EnemyFactory.Create(player.Level);
 
-            var battle = new Battle(player);
+            var battle = new Battle(player, enemy);
 
             battle.Fight();
 
@@ -29,6 +28,16 @@ namespace RPG
         }
     }
 }
+
+// BATTLE RESULT
+// -- ref do charactera
+// -- statsy po walce
+// -- ile expa 
+// -- (nagrody)
+
+// Jak poprawić walkę żeby była bardziej rozszerzalna, lepsza do konfiguracja
+// Zastanowić się nad akcjami interfejsy, klasy bazowe np. IAction
+// Każda akcja może się wykonać
 
 // Klasy do tworzenia obiektów -> Factory
 // var player = PlayerFactory.Create("Name", profesja); 
@@ -39,7 +48,8 @@ namespace RPG
 // Utworzenie postaci       -- podstawowe tworzenie skończone
 // Utworzenie przeciwnika
 // Utworzenie walki
-// UTworzenie umiejetsnoci
+// Określ wygranego walki
+// Utworzenie umiejetsnoci
 // Utworzenie ekwipunku
 // Historia
 // Interakcja z ekwipunkiem

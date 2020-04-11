@@ -19,10 +19,10 @@ namespace RPG.Tests.StatsTests
         public void Given_ValidParameter_When_CallingTakeDamage_Then_LowersHealth()
         {
             var health = new Health(new Strength(5));
-            uint damageToTake = 10;
+            int damageToTake = 10;
             var expected = health.CurrentValue - damageToTake;
 
-            health.TakeDamage(damageToTake);
+            health.SubstractHealth(damageToTake);
 
             Assert.Equal(expected, health.CurrentValue);
         }
@@ -31,11 +31,11 @@ namespace RPG.Tests.StatsTests
         public void Given_ValidParameter_When_CallingHeal_Then_RestoresHealth()
         {
             var health = new Health(new Strength(5));
-            uint amountToHeal = 10;
-            health.TakeDamage(10);
+            int amountToHeal = 10;
+            health.SubstractHealth(10);
             var expected = health.CurrentValue + amountToHeal;
 
-            health.Heal(amountToHeal);
+            health.RestoreHealth(amountToHeal);
 
             Assert.Equal(expected, health.CurrentValue);
         }

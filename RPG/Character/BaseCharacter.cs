@@ -5,23 +5,46 @@ namespace RPG.Character
 {
     abstract class BaseCharacter
     {
-        public Health Health { get; protected set; }
-        public Resource Resource { get; protected set; }
+        protected Health Health { get; set; }
+        protected Resource Resource { get; set; }
         protected Attributes Attributes;
         public Statistics Statistics;
-        public bool IsAlive { get; set; }
+        private bool _isAlive { get; set; }
         
         public BaseCharacter()
         {
-            IsAlive = true;
+            _isAlive = true;
         }
 
-        public void RecalculateStats()
+        // Na bank stąd wyleci
+        public void Attack(BaseCharacter target)
+        {
+            var damage = Statistics.AttackStrength.Physical;
+            target.TakeDamage(damage);
+            CheckIsAlive();
+        }
+
+        protected void TakeDamage(int amount)
+        {
+            Health.SubstractHealth(amount);
+        }
+
+        protected void CheckIsAlive()
         {
             if(Health.CurrentValue == 0)
             {
-                IsAlive = false;
+                _isAlive = false;
             }
+        }
+
+        public int GetCurrentIniciative()
+        {
+            return Statistics.Iniciative.CurrentValue;
+        }
+
+        public bool IsAlive()
+        {
+            return _isAlive;
         }
     }
 }
