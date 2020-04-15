@@ -10,13 +10,13 @@ namespace RPG.Character.Player
     // mam PlayerFactory, które ładnie mi tworzy na podstawie enuma, a tutaj
     // umożliwiam przesłanie jakiejś profesji.
 
-    class Player : BaseCharacter
+    class PlayerCharacter : BaseCharacter
     {
         public readonly string Name;
         public Proffesion Proffesion { get; private set; }
-        public Level Level { get; private set; }
+        private Level _level;
         
-        public Player(string name, Proffesion proffesion)
+        public PlayerCharacter(string name, Proffesion proffesion)
         {
             ParamCheck.IsNullOrWhitespace(name);
             ParamCheck.IsNull(proffesion);
@@ -25,9 +25,30 @@ namespace RPG.Character.Player
             Proffesion = proffesion;
             Resource = proffesion.Resource;
             Attributes = proffesion.BaseAttributes;
-            Health = new Health(Attributes.Strength);
-            Level = new Level();
+            Health = new Health(Attributes.GetStrength());
+            _level = new Level();
             Statistics = new Statistics(Attributes);
+        }
+
+        public int GetLevel()
+        {
+            return _level.Value;
+        }
+
+        public void RestoreStatus()
+        {
+            // TODO
+        }
+
+        // Takie obudowywanie wydaje mi się nie w porządku, chociaż robiliśmy coś takiego wcześniej 
+        public void AddExperience(int amount)
+        {
+            _level.AddExperience(amount);
+        }
+
+        public void SubstractExperience(int amount)
+        {
+            _level.SubstractExperience(amount);
         }
     }
 }

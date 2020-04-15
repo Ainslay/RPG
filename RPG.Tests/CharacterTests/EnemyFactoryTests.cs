@@ -3,6 +3,8 @@ using Xunit;
 
 using RPG.Character.Enemies;
 using RPG.Character.Stats;
+using RPG.Character.Player;
+using RPG.Character.Proffesions;
 
 namespace RPG.Tests.CharacterTests
 {
@@ -17,12 +19,12 @@ namespace RPG.Tests.CharacterTests
         [Fact]
         public void Given_ValidParameters_When_CallingCreate_Then_ReturnsEnemy()
         {
-            var level = new Level();
+            var player = PlayerFactory.Create("Shepard", PlayerProffesions.Warrior);
 
-            var result = EnemyFactory.Create(level, Enemies.UndeadMage, ThreatLevels.DeathMarch);
+            var result = EnemyFactory.Create(player, Enemies.UndeadMage, ThreatLevels.DeathMarch);
 
             Assert.Equal(Enemies.UndeadMage.ToString(), result.Name);
-            Assert.Equal(ThreatLevels.DeathMarch, result.ThreatLevel);
+            Assert.Equal(ThreatLevels.DeathMarch, result.GetThreatLevel());
         }
     }
 }

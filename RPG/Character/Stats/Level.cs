@@ -17,7 +17,7 @@ namespace RPG.Character.Stats
             CalculateNextLevel();
         }
 
-        public void AddExp(int amount)
+        public void AddExperience(int amount)
         {
             if (amount > 0)
             {
@@ -32,7 +32,7 @@ namespace RPG.Character.Stats
             }
         }
 
-        public void SubstractExp(int amount)
+        public void SubstractExperience(int amount)
         {
             if(amount > 0)
             {

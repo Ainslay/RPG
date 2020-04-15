@@ -9,10 +9,10 @@
 
         public Statistics(Attributes attributes)
         {
-            Resistances = new Resistances(attributes.Intelligence);
-            AttackStrength = new AttackStrength(attributes.Strength, attributes.Intelligence);
-            Iniciative = new Iniciative(attributes.Dexterity);
-            HitChance = new HitChance(attributes.Dexterity);
+            Resistances = new Resistances(attributes.GetIntelligence());
+            AttackStrength = new AttackStrength(attributes.GetStrength(), attributes.GetIntelligence());
+            Iniciative = new Iniciative(attributes.GetDexterity());
+            HitChance = new HitChance(attributes.GetDexterity());
         }
     }
 }

@@ -26,7 +26,7 @@ namespace RPG.Character.Stats
             }
         }
 
-        public void SubstractHealth(int amount)
+        public void LowerHealth(int amount)
         {
             CurrentValue -= amount;
 

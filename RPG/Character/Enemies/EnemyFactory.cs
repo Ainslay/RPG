@@ -1,17 +1,18 @@
 ﻿using System;
 
 using RPG.Character.Stats;
+using RPG.Character.Player;
 using RPG.Utilities;
 
 namespace RPG.Character.Enemies
 {
     static class EnemyFactory
     {
-        public static Enemy Create(Level playerLevel, Enemies enemyType, ThreatLevels threatLevel)
+        public static Enemy Create(PlayerCharacter player, Enemies enemyType, ThreatLevels threatLevel)
         {
-            ParamCheck.IsNull(playerLevel);
+            ParamCheck.IsNull(player);
 
-            var statMultiplier = playerLevel.Value + (int)threatLevel;
+            var statMultiplier = player.GetLevel() + (int)threatLevel;
 
             Enemy enemy;
 

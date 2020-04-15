@@ -16,9 +16,9 @@ namespace RPG
     {
         static void Main(string[] args)
         {
-            var player = PlayerFactory.Create("Johnatan Joestar", PlayerProffesions.Monk);
-
-            var enemy = EnemyFactory.Create(player.Level, Enemies.Slime, ThreatLevels.Easy);
+            var player = PlayerFactory.Create("Johnatan Joestar", PlayerProffesions.Warrior);
+            
+            var enemy = EnemyFactory.Create(player, Enemies.Slime, ThreatLevels.Medium);
 
             var battle = new Battle(player, enemy);
 
@@ -35,14 +35,9 @@ namespace RPG
 // -- ile expa 
 // -- (nagrody)
 
-// Jak poprawić walkę żeby była bardziej rozszerzalna, lepsza do konfiguracja
+// Jak poprawić walkę żeby była bardziej rozszerzalna, lepsza do konfiguracji
 // Zastanowić się nad akcjami interfejsy, klasy bazowe np. IAction
 // Każda akcja może się wykonać
-
-// Klasy do tworzenia obiektów -> Factory
-// var player = PlayerFactory.Create("Name", profesja); 
-
-// ENUM do wyboru profesji itp.
 
 // PLAN!
 // Utworzenie postaci       -- podstawowe tworzenie skończone

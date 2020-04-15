@@ -7,7 +7,7 @@ namespace RPG.Character.Player
 {
     static class PlayerFactory
     {
-        public static Player Create(string name, PlayerProffesions proffesion)
+        public static PlayerCharacter Create(string name, PlayerProffesions proffesion)
         {
             ParamCheck.IsNullOrWhitespace(name);
 
@@ -31,7 +31,7 @@ namespace RPG.Character.Player
                     throw new ArgumentException("Could not create player object. Invalid proffesion.");
             }
 
-            return new Player(name, playerProffesion);
+            return new PlayerCharacter(name, playerProffesion);
         }
     }
 }

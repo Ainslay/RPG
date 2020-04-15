@@ -2,15 +2,32 @@
 {
     class Attributes
     {
-        public Strength Strength;
-        public Dexterity Dexterity;
-        public Intelligence Intelligence;
+        private Strength _strength;
+        private Dexterity _dexterity;
+        private Intelligence _intelligence;
 
         public Attributes(int strength, int dexterity, int intelligence)
         {
-            Strength = new Strength(strength);
-            Dexterity = new Dexterity(dexterity);
-            Intelligence = new Intelligence(intelligence);
+            _strength = new Strength(strength);
+            _dexterity = new Dexterity(dexterity);
+            _intelligence = new Intelligence(intelligence);
+        }
+
+        // Dodać GetStrengthValue czy po prostu robić GetStrength().Value...
+
+        public Strength GetStrength()
+        {
+            return _strength;
+        }
+
+        public Dexterity GetDexterity()
+        {
+            return _dexterity;
+        }
+
+        public Intelligence GetIntelligence()
+        {
+            return _intelligence;
         }
     }
 }

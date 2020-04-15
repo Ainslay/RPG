@@ -7,11 +7,11 @@ namespace RPG.Character.Enemies
     {
         public Slime(int statMultiplier, ThreatLevels threatLevel)
         {
-            ThreatLevel = threatLevel;
+            _threatLevel = threatLevel;
 
             Name = Enemies.Slime.ToString();
             Attributes = new Attributes(3 * statMultiplier, 3 * statMultiplier, 1 * statMultiplier);
-            Health = new Health(Attributes.Strength);
+            Health = new Health(Attributes.GetStrength());
             Statistics = new Statistics(Attributes);
             Resource = new Will(CharacterResources.Will, 50);
         }

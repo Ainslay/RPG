@@ -13,13 +13,13 @@ namespace RPG.Tests.CharacterTests
         [InlineData(" ")]
         public void Given_InvalidNameParameter_When_ConstructingPlayer_Then_ThrowsArgumentException(string name)
         {
-            Assert.Throws<ArgumentException>(() => new Player(name, new Monk()));
+            Assert.Throws<ArgumentException>(() => new PlayerCharacter(name, new Monk()));
         }
 
         [Fact]
         public void Given_NullProffesionParameter_When_ConstructingPlayer_Then_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new Player("John", null));
+            Assert.Throws<ArgumentNullException>(() => new PlayerCharacter("John", null));
         }
     }
 }

@@ -9,11 +9,11 @@ namespace RPG.Combat
 {
     class Battle
     {
-        private Player _player;
+        private PlayerCharacter _player;
         private Enemy _enemy;
         private List<BaseCharacter> _fighters;
 
-        public Battle(Player player, Enemy enemy)
+        public Battle(PlayerCharacter player, Enemy enemy)
         {
             ParamCheck.IsNull(player);
             ParamCheck.IsNull(enemy);
@@ -44,8 +44,8 @@ namespace RPG.Combat
                 }
             }
 
-            // Jeśli gracz żyje znaczy, że wygrał
-            System.Console.WriteLine("Battle has ended.");
+            var battleResult = new BattleResult(_player, _enemy);
+            battleResult.Resolve();
         }
 
         private bool StillFighting()

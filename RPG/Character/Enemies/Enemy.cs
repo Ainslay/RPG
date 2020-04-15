@@ -7,6 +7,11 @@ namespace RPG.Character.Enemies
     abstract class Enemy : BaseCharacter
     {
         public string Name { get; protected set; }
-        public ThreatLevels ThreatLevel { get; protected set; }
+        protected ThreatLevels _threatLevel;
+    
+        public ThreatLevels GetThreatLevel()
+        {
+            return _threatLevel;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using RPG.Character.Resources;
+﻿using System;
+
+using RPG.Character.Resources;
 using RPG.Character.Stats;
 
 namespace RPG.Character
@@ -9,11 +11,21 @@ namespace RPG.Character
         protected Resource Resource { get; set; }
         protected Attributes Attributes;
         public Statistics Statistics;
-        private bool _isAlive { get; set; }
+        private bool _isAlive;
         
         public BaseCharacter()
         {
             _isAlive = true;
+        }
+
+        // Trzy sposoby na dostanie się do pól, którego powinienem używać?
+        public void PrintStatus()
+        {
+            Console.WriteLine($"Health: {Health.CurrentValue} {Resource.Name}: {Resource.CurrentValue}");
+            Console.WriteLine($"Strength: {Attributes.GetStrength().Value} Dexterity: {Attributes.GetDexterity().Value} Inteligence: {Attributes.GetIntelligence().Value}");
+            Console.WriteLine($"Iniciative: {GetCurrentIniciative()} Hit chance: {Statistics.HitChance.CurrentValue}");
+            Console.WriteLine($"Physical attack: {Statistics.AttackStrength.Physical} Magic attack: {Statistics.AttackStrength.Magic}");
+            Console.WriteLine($"Physical resistance: {Statistics.Resistances.PhysicalResistance.CurrentValue} Magic resistance: {Statistics.Resistances.MagicResistance.CurrentValue}");
         }
 
         // Na bank stąd wyleci
@@ -21,12 +33,12 @@ namespace RPG.Character
         {
             var damage = Statistics.AttackStrength.Physical;
             target.TakeDamage(damage);
-            CheckIsAlive();
         }
 
         protected void TakeDamage(int amount)
         {
-            Health.SubstractHealth(amount);
+            Health.LowerHealth(amount);
+            CheckIsAlive();
         }
 
         protected void CheckIsAlive()
