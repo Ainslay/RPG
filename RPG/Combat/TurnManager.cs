@@ -1,4 +1,5 @@
 ﻿using RPG.Character;
+using RPG.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace RPG.Combat
 
         public static List<Turn> Build(List<BaseCharacter> fighters)
         {
+            ParamCheck.IsNullOrEmpty(fighters);
+
             var sortedFighters = GetSortedFighters(fighters);
 
             // Mapowanie obiektów jednego typu na inny !
@@ -32,11 +35,11 @@ namespace RPG.Combat
         {
             public int Compare(BaseCharacter fighter1, BaseCharacter fighter2)
             {
-                if(GreaterThan(fighter1, fighter2))
+                if(LowerThan(fighter1, fighter2))
                 {
                     return 1;
                 }
-                else if(LowerThan(fighter1, fighter2))
+                else if(GreaterThan(fighter1, fighter2))
                 {
                     return -1;
                 }

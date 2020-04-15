@@ -1,4 +1,5 @@
 ﻿using RPG.Character;
+using RPG.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,8 @@ namespace RPG.Combat
 
         public Turn(BaseCharacter character)
         {
+            ParamCheck.IsNull(character);
+
             _character = character;
         }
 

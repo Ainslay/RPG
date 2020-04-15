@@ -1,7 +1,9 @@
 ﻿using System;
 using Xunit;
+
 using RPG.Character.Enemies;
-using RPG.Character.Stats;
+using RPG.Character.Player;
+using RPG.Character.Proffesions;
 
 namespace RPG.Tests.CharacterTests
 {
@@ -16,9 +18,9 @@ namespace RPG.Tests.CharacterTests
         [Fact]
         public void Given_ValidParameter_When_CallingCreate_Then_ReturnsEnemy()
         {
-            var level = new Level();
+            var player = PlayerFactory.Create("John", PlayerProffesions.Warrior);
             
-            var result = RandomEnemyFactory.Create(level);
+            var result = RandomEnemyFactory.Create(player);
 
             Assert.NotNull(result);
         }
