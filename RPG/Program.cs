@@ -6,9 +6,6 @@ using RPG.Character.Player;
 using RPG.Character.Proffesions;
 using RPG.Combat;
 
-// !!!!!!!!
-// POKAZAĆ JAK SIĘ COFA COMMITA!!!!
-// !!!!!!!!
 [assembly: InternalsVisibleTo("RPG.Tests")]
 namespace RPG
 {
@@ -18,7 +15,7 @@ namespace RPG
         {
             var player = PlayerFactory.Create("Johnatan Joestar", PlayerProffesions.Warrior);
             
-            var enemy = EnemyFactory.Create(player, Enemies.Slime, ThreatLevels.Medium);
+            var enemy = EnemyFactory.Create(player, Enemies.Slime, ThreatLevels.Easy);
 
             var battle = new Battle(player, enemy);
 

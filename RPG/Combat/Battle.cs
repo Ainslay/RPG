@@ -39,8 +39,6 @@ namespace RPG.Combat
                     {
                         turn.GetCharacter().Attack(_player);
                     }
-
-                    TurnManager.Remove();
                 }
             }
 

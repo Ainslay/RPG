@@ -1,8 +1,9 @@
 ﻿using RPG.Character;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text;
 
 namespace RPG.Combat
 {
@@ -20,15 +21,37 @@ namespace RPG.Combat
             return _turns;
         }
 
-        public static void Remove()
-        {
-            _turns.RemoveAt(0);
-        }
-
-        // Musze zmienić jeśli wartość jest taka sama!! IComparer
         private static List<BaseCharacter> GetSortedFighters(List<BaseCharacter> fighters)
         {
-            return fighters.OrderByDescending(fighter => fighter.GetCurrentIniciative()).ToList();
+            fighters.Sort(new SortFightersByIniciativeDescending());
+            return fighters;
+            //return fighters.OrderByDescending(fighter => fighter.GetCurrentIniciative()).ToList();
+        }
+
+        private class SortFightersByIniciativeDescending : IComparer<BaseCharacter>
+        {
+            public int Compare(BaseCharacter fighter1, BaseCharacter fighter2)
+            {
+                if(fighter1.GetCurrentIniciative() < fighter2.GetCurrentIniciative())
+                {
+                    return 1;
+                }
+                else if(fighter1.GetCurrentIniciative() > fighter2.GetCurrentIniciative())
+                {
+                    return -1;
+                }
+                else
+                {
+                    var random = new Random().Next(0,100);
+
+                    if(random >= 50)
+                    {
+                        return 1;
+                    }
+
+                    return 0;
+                }
+            }
         }
     }
 }
