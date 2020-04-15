@@ -17,9 +17,14 @@ namespace RPG.Character.Stats
             CalculateNextLevel();
         }
 
+        public int GetExperience()
+        {
+            return _experience;
+        }
+
         public void AddExperience(int amount)
         {
-            if (amount > 0)
+            if (amount >= 0)
             {
                 _experience += amount;
 
@@ -30,11 +35,15 @@ namespace RPG.Character.Stats
                     CalculateNextLevel();
                 }
             }
+            else
+            {
+                throw new ArgumentException("Amount was lower than 0.");
+            }
         }
 
         public void SubstractExperience(int amount)
         {
-            if(amount > 0)
+            if(amount >= 0)
             {
                 _experience -= amount;
 
@@ -42,6 +51,10 @@ namespace RPG.Character.Stats
                 {
                     _experience = 0;
                 }
+            }
+            else
+            {
+                throw new ArgumentException("Amount was lower than 0.");
             }
         }
 
