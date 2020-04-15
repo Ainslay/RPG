@@ -32,11 +32,13 @@ namespace RPG.Tests.StatsTests
         {
             var level = new Level();
             var expToGain = 60;
-            var expected = 2;
+            var expectedLevel = 2;
+            var expectedExp = 10;
 
             level.AddExperience(expToGain);
 
-            Assert.Equal(expected, level.Value);
+            Assert.Equal(expectedLevel, level.Value);
+            Assert.Equal(expectedExp, level.GetExperience());
         }
 
         [Fact]

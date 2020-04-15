@@ -31,7 +31,7 @@ namespace RPG.Character.Stats
                 if (_experience >= _nextLevel)
                 {
                     Value++;
-                    _experience = 0;
+                    _experience -= _nextLevel;
                     CalculateNextLevel();
                 }
             }
