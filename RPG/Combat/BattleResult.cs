@@ -7,41 +7,49 @@ namespace RPG.Combat
 {
     class BattleResult
     {
-        private PlayerCharacter _player;
-        private Enemy _enemy;
+        private readonly PlayerCharacter _player;
+        private readonly Enemy _enemy;
+        private readonly bool _fled;
 
-        public BattleResult(PlayerCharacter player, Enemy enemy)
+        public BattleResult(Battle battle)
         {
-            ParamCheck.IsNull(player);
-            ParamCheck.IsNull(enemy);
+            ParamCheck.IsNull(battle);
 
-            _player = player;
-            _enemy = enemy;
+            _player = battle.GetPlayer();
+            _enemy = battle.GetEnemy();
+            _fled = battle.GetFled();
         }
 
         public void Resolve()
         {
-            if(IsPlayerVictory())
+            if(!_fled)
             {
-                var expToGain = ExperienceToGain();
-                _player.AddExperience(expToGain);
+                if (IsPlayerVictory())
+                {
+                    var expToGain = ExperienceToGain();
+                    _player.AddExperience(expToGain);
 
-                Console.WriteLine("The battle is won, you get to live another day.\n");
-                Console.WriteLine("Your status:");
-                _player.PrintStatus();
-                Console.WriteLine("\nYou gained {0} experience.", expToGain);
+                    Console.WriteLine("The battle is won, you get to live another day.\n");
+                    Console.WriteLine("Your status:");
+                    _player.PrintStatus();
+                    Console.WriteLine("You gained {0} experience.", expToGain);
+                }
+                else
+                {
+                    var expToLose = ExperienceToLose();
+                    _player.SubstractExperience(expToLose);
+
+                    Console.WriteLine("You have been bested by {0}.\n", _enemy.Name);
+                    Console.WriteLine("Your status:");
+                    _player.PrintStatus();
+                    Console.WriteLine("You lost {0} experience.", expToLose);
+                }
             }
             else
             {
-                var expToLose = ExperienceToLose();
-                _player.SubstractExperience(expToLose);
-                
-                Console.WriteLine("You have been bested by {0}.\n", _enemy.Name);
-                Console.WriteLine("Your status:");
-                _player.PrintStatus();
-                Console.WriteLine("\nYou lost {0} experience.", expToLose);
+                Console.WriteLine("You fled and therefore you gain no rewards for that battle.");
             }
-
+            
             _player.RestoreStatus();
         }
 
@@ -55,7 +63,6 @@ namespace RPG.Combat
             return (int)_enemy.GetThreatLevel() * _player.GetLevel() * 4;
         }
 
-        // Do poszerzenia o możliwość ucieczki, nie dopuszczam remisu (If he dies, he dies)
         private bool IsPlayerVictory()
         {
             return _player.IsAlive();

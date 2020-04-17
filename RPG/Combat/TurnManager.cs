@@ -28,7 +28,6 @@ namespace RPG.Combat
         {
             fighters.Sort(new SortFightersByIniciativeDescending());
             return fighters;
-            //return fighters.OrderByDescending(fighter => fighter.GetCurrentIniciative()).ToList();
         }
 
         private class SortFightersByIniciativeDescending : IComparer<BaseCharacter>

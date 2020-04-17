@@ -7,10 +7,11 @@ namespace RPG.Character
 {
     abstract class BaseCharacter
     {
+        public string Name { get; protected set; }
         protected Health Health { get; set; }
         protected Resource Resource { get; set; }
         protected Attributes Attributes;
-        public Statistics Statistics;
+        protected Statistics _statistics;
         private bool _isAlive;
         
         public BaseCharacter()
@@ -21,21 +22,16 @@ namespace RPG.Character
         // Trzy sposoby na dostanie się do pól, którego powinienem używać?
         public void PrintStatus()
         {
+            Console.WriteLine($"{Name} status:");
             Console.WriteLine($"Health: {Health.CurrentValue} {Resource.Name}: {Resource.CurrentValue}");
             Console.WriteLine($"Strength: {Attributes.GetStrength().Value} Dexterity: {Attributes.GetDexterity().Value} Inteligence: {Attributes.GetIntelligence().Value}");
-            Console.WriteLine($"Iniciative: {GetCurrentIniciative()} Hit chance: {Statistics.HitChance.CurrentValue}");
-            Console.WriteLine($"Physical attack: {Statistics.AttackStrength.Physical} Magic attack: {Statistics.AttackStrength.Magic}");
-            Console.WriteLine($"Physical resistance: {Statistics.Resistances.PhysicalResistance.CurrentValue} Magic resistance: {Statistics.Resistances.MagicResistance.CurrentValue}");
+            Console.WriteLine($"Iniciative: {GetCurrentIniciative()} Hit chance: {_statistics.HitChance.CurrentValue}");
+            Console.WriteLine($"Physical attack: {_statistics.AttackStrength.Physical} Magic attack: {_statistics.AttackStrength.Magic}");
+            Console.WriteLine($"Physical resistance: {_statistics.Resistances.PhysicalResistance.CurrentValue} Magic resistance: {_statistics.Resistances.MagicResistance.CurrentValue}");
+            Console.WriteLine();
         }
 
-        // Na bank stąd wyleci
-        public void Attack(BaseCharacter target)
-        {
-            var damage = Statistics.AttackStrength.Physical;
-            target.TakeDamage(damage);
-        }
-
-        protected void TakeDamage(int amount)
+        public void TakeDamage(int amount)
         {
             Health.LowerHealth(amount);
             CheckIsAlive();
@@ -49,9 +45,14 @@ namespace RPG.Character
             }
         }
 
+        public Statistics GetStatistics()
+        {
+            return _statistics;
+        }
+
         public int GetCurrentIniciative()
         {
-            return Statistics.Iniciative.CurrentValue;
+            return _statistics.Iniciative.CurrentValue;
         }
 
         public bool IsAlive()

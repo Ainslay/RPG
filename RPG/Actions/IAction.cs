@@ -6,6 +6,6 @@ namespace RPG.Actions
 {
     interface IAction
     {
-        public void Perform();
+        public void Execute();
     }
 }

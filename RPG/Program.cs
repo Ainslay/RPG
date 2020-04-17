@@ -13,7 +13,7 @@ namespace RPG
     {
         static void Main(string[] args)
         {
-            var player = PlayerFactory.Create("Johnatan Joestar", PlayerProffesions.Warrior);
+            var player = PlayerFactory.Create("Johnatan Joestar", PlayerProffesions.Monk);
             
             var enemy = EnemyFactory.Create(player, Enemies.Slime, ThreatLevels.Easy);
 
@@ -31,6 +31,8 @@ namespace RPG
 // -- statsy po walce
 // -- ile expa 
 // -- (nagrody)
+
+// Ogarnąć jak przetrzymywać stringi żeby ich nie hardcodować
 
 // Jak poprawić walkę żeby była bardziej rozszerzalna, lepsza do konfiguracji
 // Zastanowić się nad akcjami interfejsy, klasy bazowe np. IAction

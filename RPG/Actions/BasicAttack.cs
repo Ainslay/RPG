@@ -1,14 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using RPG.Character;
+using RPG.Utilities;
 
 namespace RPG.Actions
 {
-    class BasicAttack : IAction
+    class BasicAttack : Action, IAction
     {
-        public void Perform()
+        private readonly BaseCharacter _attacker;
+        private readonly BaseCharacter _target;
+
+        public BasicAttack(BaseCharacter attacker, BaseCharacter target)
         {
-            throw new NotImplementedException();
+            ParamCheck.IsNull(attacker);
+            ParamCheck.IsNull(target);
+
+            _attacker = attacker;
+            _target = target;
+        }
+
+        public void Execute()
+        {
+            IsAlreadyExecuted();
+
+            var damage = _attacker.GetStatistics().AttackStrength.Physical;
+            _target.TakeDamage(damage);
+            Console.WriteLine($"{_attacker.Name} inflicted {damage} damage to {_target.Name}");
+            _executed = true;
         }
     }
 }

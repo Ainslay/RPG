@@ -12,7 +12,7 @@ namespace RPG.Character.Enemies
             Name = Enemies.UndeadMage.ToString();
             Attributes = new Attributes(2 * statMultiplier, 2 * statMultiplier, 4 * statMultiplier);
             Health = new Health(Attributes.GetStrength());
-            Statistics = new Statistics(Attributes);
+            _statistics = new Statistics(Attributes);
             Resource = new Mana(CharacterResources.Mana, 100);
         }
     }

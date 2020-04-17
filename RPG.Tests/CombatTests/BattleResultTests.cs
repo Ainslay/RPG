@@ -11,19 +11,9 @@ namespace RPG.Tests.CombatTests
     public class BattleResultTests
     {
         [Fact]
-        public void Given_NullPlayer_When_ConstructingBattleResult_Then_ThrowsArgumentNullException()
+        public void Given_NullBattle_When_ConstructingBattleResult_Then_ThrowsArgumentNullException()
         {
-            var enemy = new Goblin(1, ThreatLevels.DeathMarch);
-
-            Assert.Throws<ArgumentNullException>(() => new BattleResult(null, enemy));
-        }
-
-        [Fact]
-        public void Given_NullEnemy_When_ConstructingBattleResult_Then_ThrowsArgumentNullException()
-        {
-            var player = PlayerFactory.Create("John", PlayerProffesions.Mage);
-
-            Assert.Throws<ArgumentNullException>(() => new BattleResult(player, null));
+            Assert.Throws<ArgumentNullException>(() => new BattleResult(null));
         }
     }
 }

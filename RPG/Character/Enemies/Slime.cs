@@ -12,7 +12,7 @@ namespace RPG.Character.Enemies
             Name = Enemies.Slime.ToString();
             Attributes = new Attributes(3 * statMultiplier, 3 * statMultiplier, 1 * statMultiplier);
             Health = new Health(Attributes.GetStrength());
-            Statistics = new Statistics(Attributes);
+            _statistics = new Statistics(Attributes);
             Resource = new Will(CharacterResources.Will, 50);
         }
     }

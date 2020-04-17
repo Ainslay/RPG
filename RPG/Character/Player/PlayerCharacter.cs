@@ -12,7 +12,6 @@ namespace RPG.Character.Player
 
     class PlayerCharacter : BaseCharacter
     {
-        public readonly string Name;
         public Proffesion Proffesion { get; private set; }
         private Level _level;
         
@@ -27,7 +26,7 @@ namespace RPG.Character.Player
             Attributes = proffesion.BaseAttributes;
             Health = new Health(Attributes.GetStrength());
             _level = new Level();
-            Statistics = new Statistics(Attributes);
+            _statistics = new Statistics(Attributes);
         }
 
         public int GetLevel()
