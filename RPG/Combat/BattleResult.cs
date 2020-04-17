@@ -22,35 +22,50 @@ namespace RPG.Combat
 
         public void Resolve()
         {
-            if(!_fled)
-            {
-                if (IsPlayerVictory())
-                {
-                    var expToGain = ExperienceToGain();
-                    _player.AddExperience(expToGain);
-
-                    Console.WriteLine("The battle is won, you get to live another day.\n");
-                    Console.WriteLine("Your status:");
-                    _player.PrintStatus();
-                    Console.WriteLine("You gained {0} experience.", expToGain);
-                }
-                else
-                {
-                    var expToLose = ExperienceToLose();
-                    _player.SubstractExperience(expToLose);
-
-                    Console.WriteLine("You have been bested by {0}.\n", _enemy.Name);
-                    Console.WriteLine("Your status:");
-                    _player.PrintStatus();
-                    Console.WriteLine("You lost {0} experience.", expToLose);
-                }
-            }
-            else
+            if(HasFled())
             {
                 Console.WriteLine("You fled and therefore you gain no rewards for that battle.");
             }
+            else
+            {
+                if (IsPlayerVictory())
+                {
+                    Victory();
+                }
+                else
+                {
+                    Defeat();
+                }
+            }
             
             _player.RestoreStatus();
+        }
+
+        private void Victory()
+        {
+            var expToGain = ExperienceToGain();
+            _player.AddExperience(expToGain);
+
+            Console.WriteLine("The battle is won, you get to live another day.\n");
+            Console.WriteLine("Your status:");
+            _player.PrintStatus();
+            Console.WriteLine("You gained {0} experience.", expToGain);
+        }
+
+        private void Defeat()
+        {
+            var expToLose = ExperienceToLose();
+            _player.SubstractExperience(expToLose);
+
+            Console.WriteLine("You have been bested by {0}.\n", _enemy.Name);
+            Console.WriteLine("Your status:");
+            _player.PrintStatus();
+            Console.WriteLine("You lost {0} experience.", expToLose);
+        }
+
+        private bool HasFled()
+        {
+            return _fled;
         }
 
         private int ExperienceToGain()

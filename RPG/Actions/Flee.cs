@@ -27,7 +27,7 @@ namespace RPG.Actions
 
             if (_player.GetCurrentIniciative() > _enemy.GetCurrentIniciative())
             {
-                _battle.SetFled(true);
+                _battle.SetFled();
                 Console.WriteLine("You've managed to flee the scene, your enemies are no match for your swiftness.");
             }
             else

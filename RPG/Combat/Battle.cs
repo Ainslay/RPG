@@ -16,8 +16,8 @@ namespace RPG.Combat
         private PlayerCharacter _player;
         private Enemy _enemy;
         private List<BaseCharacter> _fighters;
+        private BattleInterface battleInterface; 
         private bool _fled;
-        private bool _stillFighting;
 
         public Battle(PlayerCharacter player, Enemy enemy)
         {
@@ -26,21 +26,23 @@ namespace RPG.Combat
             
             _player = player;
             _enemy = enemy;
+            battleInterface = new BattleInterface(player, enemy);
             _fighters = new List<BaseCharacter> { player, enemy };
             _fled = false;
-            _stillFighting = true;
         }
 
         public void Fight()
         {
-            while (_stillFighting)
+            bool stillFighting = true;
+
+            while (stillFighting)
             {
                 var turns = TurnManager.Build(_fighters);
 
                 foreach (var turn in turns.ToList())
                 {
-                    StillFighting();
-                    if (_stillFighting == false) break;
+                    stillFighting = StillFighting();
+                    if (stillFighting == false) break;
 
                     if (IsPlayerTurn(turn))
                     {
@@ -59,31 +61,24 @@ namespace RPG.Combat
 
         private void HandlePlayerTurn()
         {
-            var actionHandler = new ActionHandler(this, _player, _enemy);
-            var playerInput = new PlayerInput();
+            var actionHandler = new PlayerActionHandler(new BattleInfo(this));
+            var playerInput = new PlayerInput(battleInterface);
             BasicAction action;
-            bool handled;
-            
-            do
-            {
-                _player.PrintStatus();
-                _enemy.PrintStatus();
 
-                action = playerInput.GetInput();
-                handled = actionHandler.ExecuteAction(action);
+            battleInterface.Print();
 
-                Console.ReadKey();
-                Console.Clear();
-            }
-            while (handled == false);
+            action = playerInput.GetInput();
+            actionHandler.ExecuteAction(action);
+
+            Console.ReadKey();
+            Console.Clear();
         }
 
         private void HandleEnemyTurn()
         {
-            var actionHandler = new ActionHandler(this, _player, _enemy);
-            
-            _player.PrintStatus();
-            _enemy.PrintStatus();
+            var actionHandler = new EnemyActionHandler(new BattleInfo(this));
+
+            battleInterface.Print();
 
             actionHandler.ExecuteAction(BasicAction.BasicAttack);
 
@@ -101,14 +96,14 @@ namespace RPG.Combat
             return turn.GetCharacter().Equals(_enemy);
         }
 
-        private void StillFighting()
+        private bool StillFighting()
         {
-            _stillFighting = _player.IsAlive() && _enemy.IsAlive() && !_fled;
+            return _player.IsAlive() && _enemy.IsAlive() && !_fled;
         }
 
-        public void SetFled(bool state)
+        public void SetFled()
         {
-            _fled = state;
+            _fled = true;
         }
 
         public bool GetFled()
