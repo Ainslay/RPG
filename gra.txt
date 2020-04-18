@@ -1,0 +1,142 @@
+Najważniejsze: napisać tak żeby kod był możliwie jak najbardziej rozszerzalny jak umiem. Przestrzegać wszystkich zasadach, które 
+do tej pory poznałem.
+
+Wymagania biznesowe:
+
+Aplikacja- konsolowa gra RPG.
+
+Gra powinna realizować podstawowe założenia gry RPG. 
+Gra powinna opowiadać historię, pozwalać na rozwój sterowanej postaci oraz umożliwiać walkę. 
+Gracz za pomocą konsoli powinien móc wydawać polecenia sterowanej postaci. 
+
+Walka:
+- Sterowana przez gracza postać, może napotkać różnego rodzaju przeciwników. Walka polega na pojedynku 1 na 1. Pojedynek zaczyna postać z większą ilością szybkości. 
+- Pojedynek jest turowy.
+- Gracz może używać umiejętności, jeśli statystyka źródła mocy (mana - czarodziej, szał - wojownik, wola - mnich) mu na to pozwoli. 
+- Atak podstawowy dostępny jest zawsze. 
+- Każda z postaci ma unikatowy sposób generowania źródła mocy. Wojownik generuje moc po każdym skutecznym uderzeniu z wykorzystaniem ataku zwykłego, 
+czarodziej posiada zasób many odwrotnie proporcjonalny do posiadanego zdrowia (100% zdrowia = 0% many), 
+wola mnicha odnawia się z każdą kolejną turą.
+- Wrogowie do pojedynków z graczem pojawiają się losowo, po wykorzystaniu wszystkich możliwych interakcji przez gracza lub jego świadomym wyborze "Szukaj przeciwnika". Gracz dostaje informacje o poziomie przeciwnika (łatwy, średni, trudny, arcytrudny) na podstawie różnicy w poziomach gracza oraz przeciwnika.
+- Przeciwnicy mają szansę na upuszczenie skrzyni z przedmiotami. Gracz może wtedy zebrać dany przedmiot/przedmioty.
+- Po każdej walce gracz zdobywa (w przypadku wygranego pojedynku) lub traci (w przypadku ucieczki lub przegranej) część dotychczasowego doświadczenie. 
+- Ekwipunek gracza wynosi 20 miejsc oraz 5 miejsc na aktualnie użyte przedmioty.
+
+Klasy postaci:
+- Mag
+- Mnich
+- Wojownik
+
+Statystyki: 
+- Siła
+- Zręczność
+- Inteligencja
+
+Każda klasa ma inne bazowe statystyki.
+Siła zwiększa zadawane obrażenia fizyczne oraz życie.
+Inicjatywa zwiększa szansę na szybsze rozpoczęcie pojedynku od przeciwnika oraz zwiększa szanse na trafienie.
+Inteligencja zwiększa obrażenia zadawane atakiem magicznym oraz wszystkie odporności. 
+
+Przedmioty:
+- Broń
+- Zbroja
+- Buty
+- Helm
+- Rekawice
+
+Umiejętności:
+- Kula ognia (mag- poziom 2)
+- Zamieć (mag- poziom 5)
+- Magiczna osłona (mag- poziom 7)
+
+- Rzut nożem (wojownik- poziom 2)
+- Skok tektoniczny (wojownik- poziom 5)
+- Zwiększone obrażenia na 3 tury (wojownik- poziom 7)
+
+- Normalny cios (mnich- poziom 2)
+- Seria normalnych ciosów (mnich- poziom 5)
+- Cios na poważnie (mnich- poziom 7)
+
+Maksymalne statystyki postaci:
+- Zdrowie
+- Zasób źródła mocy
+- Atak fizyczny
+- Atak magiczny
+- Odporność na atak fizyczny
+- Odporność na atak specjalny
+- Inicjatywa
+- Szansa na trafienie
+
++ odpowiedniki aktualnych statystyk (np. maxHealth vs currentHealth)
+
+Wzory na obliczanie poszczególnych statystyk:
+((Statystyka bazowa postaci) + (statystki sumowalne z przedmiotów) * (statystyki mnożalne z przedmiotów) 
++  (statystyki sumowalne z umiejętności)) * (statystyki mnożalne z umiejętności)
+
+Polecenia:
+- Walka:
+	- Wybór umiejętności
+	- Akcje specjalne:
+		- Ucieczka (Możliwa tylko jeśli statystyka szybkości wyższa od przeciwnika, w momencie wykonywania akcji)
+		- Użycie mikstury zdrowia
+
+- Przedmioty:
+	- Wyświetlanie oraz zakładanie przedmiotów
+	- Wyświetlanie aktualnych statystyk	
+	- Polecenia dotyczące przedmiotów powinny być możliwe tylko bezpośrednio po walce.
+
+Rozwój postaci:
+Minimalne założenia:
+- Podstawowe statystyki
+- Zakładalne przedmioty
+- Umiejętności specjalne
+
+Przykładowy opis interakcji użytkownika z grą:
+
+//Witaj graczu, wybierz proszę imię oraz klasę dla swojej postaci.
+//Zagłębisz się teraz w niezbadanych lochach, uważaj na siebie!
+
+//Rozpocznij walkę z przeciwnikiem na łatwym poziomie, aby zrozumieć mechanikę gry!
+
+	//Walka
+	//Decyzja, kto rozpoczyna pojedynek
+	//Jeśli przeciwnik -> atakuje jako pierwszy
+	//Zadaje lub nie obrażenia, następuje rekalkulacja zdrowia oraz innych statystyk
+	//Jeśli gracz => wyświetlone zostaje na ekranie menu poleceń:
+		Możliwe do zrealizowania ataki oraz inne interakcje.
+	//Walka trwa na zmianę dopóki któryś z pojedynkujących się nie zwycięży.
+	
+	//Po walce
+	//Zostaje przydzielone lub zabrane doświadczenie
+	//W przypadku zdobytego dodatkowego poziomu, gracz może rozdać statystyki
+	//Zostaje określone czy przeciwnik zostawił jakąś skrzynię ze skarbami
+		//Jeśli tak, użytkownik ma możliwość interakcji z nią
+	//Użytkownik może wykonywać interakcje ze swoim ekwipunkiem
+	
+//Historia rusza dalej
+//Napotkałeś na kolejnego przeciwnika!
+
+//Przeciwnik to Kościany łucznik, na poziomie trudnym. Czy chcesz pojedynku z takim przeciwnikiem?
+//Nie
+//Skoro nie to ruszamy dalej
+
+//Przeciwnik to Chytry Jeż. Chytry Jeż rozsypał swoje kolce na około Ciebie, nie masz wyboru- czeka Cię walka z przeciwnikiem na poziomie średnim!
+
+	//Walka
+	//Decyzja, kto rozpoczyna pojedynek
+	//Jeśli przeciwnik -> atakuje jako pierwszy
+	//Zadaje lub nie obrażenia, następuje rekalkulacja zdrowia oraz innych statystyk
+	//Jeśli gracz => wyświetlone zostaje na ekranie menu poleceń:
+		Możliwe do zrealizowania ataki oraz inne interakcje.
+	//Walka trwa na zmianę dopóki któryś z pojedynkujących się nie zwycięży.
+	
+	//Po walce
+	//Zostaje przydzielone lub zabrane doświadczenie
+	//W przypadku zdobytego dodatkowego poziomu, gracz może rozdać statystyki
+	//Zostaje określone czy przeciwnik zostawił jakąś skrzynię ze skarbami
+		//Jeśli tak, użytkownik ma możliwość interakcji z nią
+	//Użytkownik może wykonywać interakcje ze swoim ekwipunkiem
+
+//Kontynuacja historii....
+
+
