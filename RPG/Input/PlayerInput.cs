@@ -1,7 +1,7 @@
 ﻿using System;
 
 using RPG.Actions;
-using RPG.Combat;
+using RPG.Input.Result;
 
 namespace RPG.Input
 {
@@ -30,39 +30,4 @@ namespace RPG.Input
             }
         }
     }
-
-    // TODO: Extract class and enum to seperate files
-    class InputResult
-    {
-        public BasicAction? Action;
-        public InputResults Result;
-
-        public InputResult(BasicAction? action, InputResults result)
-        {
-            Action = action;
-            Result = result;
-        }
-
-        public bool IsValid()
-        {
-            return Result == InputResults.Valid;
-        }
-
-        public BasicAction GetValidAction()
-        {
-            if(IsValid())
-            {
-                return Action ?? throw new NullReferenceException(nameof(Action));
-            }
-
-            throw new Exception("Action is in invalid state.");
-        }
-    }
-
-    enum InputResults
-    {
-        Invalid,
-        Valid
-    }
-
 }
