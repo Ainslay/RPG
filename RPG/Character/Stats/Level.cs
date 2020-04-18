@@ -6,20 +6,15 @@ namespace RPG.Character.Stats
 {
     class Level
     {
-        public  int Value { get; private set; }
+        private int _value;
         private int _experience;
         private int _nextLevel;
 
         public Level()
         {
-            Value = 1;
+            _value = 1;
             _experience = 0;
             CalculateNextLevel();
-        }
-
-        public int GetExperience()
-        {
-            return _experience;
         }
 
         public void AddExperience(int amount)
@@ -30,7 +25,7 @@ namespace RPG.Character.Stats
 
                 if (_experience >= _nextLevel)
                 {
-                    Value++;
+                    _value++;
                     _experience -= _nextLevel;
                     CalculateNextLevel();
                 }
@@ -58,9 +53,19 @@ namespace RPG.Character.Stats
             }
         }
 
+        public int GetValue()
+        {
+            return _value;
+        }
+
+        public int GetExperience()
+        {
+            return _experience;
+        }
+
         private void CalculateNextLevel()
         {
-            _nextLevel = Value * 50;
+            _nextLevel = _value * 50;
         }
     }
 }

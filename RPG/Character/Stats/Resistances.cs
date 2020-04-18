@@ -14,5 +14,15 @@ namespace RPG.Character.Stats
             PhysicalResistance = new PhysicalResistance(intelligence);
             MagicResistance = new MagicResistance(intelligence);
         }
+
+        public int GetPhysicalResistanceCurrentValue()
+        {
+            return PhysicalResistance.GetCurrentValue();
+        }
+
+        public int GetMagicResistanceCurrentValue()
+        {
+            return MagicResistance.GetCurrentValue();
+        }
     }
 }

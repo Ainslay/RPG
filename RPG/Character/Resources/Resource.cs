@@ -1,12 +1,13 @@
 ﻿using RPG.Utilities;
+using System;
 
 namespace RPG.Character.Resources
 {
     abstract class Resource
     {
-        public CharacterResources Name { get; protected set; }
-        public int CurrentValue { get; protected set; }
-        public int MaxValue { get; protected set; }
+        protected CharacterResources Name;
+        protected int CurrentValue;
+        protected int MaxValue;
 
         public Resource(CharacterResources name, int maxValue)
         {
@@ -15,6 +16,7 @@ namespace RPG.Character.Resources
         }
 
         public abstract void Generate();
+
         public bool Spend(uint amount)
         {
             if (CurrentValue - amount >= 0)
@@ -23,6 +25,21 @@ namespace RPG.Character.Resources
                 return true;
             }
             return false;
+        }
+
+        public CharacterResources GetName()
+        {
+            return Name;
+        }
+
+        public int GetMaxValue()
+        {
+            return MaxValue;
+        }
+
+        public int GetCurrentValue()
+        {
+            return CurrentValue;
         }
     }
 }

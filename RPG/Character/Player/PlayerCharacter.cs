@@ -6,10 +6,6 @@ using System;
 
 namespace RPG.Character.Player
 {
-    // Tutaj przekazywanie tej profesji trochę mi nie pasi, w tym sensie że
-    // mam PlayerFactory, które ładnie mi tworzy na podstawie enuma, a tutaj
-    // umożliwiam przesłanie jakiejś profesji.
-
     class PlayerCharacter : BaseCharacter
     {
         public Proffesion Proffesion { get; private set; }
@@ -26,12 +22,12 @@ namespace RPG.Character.Player
             Attributes = proffesion.BaseAttributes;
             Health = new Health(Attributes.GetStrength());
             _level = new Level();
-            _statistics = new Statistics(Attributes);
+            Statistics = new Statistics(Attributes);
         }
 
         public int GetLevel()
         {
-            return _level.Value;
+            return _level.GetValue();
         }
 
         public void RestoreStatus()
@@ -39,7 +35,6 @@ namespace RPG.Character.Player
             // TODO
         }
 
-        // Takie obudowywanie wydaje mi się nie w porządku, chociaż robiliśmy coś takiego wcześniej 
         public void AddExperience(int amount)
         {
             _level.AddExperience(amount);
