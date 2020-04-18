@@ -4,15 +4,16 @@ using Xunit;
 using RPG.Character.Enemies;
 using RPG.Character.Player;
 using RPG.Character.Proffesions;
+using RPG.Character.Enemies.Tools;
 
 namespace RPG.Tests.CharacterTests
 {
     public class RandomEnemyFactoryTests
     {
         [Fact]
-        public void Given_NullParameter_When_CallingCreate_Then_ThrowsArgumentNullException()
+        public void Given_NullStatMultiplier_When_CallingCreate_Then_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => RandomEnemyFactory.Create(null));
+            Assert.Throws<ArgumentNullException>(() => RandomEnemyFactory.Create(4, null));
         }
 
         [Fact]
@@ -20,7 +21,7 @@ namespace RPG.Tests.CharacterTests
         {
             var player = PlayerFactory.Create("John", PlayerProffesions.Warrior);
             
-            var result = RandomEnemyFactory.Create(player);
+            var result = RandomEnemyFactory.Create(player.GetLevelValue(), new StatMultiplier());
 
             Assert.NotNull(result);
         }

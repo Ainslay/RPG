@@ -22,7 +22,7 @@ namespace RPG.Tests.StatsTests
 
             var result = new PhysicalResistance(intelligence);
 
-            Assert.Equal(expected, result.BaseValue);
+            Assert.Equal(expected, result.GetBaseValue());
         }
     }
 }
