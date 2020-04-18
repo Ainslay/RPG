@@ -37,7 +37,7 @@ namespace RPG.Tests.StatsTests
 
             level.AddExperience(expToGain);
 
-            Assert.Equal(expectedLevel, level.Value);
+            Assert.Equal(expectedLevel, level.GetValue());
             Assert.Equal(expectedExp, level.GetExperience());
         }
 

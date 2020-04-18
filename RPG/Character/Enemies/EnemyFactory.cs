@@ -1,5 +1,7 @@
-﻿using RPG.Character.Enemies.Tools;
-using System;
+﻿using System;
+
+using RPG.Character.Enemies.Tools;
+using RPG.Utilities;
 
 namespace RPG.Character.Enemies
 {
@@ -7,6 +9,8 @@ namespace RPG.Character.Enemies
     {
         public static Enemy Create(int playerLevel, Enemies enemyType, ThreatLevels threatLevel, IStatMultiplier statMultiplier)
         {
+            ParamCheck.IsNull(statMultiplier);
+
             var multiplier = statMultiplier.Calculate(playerLevel, threatLevel);
 
             switch (enemyType)
