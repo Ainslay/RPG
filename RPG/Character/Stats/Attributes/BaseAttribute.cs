@@ -2,16 +2,21 @@
 {
     abstract class BaseAttribute
     {
-        public int Value { get; private set; }
+        private int _value;
 
         public BaseAttribute(int value)
         {
-            Value = value;
+            _value = value;
         }
 
         public void Add()
         {
-            Value++;
+            _value++;
+        }
+
+        public int GetValue()
+        {
+            return _value;
         }
     }
 }

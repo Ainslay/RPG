@@ -1,9 +1,7 @@
 ﻿using RPG.Character;
 using RPG.Utilities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace RPG.Combat

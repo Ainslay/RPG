@@ -14,8 +14,8 @@ namespace RPG.Character.Stats
         {
             ParamCheck.IsNull(baseAttribute);
 
-            BaseValue = baseAttribute.Value;
-            CurrentValue = baseAttribute.Value;
+            BaseValue = baseAttribute.GetValue();
+            CurrentValue = baseAttribute.GetValue();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace RPG.Actions
             _enemy = battle.GetEnemy();
         }
 
-        public void Perform()
+        public void Execute()
         {
             IsAlreadyExecuted();
 

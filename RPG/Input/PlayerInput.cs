@@ -7,45 +7,61 @@ namespace RPG.Input
 {
     class PlayerInput
     {
-        private BattleInterface _battleInterface;
-
-        public PlayerInput(BattleInterface battleInterface)
-        {
-            _battleInterface = battleInterface;
-        }
-
-        public BasicAction GetInput()
+        public InputResult GetInput()
         {
             BasicAction input;
-            bool isInputValid = false;
             
-            do
+            Console.WriteLine("Choose your action:");
+            Console.WriteLine("1. Attack");
+            Console.WriteLine("2. Flee");
+            Console.WriteLine();
+
+            input = (BasicAction)Console.ReadKey(true).Key;
+
+            switch (input)
             {
-                Console.Clear();
-                _battleInterface.Print();
-
-                Console.WriteLine("Choose your action:");
-                Console.WriteLine("1. Attack");
-                Console.WriteLine("2. Flee");
-                Console.WriteLine();
-
-                input = (BasicAction)Console.ReadKey(true).Key;
-
-                switch (input)
-                {
-                    case BasicAction.BasicAttack:
-                    case BasicAction.Flee:
-                        isInputValid = true;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid input.");
-                        Console.ReadKey();
-                        break;
-                }
+                case BasicAction.BasicAttack:
+                case BasicAction.Flee:
+                    return new InputResult(input, InputResults.Valid);
+                default:
+                    Console.WriteLine("Invalid input.");
+                    Console.ReadKey();
+                    return new InputResult(input, InputResults.Invalid);
             }
-            while (isInputValid == false);
-
-            return input;
         }
     }
+
+    class InputResult
+    {
+        public BasicAction? Action;
+        public InputResults Result;
+
+        public InputResult(BasicAction? action, InputResults result)
+        {
+            Action = action;
+            Result = result;
+        }
+
+        public bool IsValid()
+        {
+            return Result == InputResults.Valid;
+        }
+
+        public BasicAction GetValidAction()
+        {
+            if(IsValid())
+            {
+                return Action ?? throw new NullReferenceException(nameof(Action));
+            }
+
+            throw new Exception("Action is in invalid state.");
+        }
+    }
+
+    enum InputResults
+    {
+        Invalid,
+        Valid
+    }
+
 }

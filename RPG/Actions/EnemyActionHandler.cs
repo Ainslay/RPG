@@ -21,7 +21,7 @@ namespace RPG.Actions
             switch (action)
             {
                 case BasicAction.BasicAttack:
-                    new BasicAttack(_battleInfo.GetEnemy(), _battleInfo.GetPlayer()).Perform();
+                    new BasicAttack(_battleInfo.GetEnemy(), _battleInfo.GetPlayer()).Execute();
                     break;
                 default:
                     Console.WriteLine("Invalid input.");

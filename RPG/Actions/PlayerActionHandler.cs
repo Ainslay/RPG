@@ -21,10 +21,10 @@ namespace RPG.Actions
             switch (action)
             {
                 case BasicAction.BasicAttack:
-                    new BasicAttack(_battleInfo.GetPlayer(), _battleInfo.GetEnemy()).Perform();
+                    new BasicAttack(_battleInfo.GetPlayer(), _battleInfo.GetEnemy()).Execute();
                     break;
                 case BasicAction.Flee:
-                    new Flee(_battleInfo.GetBattle()).Perform();
+                    new Flee(_battleInfo.GetBattle()).Execute();
                     break;
                 default:
                     throw new ArgumentException("Invalid action.");

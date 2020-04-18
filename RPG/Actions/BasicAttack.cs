@@ -18,7 +18,7 @@ namespace RPG.Actions
             _target = target;
         }
 
-        public void Perform()
+        public void Execute()
         {
             IsAlreadyExecuted();
 

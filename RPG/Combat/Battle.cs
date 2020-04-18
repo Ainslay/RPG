@@ -16,7 +16,7 @@ namespace RPG.Combat
         private PlayerCharacter _player;
         private Enemy _enemy;
         private List<BaseCharacter> _fighters;
-        private BattleInterface battleInterface; 
+        private BattleInterface _battleInterface; 
         private bool _fled;
 
         public Battle(PlayerCharacter player, Enemy enemy)
@@ -26,29 +26,26 @@ namespace RPG.Combat
             
             _player = player;
             _enemy = enemy;
-            battleInterface = new BattleInterface(player, enemy);
+            _battleInterface = new BattleInterface(player, enemy);
             _fighters = new List<BaseCharacter> { player, enemy };
             _fled = false;
         }
 
         public void Fight()
         {
-            bool stillFighting = true;
-
-            while (stillFighting)
+            while (StillFighting())
             {
                 var turns = TurnManager.Build(_fighters);
 
                 foreach (var turn in turns.ToList())
                 {
-                    stillFighting = StillFighting();
-                    if (stillFighting == false) break;
+                    if (StillFighting() == false) break;
 
                     if (IsPlayerTurn(turn))
                     {
                         HandlePlayerTurn();
                     }
-                    if(IsEnemyTurn(turn))
+                    if (IsEnemyTurn(turn))
                     {
                         HandleEnemyTurn();
                     }
@@ -62,23 +59,33 @@ namespace RPG.Combat
         private void HandlePlayerTurn()
         {
             var actionHandler = new PlayerActionHandler(new BattleInfo(this));
-            var playerInput = new PlayerInput(battleInterface);
-            BasicAction action;
+            _battleInterface.PrintStatuses();
 
-            battleInterface.Print();
+            InputResult inputResult = TryGetInputResult(new PlayerInput());
 
-            action = playerInput.GetInput();
-            actionHandler.ExecuteAction(action);
+            actionHandler.ExecuteAction(inputResult.GetValidAction());
 
             Console.ReadKey();
             Console.Clear();
+        }
+
+        private InputResult TryGetInputResult(PlayerInput playerInput)
+        {
+            InputResult inputResult;
+            do
+            {
+                inputResult = playerInput.GetInput();
+            }
+            while (inputResult.IsValid());
+
+            return inputResult;
         }
 
         private void HandleEnemyTurn()
         {
             var actionHandler = new EnemyActionHandler(new BattleInfo(this));
 
-            battleInterface.Print();
+            _battleInterface.PrintStatuses();
 
             actionHandler.ExecuteAction(BasicAction.BasicAttack);
 
