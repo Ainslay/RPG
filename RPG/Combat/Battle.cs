@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 using RPG.Actions;
-using RPG.Input;
 using RPG.Character;
 using RPG.Character.Enemies;
 using RPG.Character.Player;
 using RPG.Utilities;
+using RPG.Input;
+using RPG.Input.Result;
 
 namespace RPG.Combat
 {
