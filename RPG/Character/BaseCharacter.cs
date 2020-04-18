@@ -11,7 +11,7 @@ namespace RPG.Character
         protected Health Health { get; set; }
         protected Resource Resource { get; set; }
         protected Attributes Attributes;
-        protected Statistics _statistics;
+        protected Statistics Statistics;
         private bool _isAlive;
         
         public BaseCharacter()
@@ -19,15 +19,14 @@ namespace RPG.Character
             _isAlive = true;
         }
 
-        // Trzy sposoby na dostanie się do pól, którego powinienem używać?
         public void PrintStatus()
         {
             Console.WriteLine($"{Name} status:");
-            Console.WriteLine($"Health: {Health.CurrentValue} {Resource.Name}: {Resource.CurrentValue}");
-            Console.WriteLine($"Strength: {Attributes.GetStrengthValue()} Dexterity: {Attributes.GetDexterityValue()} Inteligence: {Attributes.GetIntelligence().GetValue()}");
-            Console.WriteLine($"Iniciative: {GetCurrentIniciative()} Hit chance: {_statistics.HitChance.CurrentValue}");
-            Console.WriteLine($"Physical attack: {_statistics.AttackStrength.Physical} Magic attack: {_statistics.AttackStrength.Magic}");
-            Console.WriteLine($"Physical resistance: {_statistics.Resistances.PhysicalResistance.CurrentValue} Magic resistance: {_statistics.Resistances.MagicResistance.CurrentValue}");
+            Console.WriteLine($"Health: {Health.GetCurrentValue()} {Resource.GetName()}: {Resource.GetCurrentValue()}");
+            Console.WriteLine($"Strength: {Attributes.GetStrengthValue()} Dexterity: {Attributes.GetDexterityValue()} Inteligence: {Attributes.GetIntelligenceValue()}");
+            Console.WriteLine($"Iniciative: {Statistics.GetCurrentIniciative()} Hit chance: {Statistics.GetCurrentHitChance()}");
+            Console.WriteLine($"Physical attack: {Statistics.GetPhysicalAttack()} Magic attack: {Statistics.GetMagicAttack()}");
+            Console.WriteLine($"Physical resistance: {Statistics.GetCurrentPhysicalResistance()} Magic resistance: {Statistics.GetCurrentMagicResistance()}");
             Console.WriteLine();
         }
 
@@ -39,7 +38,7 @@ namespace RPG.Character
 
         protected void CheckIsAlive()
         {
-            if(Health.CurrentValue == 0)
+            if(Health.GetCurrentValue() == 0)
             {
                 _isAlive = false;
             }
@@ -47,12 +46,12 @@ namespace RPG.Character
 
         public Statistics GetStatistics()
         {
-            return _statistics;
+            return Statistics;
         }
 
         public int GetCurrentIniciative()
         {
-            return _statistics.Iniciative.CurrentValue;
+            return Statistics.GetCurrentIniciative();
         }
 
         public bool IsAlive()

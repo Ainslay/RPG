@@ -8,11 +8,11 @@ namespace RPG.Character.Enemies
         public UndeadMage(int statMultiplier, ThreatLevels threatLevel)
         {
             // Tutaj chciałem unikać hardcodowania nazw, ale problem ze spacją w nazwie hmm
-            _threatLevel = threatLevel;
+            ThreatLevel = threatLevel;
             Name = Enemies.UndeadMage.ToString();
             Attributes = new Attributes(2 * statMultiplier, 2 * statMultiplier, 4 * statMultiplier);
             Health = new Health(Attributes.GetStrength());
-            _statistics = new Statistics(Attributes);
+            Statistics = new Statistics(Attributes);
             Resource = new Mana(CharacterResources.Mana, 100);
         }
     }

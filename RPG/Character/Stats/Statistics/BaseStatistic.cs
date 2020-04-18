@@ -7,8 +7,8 @@ namespace RPG.Character.Stats
 {
     abstract class BaseStatistic
     {
-        public int BaseValue { get; protected set; }
-        public int CurrentValue { get; protected set; }
+        protected int BaseValue { get; set; }
+        protected int CurrentValue { get; set; }
 
         public BaseStatistic(BaseAttribute baseAttribute)
         {
@@ -16,6 +16,16 @@ namespace RPG.Character.Stats
 
             BaseValue = baseAttribute.GetValue();
             CurrentValue = baseAttribute.GetValue();
+        }
+
+        public int GetCurrentValue()
+        {
+            return CurrentValue;
+        }
+
+        public int GetBaseValue()
+        {
+            return BaseValue;
         }
     }
 }
