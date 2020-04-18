@@ -1,10 +1,7 @@
 ﻿using RPG.Character;
 using RPG.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace RPG.Combat
+namespace RPG.Combat.Battles
 {
     class BattleInfo
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPG.Character.Enemies.Tools;
+using System;
 
 namespace RPG.Character.Enemies
 {

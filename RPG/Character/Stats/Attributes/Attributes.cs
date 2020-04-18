@@ -37,7 +37,7 @@
         {
             return _dexterity.GetValue();
         }
-        
+
         public int GetIntelligenceValue()
         {
             return _intelligence.GetValue();
