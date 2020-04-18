@@ -1,7 +1,5 @@
 ﻿using RPG.Character.Stats;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace RPG.Tests.StatsTests
@@ -22,7 +20,7 @@ namespace RPG.Tests.StatsTests
 
             var result = new HitChance(dexterity);
 
-            Assert.Equal(expected, result.BaseValue);
+            Assert.Equal(expected, result.GetBaseValue());
         }
     }
 }

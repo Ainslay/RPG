@@ -16,7 +16,7 @@ namespace RPG
         {
             var player = PlayerFactory.Create("Johnatan Joestar", PlayerProffesions.Monk);
 
-            var enemy = EnemyFactory.Create(player.GetLevel(), Enemies.Slime, ThreatLevels.Easy, new StatMultiplier());
+            var enemy = EnemyFactory.Create(player.GetLevelValue(), Enemies.Slime, ThreatLevels.Easy, new StatMultiplier());
 
             var battle = new Battle(player, enemy);
 
