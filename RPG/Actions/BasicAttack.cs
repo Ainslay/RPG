@@ -22,7 +22,7 @@ namespace RPG.Actions
         {
             IsAlreadyExecuted();
 
-            var damage = _attacker.GetStatistics()._attackStrength.Physical;
+            var damage = _attacker.GetStatistics().GetPhysicalAttack();
             _target.TakeDamage(damage);
             Console.WriteLine($"{_attacker.Name} inflicted {damage} damage to {_target.Name}");
             _executed = true;
