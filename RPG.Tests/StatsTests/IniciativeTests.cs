@@ -20,7 +20,7 @@ namespace RPG.Tests.StatsTests
 
             var result = new Iniciative(dexterity);
 
-            Assert.Equal(expected, result.BaseValue);
+            Assert.Equal(expected, result.GetBaseValue());
         }
     }
 }

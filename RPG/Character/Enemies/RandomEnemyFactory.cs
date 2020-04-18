@@ -1,5 +1,7 @@
-﻿using RPG.Character.Enemies.Tools;
-using System;
+﻿using System;
+
+using RPG.Character.Enemies.Tools;
+using RPG.Utilities;
 
 namespace RPG.Character.Enemies
 {
@@ -10,6 +12,8 @@ namespace RPG.Character.Enemies
         // case'a w fabryce.
         public static Enemy Create(int playerLevel, IStatMultiplier statMultiplier)
         {
+            ParamCheck.IsNull(statMultiplier);
+
             var enemyCount = Enum.GetNames(typeof(Enemies)).Length;
             var threatLevelCount = Enum.GetNames(typeof(ThreatLevels)).Length;
 

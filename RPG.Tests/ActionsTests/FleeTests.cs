@@ -1,5 +1,6 @@
 ﻿using RPG.Actions;
 using RPG.Character.Enemies;
+using RPG.Character.Enemies.Tools;
 using RPG.Character.Player;
 using RPG.Character.Proffesions;
 using RPG.Combat.Battles;
@@ -20,7 +21,7 @@ namespace RPG.Tests.ActionsTests
         public void Given_NoParameters_When_CallingExecuteMultipleTimes_Then_ThrowsActionAlreadyExecutedException()
         {
             var player = PlayerFactory.Create("John", PlayerProffesions.Mage);
-            var enemy = EnemyFactory.Create(player, Enemies.Slime, ThreatLevels.Easy);
+            var enemy = EnemyFactory.Create(player.GetLevelValue(), Enemies.Slime, ThreatLevels.Easy, new StatMultiplier());
             var battle = new Battle(player, enemy);
 
             var flee = new Flee(battle);
@@ -33,7 +34,7 @@ namespace RPG.Tests.ActionsTests
         public void Given_NoParameters_When_CallingExecute_Then_FleesTheBattle()
         {
             var player = PlayerFactory.Create("John", PlayerProffesions.Monk);
-            var enemy = EnemyFactory.Create(player, Enemies.Slime, ThreatLevels.Easy);
+            var enemy = EnemyFactory.Create(player.GetLevelValue(), Enemies.Slime, ThreatLevels.Easy, new StatMultiplier());
             var battle = new Battle(player, enemy);
             var expected = true;
 

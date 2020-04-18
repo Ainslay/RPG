@@ -1,8 +1,6 @@
 ﻿using System;
 using Xunit;
 
-using RPG.Character.Player;
-using RPG.Character.Proffesions;
 using RPG.Character.Stats;
 
 namespace RPG.Tests.StatsTests
@@ -20,11 +18,11 @@ namespace RPG.Tests.StatsTests
         {
             var health = new Health(new Strength(5));
             int damageToTake = 10;
-            var expected = health.CurrentValue - damageToTake;
+            var expected = health.GetCurrentValue() - damageToTake;
 
             health.LowerHealth(damageToTake);
 
-            Assert.Equal(expected, health.CurrentValue);
+            Assert.Equal(expected, health.GetCurrentValue());
         }
 
         [Fact]
@@ -33,11 +31,11 @@ namespace RPG.Tests.StatsTests
             var health = new Health(new Strength(5));
             int amountToHeal = 10;
             health.LowerHealth(10);
-            var expected = health.CurrentValue + amountToHeal;
+            var expected = health.GetCurrentValue() + amountToHeal;
 
             health.RestoreHealth(amountToHeal);
 
-            Assert.Equal(expected, health.CurrentValue);
+            Assert.Equal(expected, health.GetCurrentValue());
         }
     }
 }

@@ -71,12 +71,12 @@ namespace RPG.Combat.Battles
 
         private int ExperienceToGain()
         {
-            return (int)_enemy.GetThreatLevel() * _player.GetLevel() * 10;
+            return (int)_enemy.GetThreatLevel() * _player.GetLevelValue() * 10;
         }
 
         private int ExperienceToLose()
         {
-            return (int)_enemy.GetThreatLevel() * _player.GetLevel() * 4;
+            return (int)_enemy.GetThreatLevel() * _player.GetLevelValue() * 4;
         }
 
         private bool IsPlayerVictory()
