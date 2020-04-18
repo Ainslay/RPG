@@ -3,9 +3,9 @@ using Xunit;
 
 using RPG.Character;
 using RPG.Character.Enemies;
-using RPG.Combat;
 using RPG.Character.Player;
 using RPG.Character.Proffesions;
+using RPG.Combat.Battles;
 
 namespace RPG.Tests.CombatTests
 {

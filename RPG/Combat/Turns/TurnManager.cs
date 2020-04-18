@@ -1,10 +1,11 @@
-﻿using RPG.Character;
-using RPG.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RPG.Combat
+using RPG.Character;
+using RPG.Utilities;
+
+namespace RPG.Combat.Turns
 {
     static class TurnManager
     {
@@ -16,7 +17,6 @@ namespace RPG.Combat
 
             var sortedFighters = GetSortedFighters(fighters);
 
-            // Mapowanie obiektów jednego typu na inny !
             _turns = sortedFighters.Select(fighter => new Turn(fighter)).ToList();
 
             return _turns;
@@ -32,11 +32,11 @@ namespace RPG.Combat
         {
             public int Compare(BaseCharacter fighter1, BaseCharacter fighter2)
             {
-                if(LowerThan(fighter1, fighter2))
+                if (LowerThan(fighter1, fighter2))
                 {
                     return 1;
                 }
-                else if(GreaterThan(fighter1, fighter2))
+                else if (GreaterThan(fighter1, fighter2))
                 {
                     return -1;
                 }

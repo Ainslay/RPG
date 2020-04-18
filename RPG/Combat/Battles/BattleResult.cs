@@ -1,9 +1,10 @@
-﻿using RPG.Character.Enemies;
+﻿using System;
+
+using RPG.Character.Enemies;
 using RPG.Character.Player;
 using RPG.Utilities;
-using System;
 
-namespace RPG.Combat
+namespace RPG.Combat.Battles
 {
     class BattleResult
     {
@@ -22,7 +23,7 @@ namespace RPG.Combat
 
         public void Resolve()
         {
-            if(HasFled())
+            if (HasFled())
             {
                 Console.WriteLine("You fled and therefore you gain no rewards for that battle.");
             }
@@ -37,7 +38,7 @@ namespace RPG.Combat
                     Defeat();
                 }
             }
-            
+
             _player.RestoreStatus();
         }
 

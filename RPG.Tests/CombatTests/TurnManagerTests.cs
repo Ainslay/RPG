@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Xunit;
 
 using RPG.Character;
-using RPG.Combat;
+using RPG.Combat.Turns;
 
 namespace RPG.Tests.CombatTests
 {

@@ -1,6 +1,6 @@
 ﻿using RPG.Character.Enemies;
 using RPG.Character.Player;
-using RPG.Combat;
+using RPG.Combat.Battles;
 using RPG.Utilities;
 using System;
 
