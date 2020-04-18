@@ -1,7 +1,7 @@
 ﻿using System;
 
 using RPG.Character;
-using RPG.Combat;
+using RPG.Combat.Battles;
 using RPG.Utilities;
 
 namespace RPG.Actions

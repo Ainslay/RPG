@@ -9,22 +9,23 @@ using RPG.Character.Player;
 using RPG.Utilities;
 using RPG.Input;
 using RPG.Input.Result;
+using RPG.Combat.Turns;
 
-namespace RPG.Combat
+namespace RPG.Combat.Battles
 {
     partial class Battle
     {
         private PlayerCharacter _player;
         private Enemy _enemy;
         private List<BaseCharacter> _fighters;
-        private BattleInterface _battleInterface; 
+        private BattleInterface _battleInterface;
         private bool _fled;
 
         public Battle(PlayerCharacter player, Enemy enemy)
         {
             ParamCheck.IsNull(player);
             ParamCheck.IsNull(enemy);
-            
+
             _player = player;
             _enemy = enemy;
             _battleInterface = new BattleInterface(player, enemy);

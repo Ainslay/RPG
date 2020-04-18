@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RPG.Character.Enemies
+﻿namespace RPG.Character.Enemies.Tools
 {
     interface IStatMultiplier
     {

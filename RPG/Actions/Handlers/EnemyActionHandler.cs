@@ -1,4 +1,4 @@
-﻿using RPG.Combat;
+﻿using RPG.Combat.Battles;
 using RPG.Utilities;
 using System;
 using System.Collections.Generic;
