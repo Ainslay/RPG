@@ -76,7 +76,7 @@ namespace RPG.Combat
             {
                 inputResult = playerInput.GetInput();
             }
-            while (inputResult.IsValid());
+            while (!inputResult.IsValid());
 
             return inputResult;
         }
