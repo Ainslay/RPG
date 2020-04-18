@@ -3,7 +3,7 @@ using Xunit;
 
 using RPG.Character.Player;
 using RPG.Character.Proffesions;
-using RPG.Combat;
+using RPG.Combat.Turns;
 
 namespace RPG.Tests.CombatTests
 {

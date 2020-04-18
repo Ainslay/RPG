@@ -2,9 +2,10 @@
 using System.Runtime.CompilerServices;
 
 using RPG.Character.Enemies;
+using RPG.Character.Enemies.Tools;
 using RPG.Character.Player;
 using RPG.Character.Proffesions;
-using RPG.Combat;
+using RPG.Combat.Battles;
 
 [assembly: InternalsVisibleTo("RPG.Tests")]
 namespace RPG
