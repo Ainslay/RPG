@@ -13,17 +13,9 @@
             _intelligence = new Intelligence(intelligence);
         }
 
-        // Dodać GetStrengthValue czy po prostu robić GetStrength().Value...
-
         public Strength GetStrength()
         {
             return _strength;
-        }
-
-        public int GetStrengthValue()
-        {
-            return _strength.GetValue();
-
         }
 
         public Dexterity GetDexterity()
@@ -31,15 +23,24 @@
             return _dexterity;
         }
 
+        public Intelligence GetIntelligence()
+        {
+            return _intelligence;
+        }
+
+        public int GetStrengthValue()
+        {
+            return _strength.GetValue();
+        }
+
         public int GetDexterityValue()
         {
             return _dexterity.GetValue();
         }
-
-        // TODO
-        public Intelligence GetIntelligence()
+        
+        public int GetIntelligenceValue()
         {
-            return _intelligence;
+            return _intelligence.GetValue();
         }
     }
 }
