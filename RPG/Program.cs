@@ -14,8 +14,8 @@ namespace RPG
         static void Main(string[] args)
         {
             var player = PlayerFactory.Create("Johnatan Joestar", PlayerProffesions.Monk);
-            
-            var enemy = EnemyFactory.Create(player, Enemies.Slime, ThreatLevels.Easy);
+
+            var enemy = EnemyFactory.Create(player.GetLevel(), Enemies.Slime, ThreatLevels.Easy, new StatMultiplier());
 
             var battle = new Battle(player, enemy);
 
@@ -25,6 +25,11 @@ namespace RPG
         }
     }
 }
+
+// Plik editor.config -> ustala zasady jak formatować kod, sprawdź jak to skonfigurować
+
+// Wprowadzić obiekt, który koordynuje rozgrywkę, jakiś StoryTeller
+// 
 
 // BATTLE RESULT
 // -- ref do charactera

@@ -34,9 +34,9 @@ namespace RPG.Tests.ActionsTests
             var attacker = PlayerFactory.Create("John", PlayerProffesions.Mage);
             var target = PlayerFactory.Create("Dummy", PlayerProffesions.Mage);
             var basicAttack = new BasicAttack(attacker, target);
-            basicAttack.Perform();
+            basicAttack.Execute();
 
-            Assert.Throws<ActionAlreadyExecutedException>(() => basicAttack.Perform());
+            Assert.Throws<ActionAlreadyExecutedException>(() => basicAttack.Execute());
         }
 
         // Tu mam problem z przekazaniem do testu parametrów

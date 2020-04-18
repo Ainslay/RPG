@@ -20,7 +20,7 @@ namespace RPG.Combat
             _enemy = enemy;
         }
 
-        public void Print()
+        public void PrintStatuses()
         {
             _player.PrintStatus();
             _enemy.PrintStatus();

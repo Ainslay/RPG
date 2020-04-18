@@ -1,37 +1,24 @@
 ﻿using System;
 
-using RPG.Character.Stats;
-using RPG.Character.Player;
-using RPG.Utilities;
-
 namespace RPG.Character.Enemies
 {
     static class EnemyFactory
     {
-        public static Enemy Create(PlayerCharacter player, Enemies enemyType, ThreatLevels threatLevel)
+        public static Enemy Create(int playerLevel, Enemies enemyType, ThreatLevels threatLevel, IStatMultiplier statMultiplier)
         {
-            ParamCheck.IsNull(player);
-
-            var statMultiplier = player.GetLevel() + (int)threatLevel;
-
-            Enemy enemy;
+            var multiplier = statMultiplier.Calculate(playerLevel, threatLevel);
 
             switch (enemyType)
             {
                 case Enemies.Goblin:
-                    enemy = new Goblin(statMultiplier, threatLevel);
-                    break;
+                    return new Goblin(multiplier, threatLevel);
                 case Enemies.UndeadMage:
-                    enemy = new UndeadMage(statMultiplier, threatLevel);
-                    break;
+                    return new UndeadMage(multiplier, threatLevel);
                 case Enemies.Slime:
-                    enemy = new Slime(statMultiplier, threatLevel);
-                    break;
+                    return new Slime(multiplier, threatLevel);
                 default:
                     throw new ArgumentException("Could not create enemy object. Invalid enemy type.");
             }
-
-            return enemy;
         }
     }
 }

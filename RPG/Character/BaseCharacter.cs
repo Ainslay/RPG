@@ -24,7 +24,7 @@ namespace RPG.Character
         {
             Console.WriteLine($"{Name} status:");
             Console.WriteLine($"Health: {Health.CurrentValue} {Resource.Name}: {Resource.CurrentValue}");
-            Console.WriteLine($"Strength: {Attributes.GetStrength().Value} Dexterity: {Attributes.GetDexterity().Value} Inteligence: {Attributes.GetIntelligence().Value}");
+            Console.WriteLine($"Strength: {Attributes.GetStrengthValue()} Dexterity: {Attributes.GetDexterityValue()} Inteligence: {Attributes.GetIntelligence().GetValue()}");
             Console.WriteLine($"Iniciative: {GetCurrentIniciative()} Hit chance: {_statistics.HitChance.CurrentValue}");
             Console.WriteLine($"Physical attack: {_statistics.AttackStrength.Physical} Magic attack: {_statistics.AttackStrength.Magic}");
             Console.WriteLine($"Physical resistance: {_statistics.Resistances.PhysicalResistance.CurrentValue} Magic resistance: {_statistics.Resistances.MagicResistance.CurrentValue}");

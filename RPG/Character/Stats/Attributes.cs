@@ -20,11 +20,23 @@
             return _strength;
         }
 
+        public int GetStrengthValue()
+        {
+            return _strength.GetValue();
+
+        }
+
         public Dexterity GetDexterity()
         {
             return _dexterity;
         }
 
+        public int GetDexterityValue()
+        {
+            return _dexterity.GetValue();
+        }
+
+        // TODO
         public Intelligence GetIntelligence()
         {
             return _intelligence;

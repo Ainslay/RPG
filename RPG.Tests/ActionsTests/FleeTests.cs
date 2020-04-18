@@ -24,9 +24,9 @@ namespace RPG.Tests.ActionsTests
             var battle = new Battle(player, enemy);
 
             var flee = new Flee(battle);
-            flee.Perform();
+            flee.Execute();
 
-            Assert.Throws<ActionAlreadyExecutedException>(() => flee.Perform());
+            Assert.Throws<ActionAlreadyExecutedException>(() => flee.Execute());
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace RPG.Tests.ActionsTests
             var expected = true;
 
             var flee = new Flee(battle);
-            flee.Perform();
+            flee.Execute();
 
             Assert.Equal(expected, battle.GetFled());
         }
