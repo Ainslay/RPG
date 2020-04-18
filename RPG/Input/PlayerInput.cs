@@ -31,6 +31,7 @@ namespace RPG.Input
         }
     }
 
+    // TODO: Extract class and enum to seperate files
     class InputResult
     {
         public BasicAction? Action;

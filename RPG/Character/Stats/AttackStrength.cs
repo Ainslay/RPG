@@ -4,16 +4,26 @@ namespace RPG.Character.Stats
 {
     class AttackStrength
     {
-        public int Physical { get; private set; }
-        public int Magic { get; private set; }
+        private int _physical;
+        private int _magic; 
 
         public AttackStrength(Strength strength, Intelligence intelligence)
         {
             ParamCheck.IsNull(strength);
             ParamCheck.IsNull(intelligence);
 
-            Physical = strength.GetValue();
-            Magic = intelligence.GetValue();
+            _physical = strength.GetValue();
+            _magic = intelligence.GetValue();
+        }
+
+        public int GetPhysicalAttack()
+        {
+            return _physical;
+        }
+
+        public int GetMagicAttack()
+        {
+            return _magic;
         }
     }
 }

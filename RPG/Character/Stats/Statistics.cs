@@ -2,17 +2,46 @@
 {
     class Statistics
     {
-        public Resistances Resistances { get; set; }
-        public AttackStrength AttackStrength { get; set; }
-        public Iniciative Iniciative { get; set; }
-        public HitChance HitChance { get; set; }
+        private Resistances _resistances;
+        private AttackStrength _attackStrength;
+        private Iniciative _iniciative;
+        private HitChance _hitChance;
 
         public Statistics(Attributes attributes)
         {
-            Resistances = new Resistances(attributes.GetIntelligence());
-            AttackStrength = new AttackStrength(attributes.GetStrength(), attributes.GetIntelligence());
-            Iniciative = new Iniciative(attributes.GetDexterity());
-            HitChance = new HitChance(attributes.GetDexterity());
+            _resistances = new Resistances(attributes.GetIntelligence());
+            _attackStrength = new AttackStrength(attributes.GetStrength(), attributes.GetIntelligence());
+            _iniciative = new Iniciative(attributes.GetDexterity());
+            _hitChance = new HitChance(attributes.GetDexterity());
+        }
+
+        public int GetCurrentPhysicalResistance()
+        {
+            return _resistances.GetPhysicalResistanceCurrentValue();
+        }
+
+        public int GetCurrentMagicResistance()
+        {
+            return _resistances.GetMagicResistanceCurrentValue();
+        }
+        public int GetPhysicalAttack()
+        {
+            return _attackStrength.GetPhysicalAttack();
+        }
+
+        public int GetMagicAttack()
+        {
+            return _attackStrength.GetMagicAttack();
+        }
+
+        public int GetCurrentIniciative()
+        {
+            return _iniciative.GetCurrentValue();
+        }
+
+        public int GetCurrentHitChance()
+        {
+            return _hitChance.GetCurrentValue();
         }
     }
 }

@@ -6,11 +6,11 @@ namespace RPG.Character.Enemies
     // mi o "obudowanie" potworów jako Enemy, no i wszystkie dzielą ThreatLevel
     abstract class Enemy : BaseCharacter
     {
-        protected ThreatLevels _threatLevel;
+        protected ThreatLevels ThreatLevel;
     
         public ThreatLevels GetThreatLevel()
         {
-            return _threatLevel;
+            return ThreatLevel;
         }
     }
 }
