@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG", "RPG\RPG.csproj", "{B206B656-0F99-4392-BC94-C3E8BEA9F00E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG.Tests", "RPG.Tests\RPG.Tests.csproj", "{366C94F7-2C25-4DD1-AA50-731885C26EAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG.Tests", "RPG.Tests\RPG.Tests.csproj", "{366C94F7-2C25-4DD1-AA50-731885C26EAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{F7231628-0536-4BE4-8835-B9E78870D6DC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
