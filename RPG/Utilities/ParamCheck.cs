@@ -36,5 +36,14 @@ namespace RPG.Utilities
                 throw new ArgumentException();
             }
         }
+
+        // TODO: ogarnąć żeby dostawał wszystkie typy numeryczne
+        public static void IsBelowZero(int value)
+        {
+            if(value < 0)
+            {
+                throw new Exception("Value was below zero.");
+            }
+        }
     }
 }
