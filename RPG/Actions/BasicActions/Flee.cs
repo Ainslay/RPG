@@ -34,7 +34,7 @@ namespace RPG.Actions
             {
                 Console.WriteLine("You overestimated your speed, monsters easly caught up to you.");
             }
-            _executed = true;
+            Executed = true;
         }
     }
 }

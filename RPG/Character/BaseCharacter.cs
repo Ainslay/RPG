@@ -7,9 +7,9 @@ namespace RPG.Character
 {
     abstract class BaseCharacter
     {
-        public string Name { get; protected set; }
-        protected Health Health { get; set; }
-        protected Resource Resource { get; set; }
+        protected string Name;
+        protected Health Health;
+        protected Resource Resource;
         protected Attributes Attributes;
         protected Statistics Statistics;
         private bool _isAlive;
@@ -49,7 +49,7 @@ namespace RPG.Character
             return Statistics;
         }
 
-        public int GetCurrentIniciative()
+        public virtual int GetCurrentIniciative()
         {
             return Statistics.GetCurrentIniciative();
         }
@@ -57,6 +57,11 @@ namespace RPG.Character
         public bool IsAlive()
         {
             return _isAlive;
+        }
+
+        public string GetName()
+        {
+            return Name;
         }
     }
 }

@@ -58,7 +58,7 @@ namespace RPG.Combat.Battles
             var expToLose = ExperienceToLose();
             _player.SubstractExperience(expToLose);
 
-            Console.WriteLine("You have been bested by {0}.\n", _enemy.Name);
+            Console.WriteLine("You have been bested by {0}.\n", _enemy.GetName());
             Console.WriteLine("Your status:");
             _player.PrintStatus();
             Console.WriteLine("You lost {0} experience.", expToLose);

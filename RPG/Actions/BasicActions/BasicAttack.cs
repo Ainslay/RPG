@@ -24,8 +24,8 @@ namespace RPG.Actions
 
             var damage = _attacker.GetStatistics().GetPhysicalAttack();
             _target.TakeDamage(damage);
-            Console.WriteLine($"{_attacker.Name} inflicted {damage} damage to {_target.Name}");
-            _executed = true;
+            Console.WriteLine($"{_attacker.GetName()} inflicted {damage} damage to {_target.GetName()}");
+            Executed = true;
         }
     }
 }

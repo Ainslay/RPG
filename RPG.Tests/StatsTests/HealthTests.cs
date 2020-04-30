@@ -2,6 +2,7 @@
 using Xunit;
 
 using RPG.Character.Stats;
+using Moq;
 
 namespace RPG.Tests.StatsTests
 {
@@ -16,26 +17,26 @@ namespace RPG.Tests.StatsTests
         [Fact]
         public void Given_ValidParameter_When_CallingSubstractHealth_Then_LowersHealth()
         {
-            var health = new Health(new Strength(5));
+            var mockedHealth = new Mock<Health>(new object[] { new Strength(5) });
             int damageToTake = 10;
-            var expected = health.GetCurrentValue() - damageToTake;
+            var expected = mockedHealth.Object.GetCurrentValue() - damageToTake;
 
-            health.LowerHealth(damageToTake);
+            mockedHealth.Object.LowerHealth(damageToTake);
 
-            Assert.Equal(expected, health.GetCurrentValue());
+            Assert.Equal(expected, mockedHealth.Object.GetCurrentValue());
         }
 
         [Fact]
         public void Given_ValidParameter_When_CallingHeal_Then_RestoresHealth()
         {
-            var health = new Health(new Strength(5));
+            var mockedHealth = new Mock<Health>(new object[] { new Strength(5) });
             int amountToHeal = 10;
-            health.LowerHealth(10);
-            var expected = health.GetCurrentValue() + amountToHeal;
+            mockedHealth.Object.LowerHealth(10);
+            var expected = mockedHealth.Object.GetCurrentValue() + amountToHeal;
 
-            health.RestoreHealth(amountToHeal);
+            mockedHealth.Object.RestoreHealth(amountToHeal);
 
-            Assert.Equal(expected, health.GetCurrentValue());
+            Assert.Equal(expected, mockedHealth.Object.GetCurrentValue());
         }
     }
 }

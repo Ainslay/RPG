@@ -1,6 +1,8 @@
-﻿using RPG.Character.Stats;
-using System;
+﻿using System;
+using Moq;
 using Xunit;
+
+using RPG.Character.Stats;
 
 namespace RPG.Tests.StatsTests
 {
@@ -15,10 +17,11 @@ namespace RPG.Tests.StatsTests
         [Fact]
         public void Given_ValidParameter_When_ConstructingIniciative_Then_ConstructsIniciative()
         {
-            var dexterity = new Dexterity(5);
+            var mockedDexterity = new Mock<Dexterity>(new object[] { It.IsAny<int>() });
+            mockedDexterity.Setup(dexterity => dexterity.GetValue()).Returns(5);
             var expected = 5;
 
-            var result = new Iniciative(dexterity);
+            var result = new Iniciative(mockedDexterity.Object);
 
             Assert.Equal(expected, result.GetBaseValue());
         }

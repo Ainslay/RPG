@@ -37,10 +37,9 @@ namespace RPG.Utilities
             }
         }
 
-        // TODO: ogarnąć żeby dostawał wszystkie typy numeryczne
-        public static void IsBelowZero(int value)
+        public static void IsBelowZero<T>(T value) where T : struct, IComparable<T>
         {
-            if(value < 0)
+            if(value.CompareTo(default) < 0)
             {
                 throw new Exception("Value was below zero.");
             }

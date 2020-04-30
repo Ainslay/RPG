@@ -5,6 +5,7 @@ using RPG.Character.Enemies;
 using RPG.Character.Player;
 using RPG.Character.Proffesions;
 using RPG.Character.Enemies.Tools;
+using Moq;
 
 namespace RPG.Tests.CharacterTests
 {
@@ -19,11 +20,12 @@ namespace RPG.Tests.CharacterTests
         [Fact]
         public void Given_ValidParameters_When_CallingCreate_Then_ReturnsEnemy()
         {
-            var player = PlayerFactory.Create("Shepard", PlayerProffesions.Warrior);
+            var moqStatMultiplier = new Mock<IStatMultiplier>();
+            moqStatMultiplier.Setup(multiplier => multiplier.Calculate(It.IsAny<int>(), It.IsAny<ThreatLevels>())).Returns(1);
 
-            var result = EnemyFactory.Create(player.GetLevelValue(), Enemies.UndeadMage, ThreatLevels.DeathMarch, new StatMultiplier());
+            var result = EnemyFactory.Create(1, Enemies.UndeadMage, ThreatLevels.DeathMarch, moqStatMultiplier.Object);
 
-            Assert.Equal(Enemies.UndeadMage.ToString(), result.Name);
+            Assert.Equal(Enemies.UndeadMage.ToString(), result.GetName());
             Assert.Equal(ThreatLevels.DeathMarch, result.GetThreatLevel());
         }
     }

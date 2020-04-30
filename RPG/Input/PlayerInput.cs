@@ -25,7 +25,7 @@ namespace RPG.Input
                     return new InputResult(input, InputResults.Valid);
                 default:
                     Console.WriteLine("Invalid input.");
-                    Console.ReadKey();
+                    Console.ReadKey(true);
                     return new InputResult(input, InputResults.Invalid);
             }
         }
