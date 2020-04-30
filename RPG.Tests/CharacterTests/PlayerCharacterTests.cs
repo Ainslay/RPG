@@ -5,7 +5,7 @@ using Xunit;
 
 namespace RPG.Tests.CharacterTests
 {
-    public class PlayerTests
+    public class PlayerCharacterTests
     {
         [Theory]
         [InlineData(null)]

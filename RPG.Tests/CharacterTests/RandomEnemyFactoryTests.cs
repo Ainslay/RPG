@@ -5,6 +5,7 @@ using RPG.Character.Enemies;
 using RPG.Character.Player;
 using RPG.Character.Proffesions;
 using RPG.Character.Enemies.Tools;
+using Moq;
 
 namespace RPG.Tests.CharacterTests
 {
@@ -13,17 +14,28 @@ namespace RPG.Tests.CharacterTests
         [Fact]
         public void Given_NullStatMultiplier_When_CallingCreate_Then_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => RandomEnemyFactory.Create(4, null));
+            Assert.Throws<ArgumentNullException>(() => RandomEnemyFactory.Create(It.IsAny<int>(), null));
+        }
+
+        [Fact]
+        public void Given_InvalidLevel_When_CallingCreate_Then_ThrowsException()
+        {
+            var mockedStatMultiplier = new Mock<IStatMultiplier>();
+            var invalidLevel = -1;
+
+            Assert.Throws<Exception>(() => RandomEnemyFactory.Create(invalidLevel, mockedStatMultiplier.Object));
         }
 
         [Fact]
         public void Given_ValidParameter_When_CallingCreate_Then_ReturnsEnemy()
         {
-            var player = PlayerFactory.Create("John", PlayerProffesions.Warrior);
-            
-            var result = RandomEnemyFactory.Create(player.GetLevelValue(), new StatMultiplier());
+            var moqStatMultiplier = new Mock<IStatMultiplier>();
+            moqStatMultiplier.Setup(multiplier => multiplier.Calculate(It.IsAny<int>(), It.IsAny<ThreatLevels>())).Returns(1);
+
+            var result = RandomEnemyFactory.Create(It.IsAny<int>(), moqStatMultiplier.Object);
 
             Assert.NotNull(result);
+            Assert.IsAssignableFrom<Enemy>(result);
         }
     }
 }

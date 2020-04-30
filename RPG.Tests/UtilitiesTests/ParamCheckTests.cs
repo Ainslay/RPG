@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -34,6 +34,27 @@ namespace RPG.Tests.UtilitiesTests
         {
             var list = new List<int>();
             Assert.Throws<ArgumentException>(() => ParamCheck.IsNullOrEmpty(list));
+        }
+
+        [Fact]
+        public void Given_IntValueBelowZero_When_CallingIsBelowZero_Then_ThrowsException()
+        {
+            int value = -1;
+            Assert.Throws<Exception>(() => ParamCheck.IsBelowZero(value));
+        }
+
+        [Fact]
+        public void Given_DoubleValueBelowZero_When_CallingIsBelowZero_Then_ThrowsException()
+        {
+            double value = -1.0;
+            Assert.Throws<Exception>(() => ParamCheck.IsBelowZero(value));
+        }
+
+        [Fact]
+        public void Given_FloatValueBelowZero_When_CallingIsBelowZero_Then_ThrowsException()
+        {
+            float value = -1.0f;
+            Assert.Throws<Exception>(() => ParamCheck.IsBelowZero(value));
         }
     }
 }

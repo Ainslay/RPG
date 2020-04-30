@@ -25,7 +25,7 @@ namespace RPG.Character.Player
             Statistics = new Statistics(Attributes);
         }
 
-        public int GetLevelValue()
+        public virtual int GetLevelValue()
         {
             return _level.GetValue();
         }

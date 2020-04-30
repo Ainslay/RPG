@@ -1,8 +1,8 @@
-﻿using RPG.Character.Stats;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using Xunit;
+using Moq;
+
+using RPG.Character.Stats;
 
 namespace RPG.Tests.StatsTests
 {
@@ -17,10 +17,11 @@ namespace RPG.Tests.StatsTests
         [Fact]
         public void Given_ValidParameter_When_ConstructingPhysicalResistance_Then_ConstructsPhysicalResistance()
         {
-            var intelligence = new Intelligence(5);
+            var mockedIntelligence = new Mock<Intelligence>(new object[] { It.IsAny<int>() });
+            mockedIntelligence.Setup(intelligence => intelligence.GetValue()).Returns(5);
             var expected = 5;
 
-            var result = new PhysicalResistance(intelligence);
+            var result = new PhysicalResistance(mockedIntelligence.Object);
 
             Assert.Equal(expected, result.GetBaseValue());
         }

@@ -8,6 +8,7 @@ using RPG.Character.Proffesions;
 using RPG.Combat.Battles;
 
 [assembly: InternalsVisibleTo("RPG.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace RPG
 {
     class Program
@@ -27,10 +28,9 @@ namespace RPG
     }
 }
 
-// Plik editor.config -> ustala zasady jak formatować kod, sprawdź jak to skonfigurować
-
+// Interfejs dla atrybutu i użyć w testach
+// Użyć IStatMultiplier w testach
 // Wprowadzić obiekt, który koordynuje rozgrywkę, jakiś StoryTeller
-// 
 
 // BATTLE RESULT
 // -- ref do charactera

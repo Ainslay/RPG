@@ -1,12 +1,9 @@
-﻿using RPG.Actions;
-using RPG.Character;
+﻿using Moq;
+using RPG.Actions;
 using RPG.Character.Player;
 using RPG.Character.Proffesions;
 using System;
-using System.Collections.Generic;
-using System.Reflection;
 using Xunit;
-using Xunit.Sdk;
 
 namespace RPG.Tests.ActionsTests
 {
@@ -15,25 +12,25 @@ namespace RPG.Tests.ActionsTests
         [Fact]
         public void Given_NullAttacker_When_ConstructingBasicAttack_Then_ThrowsArgumentNullException()
         {
-            var character = PlayerFactory.Create("John", PlayerProffesions.Mage);
+            var mockedCharacter = new Mock<PlayerCharacter>(new object[] { "John", new Mage() });
 
-            Assert.Throws<ArgumentNullException>(() => new BasicAttack(null, character));
+            Assert.Throws<ArgumentNullException>(() => new BasicAttack(null, mockedCharacter.Object));
         }
 
         [Fact]
         public void Given_NullTarget_When_ConstructingBasicAttack_Then_ThrowsArgumentNullException()
         {
-            var character = PlayerFactory.Create("John", PlayerProffesions.Mage);
+            var mockedCharacter = new Mock<PlayerCharacter>(new object[] { "John", new Mage() });
 
-            Assert.Throws<ArgumentNullException>(() => new BasicAttack(character, null));
+            Assert.Throws<ArgumentNullException>(() => new BasicAttack(mockedCharacter.Object, null));
         }
 
         [Fact]
         public void Given_NoParameters_When_CallingExecuteMultipleTimes_Then_ThrowsActionAlreadyExecutedException()
         {
-            var attacker = PlayerFactory.Create("John", PlayerProffesions.Mage);
-            var target = PlayerFactory.Create("Dummy", PlayerProffesions.Mage);
-            var basicAttack = new BasicAttack(attacker, target);
+            var mockedCharacter = new Mock<PlayerCharacter>(new object[] { "John", new Mage() });
+
+            var basicAttack = new BasicAttack(mockedCharacter.Object, mockedCharacter.Object);
             basicAttack.Execute();
 
             Assert.Throws<ActionAlreadyExecutedException>(() => basicAttack.Execute());

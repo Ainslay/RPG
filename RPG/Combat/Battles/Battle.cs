@@ -13,7 +13,7 @@ using RPG.Combat.Turns;
 
 namespace RPG.Combat.Battles
 {
-    partial class Battle
+    class Battle
     {
         private PlayerCharacter _player;
         private Enemy _enemy;
@@ -120,12 +120,12 @@ namespace RPG.Combat.Battles
             return _fled;
         }
 
-        public PlayerCharacter GetPlayer()
+        public virtual PlayerCharacter GetPlayer()
         {
             return _player;
         }
 
-        public Enemy GetEnemy()
+        public virtual Enemy GetEnemy()
         {
             return _enemy;
         }

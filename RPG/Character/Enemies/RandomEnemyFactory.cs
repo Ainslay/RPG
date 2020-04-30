@@ -13,15 +13,9 @@ namespace RPG.Character.Enemies
         public static Enemy Create(int playerLevel, IStatMultiplier statMultiplier)
         {
             ParamCheck.IsNull(statMultiplier);
+            ParamCheck.IsBelowZero(playerLevel);
 
-            var enemyCount = Enum.GetNames(typeof(Enemies)).Length;
-            var threatLevelCount = Enum.GetNames(typeof(ThreatLevels)).Length;
-
-            var randomGenerator = new Random();
-
-            // Okropnie brzydkie, nie wiem czy tędy droga
-            var randomEnemy = (Enemies) Enum.Parse(typeof(Enemies), Enum.GetName(typeof(Enemies), randomGenerator.Next(1, enemyCount)));
-            var randomThreatLevel = (ThreatLevels) Enum.Parse(typeof(ThreatLevels), Enum.GetName(typeof(ThreatLevels), randomGenerator.Next(1, threatLevelCount)));
+            (var randomEnemy, var randomThreatLevel) = GetRandomEnemy();
 
             var multiplier = statMultiplier.Calculate(playerLevel, randomThreatLevel);
 
@@ -36,6 +30,18 @@ namespace RPG.Character.Enemies
                 default:
                     throw new ArgumentException("Could not create enemy object. Invalid enemy type.");
             }
+        }
+
+        private static (Enemies, ThreatLevels) GetRandomEnemy()
+        {
+            var enemyCount = Enum.GetNames(typeof(Enemies)).Length;
+            var threatLevelCount = Enum.GetNames(typeof(ThreatLevels)).Length;
+            var randomGenerator = new Random();
+
+            var randomEnemy = (Enemies)Enum.Parse(typeof(Enemies), Enum.GetName(typeof(Enemies), randomGenerator.Next(1, enemyCount)));
+            var randomThreatLevel = (ThreatLevels)Enum.Parse(typeof(ThreatLevels), Enum.GetName(typeof(ThreatLevels), randomGenerator.Next(1, threatLevelCount)));
+
+            return (randomEnemy, randomThreatLevel);
         }
     }
 }

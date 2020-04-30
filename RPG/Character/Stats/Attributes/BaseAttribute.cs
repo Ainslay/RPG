@@ -1,6 +1,6 @@
 ﻿namespace RPG.Character.Stats
 {
-    abstract class BaseAttribute
+    abstract class BaseAttribute : IAttribute
     {
         private int _value;
 
@@ -9,12 +9,7 @@
             _value = value;
         }
 
-        public void Add()
-        {
-            _value++;
-        }
-
-        public int GetValue()
+        public virtual int GetValue()
         {
             return _value;
         }
