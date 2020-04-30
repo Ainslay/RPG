@@ -5,9 +5,9 @@ using RPG.Input.Result;
 
 namespace RPG.Input
 {
-    class PlayerInput
+    class BattleInput : IInput<BasicAction>
     {
-        public InputResult GetInput()
+        public InputResult<BasicAction> GetInput()
         {
             BasicAction input;
             
@@ -22,11 +22,11 @@ namespace RPG.Input
             {
                 case BasicAction.BasicAttack:
                 case BasicAction.Flee:
-                    return new InputResult(input, InputResults.Valid);
+                    return new InputResult<BasicAction>(input, InputResults.Valid);
                 default:
                     Console.WriteLine("Invalid input.");
                     Console.ReadKey(true);
-                    return new InputResult(input, InputResults.Invalid);
+                    return new InputResult<BasicAction>(input, InputResults.Invalid);
             }
         }
     }

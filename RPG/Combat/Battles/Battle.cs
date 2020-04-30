@@ -63,17 +63,17 @@ namespace RPG.Combat.Battles
             var actionHandler = new PlayerActionHandler(new BattleInfo(this));
             _battleInterface.PrintStatuses();
 
-            InputResult inputResult = TryGetInputResult(new PlayerInput());
+            InputResult<BasicAction> inputResult = TryGetInputResult(new BattleInput());
 
-            actionHandler.ExecuteAction(inputResult.GetValidAction());
+            actionHandler.ExecuteAction(inputResult.GetValidInput());
 
             Console.ReadKey();
             Console.Clear();
         }
 
-        private InputResult TryGetInputResult(PlayerInput playerInput)
+        private InputResult<BasicAction> TryGetInputResult(BattleInput playerInput)
         {
-            InputResult inputResult;
+            InputResult<BasicAction> inputResult;
             do
             {
                 inputResult = playerInput.GetInput();

@@ -1,17 +1,20 @@
 ﻿using System;
 
-using RPG.Actions;
-
 namespace RPG.Input.Result
 {
-    class InputResult
+    class InputResult<T> where T : struct , IConvertible
     {
-        public BasicAction? Action;
+        public T? Input;
         public InputResults Result;
 
-        public InputResult(BasicAction? action, InputResults result)
+        public InputResult(T? input, InputResults result)
         {
-            Action = action;
+            if(typeof(T).IsEnum)
+            {
+                throw new ArgumentException("T must be an enumerable type");
+            }
+
+            Input = input;
             Result = result;
         }
 
@@ -20,14 +23,14 @@ namespace RPG.Input.Result
             return Result == InputResults.Valid;
         }
 
-        public BasicAction GetValidAction()
+        public T GetValidInput()
         {
             if (IsValid())
             {
-                return Action ?? throw new NullReferenceException(nameof(Action));
+                return Input ?? throw new NullReferenceException(nameof(Input));
             }
 
-            throw new Exception("Action is in invalid state.");
+            throw new Exception("Input is in invalid state.");
         }
     }
 }
