@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-
+using RPG.Character.CharacterCreator;
 using RPG.Character.Enemies;
 using RPG.Character.Enemies.Tools;
 using RPG.Character.Player;
@@ -15,7 +15,9 @@ namespace RPG
     {
         static void Main(string[] args)
         {
-            var player = PlayerFactory.Create("Johnatan Joestar", PlayerProffesions.Monk);
+            var characterCreator = new CharacterCreator();
+
+            var player = characterCreator.Create();
 
             var enemy = EnemyFactory.Create(player.GetLevelValue(), Enemies.Slime, ThreatLevels.Easy, new StatMultiplier());
 

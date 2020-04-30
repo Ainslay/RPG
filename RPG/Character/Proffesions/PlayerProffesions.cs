@@ -1,11 +1,13 @@
-﻿namespace RPG.Character.Proffesions
+﻿using System;
+
+namespace RPG.Character.Proffesions
 {
     public enum PlayerProffesions
     {
-        None,
-        Warrior,
-        Mage,
-        Monk
+        None = 0,
+        Mage = ConsoleKey.D1,
+        Monk = ConsoleKey.D2,
+        Warrior = ConsoleKey.D3
     }
 }
 

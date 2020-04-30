@@ -4,30 +4,30 @@ namespace RPG.Input.Result
 {
     class InputResult<T> where T : struct , IConvertible
     {
-        public T? Input;
-        public InputResults Result;
+        private T? _input;
+        private InputResults _result;
 
         public InputResult(T? input, InputResults result)
         {
-            if(typeof(T).IsEnum)
+            if(!typeof(T).IsEnum)
             {
                 throw new ArgumentException("T must be an enumerable type");
             }
 
-            Input = input;
-            Result = result;
+            _input = input;
+            _result = result;
         }
 
         public bool IsValid()
         {
-            return Result == InputResults.Valid;
+            return _result == InputResults.Valid;
         }
 
         public T GetValidInput()
         {
             if (IsValid())
             {
-                return Input ?? throw new NullReferenceException(nameof(Input));
+                return _input ?? throw new NullReferenceException(nameof(_input));
             }
 
             throw new Exception("Input is in invalid state.");
