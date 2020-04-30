@@ -1,11 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using RPG.Character.CharacterCreator;
-using RPG.Character.Enemies;
-using RPG.Character.Enemies.Tools;
-using RPG.Character.Player;
-using RPG.Character.Proffesions;
-using RPG.Combat.Battles;
+﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("RPG.Tests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
@@ -15,17 +8,8 @@ namespace RPG
     {
         static void Main(string[] args)
         {
-            var characterCreator = new CharacterCreator();
-
-            var player = characterCreator.Create();
-
-            var enemy = EnemyFactory.Create(player.GetLevelValue(), Enemies.Slime, ThreatLevels.Easy, new StatMultiplier());
-
-            var battle = new Battle(player, enemy);
-
-            battle.Fight();
-
-            Console.ReadKey();
+            var cardinal = new Cardinal();
+            cardinal.Supervise();
         }
     }
 }
