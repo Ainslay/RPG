@@ -1,4 +1,6 @@
-﻿namespace RPG.Character.Stats
+﻿using RPG.Utilities;
+
+namespace RPG.Character.Stats
 {
     abstract class BaseAttribute : IAttribute, IRestorable
     {
@@ -7,6 +9,8 @@
 
         public BaseAttribute(int baseValue)
         {
+            ParamCheck.IsBelowZero(baseValue);
+
             _baseValue = baseValue;
             _currentValue = baseValue;
         }
