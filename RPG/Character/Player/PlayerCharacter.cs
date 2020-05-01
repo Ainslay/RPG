@@ -39,6 +39,8 @@ namespace RPG.Character.Player
             {
                 stat.RestoreBaseValue();
             }
+
+            Alive = true;
         }
 
         public void AddExperience(int amount)

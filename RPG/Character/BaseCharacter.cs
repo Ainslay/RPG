@@ -12,11 +12,11 @@ namespace RPG.Character
         protected Resource Resource;
         protected Attributes Attributes;
         protected Statistics Statistics;
-        private bool _isAlive;
+        protected bool Alive;
         
         public BaseCharacter()
         {
-            _isAlive = true;
+            Alive = true;
         }
 
         public void PrintStatus()
@@ -40,7 +40,7 @@ namespace RPG.Character
         {
             if(Health.GetCurrentValue() == 0)
             {
-                _isAlive = false;
+                Alive = false;
             }
         }
 
@@ -56,7 +56,7 @@ namespace RPG.Character
 
         public bool IsAlive()
         {
-            return _isAlive;
+            return Alive;
         }
 
         public string GetName()

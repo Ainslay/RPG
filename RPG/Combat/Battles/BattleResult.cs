@@ -40,6 +40,9 @@ namespace RPG.Combat.Battles
             }
 
             _player.RestoreStatus();
+
+            Console.WriteLine("\nYour status has been restored.");
+            Console.ReadKey();
         }
 
         private void Victory()
@@ -48,7 +51,7 @@ namespace RPG.Combat.Battles
             _player.AddExperience(expToGain);
 
             Console.WriteLine("The battle is won, you get to live another day.\n");
-            Console.WriteLine("Your status:");
+            Console.WriteLine("Your status after the battle:");
             _player.PrintStatus();
             Console.WriteLine("You gained {0} experience.", expToGain);
         }
