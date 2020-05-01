@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xunit;
 
 using RPG.Utilities;
+using RPG.Controls;
 
 namespace RPG.Tests.UtilitiesTests
 {
@@ -55,6 +56,30 @@ namespace RPG.Tests.UtilitiesTests
         {
             float value = -1.0f;
             Assert.Throws<Exception>(() => ParamCheck.IsBelowZero(value));
+        }
+
+        [Fact]
+        public void Given_InvalidValueParameter_When_CallingIsDefinedIn_Then_ThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => ParamCheck.IsDefinedIn(typeof(KeyBindings), ConsoleKey.UpArrow));
+        }
+
+        [Fact]
+        public void Given_InvalidEnumTypeParameter_When_CallingIsDefinedIn_Then_ThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => ParamCheck.IsDefinedIn(typeof(int), KeyBindings.Key1));
+        }
+        
+        [Fact]
+        public void Given_NullEnumTypeParameter_When_CallingIsDefinedIn_Then_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => ParamCheck.IsDefinedIn(null, KeyBindings.Key1));
+        }
+        
+        [Fact]
+        public void Given_NullValueParameter_When_CallingIsDefinedIn_Then_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => ParamCheck.IsDefinedIn(typeof(KeyBindings), null));
         }
     }
 }

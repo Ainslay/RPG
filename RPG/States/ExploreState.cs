@@ -49,6 +49,7 @@ namespace RPG.States
                     break;
                 case KeyBindings.Key2:
                     Console.WriteLine("Coward! You ran to your rabbit hole.");
+                    Console.ReadKey();
                     break;
                 default:
                     break;

@@ -37,11 +37,32 @@ namespace RPG.Utilities
             }
         }
 
+        /// <summary>
+        /// Checks if given numeric value is below zero.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
         public static void IsBelowZero<T>(T value) where T : struct, IComparable<T>
         {
             if(value.CompareTo(default) < 0)
             {
                 throw new Exception("Value was below zero.");
+            }
+        }
+
+        public static void IsDefinedIn(Type enumType, object value)
+        {
+            IsNull(enumType);
+            IsNull(value);
+
+            if (!enumType.IsEnum)
+            {
+                throw new ArgumentException("T must be an enumerable type");
+            }
+
+            if (!Enum.IsDefined(enumType, (int)value))
+            {
+                throw new ArgumentException($"{enumType.GetType()} does not define {value}");
             }
         }
     }
