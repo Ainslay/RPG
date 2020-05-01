@@ -4,6 +4,7 @@
     {
         public Will(CharacterResources resourceName, int maxValue) : base(resourceName, maxValue)
         {
+            BaseValue = maxValue;
             CurrentValue = maxValue;
         }
 

@@ -7,6 +7,7 @@
         public Rage(CharacterResources resourceName, int maxValue, int generationRate)
             : base(resourceName, maxValue)
         {
+            BaseValue = 0;
             CurrentValue = 0;
             _generationRate = generationRate;
         }

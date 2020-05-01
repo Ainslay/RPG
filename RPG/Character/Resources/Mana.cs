@@ -5,6 +5,7 @@
         public Mana(CharacterResources resourceName, int maxValue) 
             : base(resourceName, maxValue)
         {
+            BaseValue = 0;
             CurrentValue = 0;
         }
 

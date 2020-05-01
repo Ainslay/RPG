@@ -7,6 +7,7 @@ namespace RPG.Character.Resources
     {
         protected CharacterResources Name;
         protected int CurrentValue;
+        protected int BaseValue;
         protected int MaxValue;
 
         public Resource(CharacterResources name, int maxValue)
