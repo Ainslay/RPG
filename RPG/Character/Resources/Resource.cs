@@ -3,7 +3,7 @@ using System;
 
 namespace RPG.Character.Resources
 {
-    abstract class Resource
+    abstract class Resource : IRestorable
     {
         protected CharacterResources Name;
         protected int CurrentValue;
@@ -41,6 +41,11 @@ namespace RPG.Character.Resources
         public int GetCurrentValue()
         {
             return CurrentValue;
+        }
+
+        public void RestoreBaseValue()
+        {
+            CurrentValue = BaseValue;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace RPG.Character.Stats
 {
-    abstract class BaseAttribute : IAttribute
+    abstract class BaseAttribute : IAttribute, IRestorable
     {
         private int _baseValue;
         private int _currentValue;
@@ -19,6 +19,11 @@
         public int GetCurrentValue()
         {
             return _currentValue;
+        }
+
+        public void RestoreBaseValue()
+        {
+            _currentValue = _baseValue;
         }
     }
 }

@@ -3,6 +3,7 @@ using RPG.Character.Proffesions;
 using RPG.Character.Stats;
 using RPG.Utilities;
 using System;
+using System.Collections.Generic;
 
 namespace RPG.Character.Player
 {
@@ -32,7 +33,12 @@ namespace RPG.Character.Player
 
         public void RestoreStatus()
         {
-            // TODO
+            var restorableStats = new List<IRestorable> { Health, Resource, Attributes, Statistics };
+
+            foreach (var stat in restorableStats)
+            {
+                stat.RestoreBaseValue();
+            }
         }
 
         public void AddExperience(int amount)

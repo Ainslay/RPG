@@ -1,6 +1,6 @@
 ﻿namespace RPG.Character.Stats
 {
-    class Statistics
+    class Statistics : IRestorable
     {
         private Resistances _resistances;
         private AttackStrength _attackStrength;
@@ -42,6 +42,15 @@
         public int GetCurrentHitChance()
         {
             return _hitChance.GetCurrentValue();
+        }
+
+        public void RestoreBaseValue()
+        {
+            _resistances.RestoreBaseValue();
+            _iniciative.RestoreBaseValue();
+            _hitChance.RestoreBaseValue();
+
+            // TODO: restore base attack strength
         }
     }
 }

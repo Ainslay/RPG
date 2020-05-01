@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RPG.Character.Stats
 {
-    abstract class BaseStatistic
+    abstract class BaseStatistic : IRestorable
     {
         protected int BaseValue { get; set; }
         protected int CurrentValue { get; set; }
@@ -26,6 +26,11 @@ namespace RPG.Character.Stats
         public int GetBaseValue()
         {
             return BaseValue;
+        }
+
+        public void RestoreBaseValue()
+        {
+            CurrentValue = BaseValue;
         }
     }
 }

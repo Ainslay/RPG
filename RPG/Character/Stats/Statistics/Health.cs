@@ -12,7 +12,7 @@ namespace RPG.Character.Stats
         {
             ParamCheck.IsNull(strength);
 
-            BaseValue = strength.GetValue() * 2;
+            BaseValue = strength.GetBaseValue() * 2;
             CurrentValue = BaseValue;
         }
 

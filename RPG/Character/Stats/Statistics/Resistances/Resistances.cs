@@ -2,7 +2,7 @@
 
 namespace RPG.Character.Stats
 {
-    class Resistances
+    class Resistances : IRestorable
     {
         public PhysicalResistance PhysicalResistance { get; private set; }
         public MagicResistance MagicResistance { get; private set; }
@@ -23,6 +23,12 @@ namespace RPG.Character.Stats
         public int GetMagicResistanceCurrentValue()
         {
             return MagicResistance.GetCurrentValue();
+        }
+
+        public void RestoreBaseValue()
+        {
+            PhysicalResistance.RestoreBaseValue();
+            MagicResistance.RestoreBaseValue();
         }
     }
 }

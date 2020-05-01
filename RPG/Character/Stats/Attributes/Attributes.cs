@@ -1,6 +1,6 @@
 ﻿namespace RPG.Character.Stats
 {
-    class Attributes
+    class Attributes : IRestorable
     {
         private Strength _strength;
         private Dexterity _dexterity;
@@ -41,6 +41,13 @@
         public int GetIntelligenceValue()
         {
             return _intelligence.GetBaseValue();
+        }
+
+        public void RestoreBaseValue()
+        {
+            _strength.RestoreBaseValue();
+            _dexterity.RestoreBaseValue();
+            _intelligence.RestoreBaseValue();
         }
     }
 }
