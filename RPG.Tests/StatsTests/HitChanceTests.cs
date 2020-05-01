@@ -18,7 +18,7 @@ namespace RPG.Tests.StatsTests
         public void Given_ValidParameter_When_ConstructingHitChance_Then_ConstructsHitChance()
         {
             var mockedDexterity = new Mock<Dexterity>(new object[] { It.IsAny<int>() });
-            mockedDexterity.Setup(dexterity => dexterity.GetValue()).Returns(5);
+            mockedDexterity.Setup(dexterity => dexterity.GetBaseValue()).Returns(5);
             var expected = 5;
 
             var result = new HitChance(mockedDexterity.Object);

@@ -2,6 +2,7 @@
 {
     interface IAttribute
     {
-        int GetValue();
+        int GetBaseValue();
+        int GetCurrentValue();
     }
 }

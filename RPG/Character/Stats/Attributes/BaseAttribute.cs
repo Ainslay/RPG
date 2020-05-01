@@ -2,16 +2,23 @@
 {
     abstract class BaseAttribute : IAttribute
     {
-        private int _value;
+        private int _baseValue;
+        private int _currentValue;
 
-        public BaseAttribute(int value)
+        public BaseAttribute(int baseValue)
         {
-            _value = value;
+            _baseValue = baseValue;
+            _currentValue = baseValue;
         }
 
-        public virtual int GetValue()
+        public virtual int GetBaseValue()
         {
-            return _value;
+            return _baseValue;
+        }
+
+        public int GetCurrentValue()
+        {
+            return _currentValue;
         }
     }
 }

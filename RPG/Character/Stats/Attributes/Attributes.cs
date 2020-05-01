@@ -30,17 +30,17 @@
 
         public int GetStrengthValue()
         {
-            return _strength.GetValue();
+            return _strength.GetBaseValue();
         }
 
         public int GetDexterityValue()
         {
-            return _dexterity.GetValue();
+            return _dexterity.GetBaseValue();
         }
 
         public int GetIntelligenceValue()
         {
-            return _intelligence.GetValue();
+            return _intelligence.GetBaseValue();
         }
     }
 }

@@ -12,8 +12,8 @@ namespace RPG.Character.Stats
             ParamCheck.IsNull(strength);
             ParamCheck.IsNull(intelligence);
 
-            _physical = strength.GetValue();
-            _magic = intelligence.GetValue();
+            _physical = strength.GetBaseValue();
+            _magic = intelligence.GetBaseValue();
         }
 
         public int GetPhysicalAttack()

@@ -18,7 +18,7 @@ namespace RPG.Tests.StatsTests
         public void Given_ValidParameter_When_ConstructingPhysicalResistance_Then_ConstructsPhysicalResistance()
         {
             var mockedIntelligence = new Mock<Intelligence>(new object[] { It.IsAny<int>() });
-            mockedIntelligence.Setup(intelligence => intelligence.GetValue()).Returns(5);
+            mockedIntelligence.Setup(intelligence => intelligence.GetBaseValue()).Returns(5);
             var expected = 5;
 
             var result = new PhysicalResistance(mockedIntelligence.Object);
