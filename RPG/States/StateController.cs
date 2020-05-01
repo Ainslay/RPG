@@ -1,5 +1,5 @@
-﻿using System;
-using RPG.Character.Player;
+﻿using RPG.Character.Player;
+using RPG.Utilities;
 
 namespace RPG.States
 {
@@ -9,6 +9,8 @@ namespace RPG.States
 
         public StateController(PlayerCharacter player)
         {
+            ParamCheck.IsNull(player);
+
             _currentState = new ExploreState(this, player);
         }
 
@@ -24,6 +26,8 @@ namespace RPG.States
 
         public void SetState(IState state)
         {
+            ParamCheck.IsNull(state);
+
             _currentState = state;
         }
     }

@@ -1,8 +1,10 @@
 ﻿using System;
+
 using RPG.Character.Enemies;
 using RPG.Character.Enemies.Tools;
 using RPG.Character.Player;
 using RPG.Controls;
+using RPG.Utilities;
 
 namespace RPG.States
 {
@@ -13,6 +15,9 @@ namespace RPG.States
 
         public ExploreState(IStateController stateController, PlayerCharacter player)
         {
+            ParamCheck.IsNull(stateController);
+            ParamCheck.IsNull(player);
+
             _stateController = stateController;
             _player = player;
         }
@@ -23,7 +28,7 @@ namespace RPG.States
             Console.WriteLine("You are now in exploration state!");
             Console.WriteLine();
 
-            // TODO: StoryTeller which handels all of this stuff
+            // TODO: StoryTeller which handles all of this stuff
 
             var enemy = RandomEnemyFactory.Create(_player.GetLevelValue(), new StatMultiplier());
 

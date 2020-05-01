@@ -1,8 +1,9 @@
 ﻿using System;
+
 using RPG.Character.Enemies;
-using RPG.Character.Enemies.Tools;
 using RPG.Character.Player;
 using RPG.Combat.Battles;
+using RPG.Utilities;
 
 namespace RPG.States
 {
@@ -14,6 +15,10 @@ namespace RPG.States
 
         public BattleState(IStateController stateController, PlayerCharacter player, Enemy enemy)
         {
+            ParamCheck.IsNull(stateController);
+            ParamCheck.IsNull(player);
+            ParamCheck.IsNull(enemy);
+
             _stateController = stateController;
             _player = player;
             _enemy = enemy;
