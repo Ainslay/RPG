@@ -12,8 +12,8 @@ namespace RPG
         
         public Cardinal()
         {
-            _stateController = new StateController();
             _player = new CharacterCreator().Create();
+            _stateController = new StateController(_player);
         }
 
         public void Supervise()
@@ -21,7 +21,6 @@ namespace RPG
             while(true)
             {
                 _stateController.HandleState();
-                Console.ReadKey();
             }
         }
     }

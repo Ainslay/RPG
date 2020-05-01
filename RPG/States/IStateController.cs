@@ -8,8 +8,6 @@ namespace RPG.States
     {
         void SetState(IState state);
         void HandleState();
-        IState GetExploreState();
-        IState GetBattleState();
         IState GetCurrentState();
     }
 }

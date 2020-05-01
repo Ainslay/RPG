@@ -1,43 +1,30 @@
 ﻿using System;
+using RPG.Character.Player;
 
 namespace RPG.States
 {
     class StateController : IStateController
     {
-        private IState _battleState;
-        private IState _exploreState;
-        private IState _state;
+        private IState _currentState;
 
-        public StateController()
+        public StateController(PlayerCharacter player)
         {
-            _battleState = new BattleState(this);
-            _exploreState = new ExploreState(this);
-            _state = _exploreState;
+            _currentState = new ExploreState(this, player);
         }
 
         public void HandleState()
         {
-            _state.Handle();
+            _currentState.Handle();
         }
         
         public IState GetCurrentState()
         {
-            return _state;
-        }
-
-        public IState GetBattleState()
-        {
-            return _battleState;
-        }
-
-        public IState GetExploreState()
-        {
-            return _exploreState;
+            return _currentState;
         }
 
         public void SetState(IState state)
         {
-            _state = state;
+            _currentState = state;
         }
     }
 }
