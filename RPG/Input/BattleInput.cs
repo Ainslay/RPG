@@ -2,6 +2,7 @@
 
 using RPG.Actions;
 using RPG.Input.Result;
+using RPG.Controls;
 
 namespace RPG.Input
 {
@@ -9,24 +10,23 @@ namespace RPG.Input
     {
         public InputResult<BasicAction> GetInput()
         {
-            BasicAction input;
-            
             Console.WriteLine("Choose your action:");
-            Console.WriteLine("1. Attack");
-            Console.WriteLine("2. Flee");
+            Console.WriteLine($"{(char)KeyBindings.Key1}. Attack");
+            Console.WriteLine($"{(char)KeyBindings.Key2}. Flee");
             Console.WriteLine();
 
-            input = (BasicAction)Console.ReadKey(true).Key;
+            var input = (KeyBindings)Console.ReadKey(true).Key;
 
             switch (input)
             {
-                case BasicAction.BasicAttack:
-                case BasicAction.Flee:
-                    return new InputResult<BasicAction>(input, InputResults.Valid);
+                case KeyBindings.Key1:
+                    return new InputResult<BasicAction>(BasicAction.BasicAttack, InputResults.Valid);
+                case KeyBindings.Key2:
+                    return new InputResult<BasicAction>(BasicAction.Flee, InputResults.Valid);
                 default:
                     Console.WriteLine("Invalid input.");
                     Console.ReadKey(true);
-                    return new InputResult<BasicAction>(input, InputResults.Invalid);
+                    return new InputResult<BasicAction>(BasicAction.None, InputResults.Invalid);
             }
         }
     }
