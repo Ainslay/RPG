@@ -1,4 +1,6 @@
-﻿namespace RPG.Character.Stats
+﻿using System;
+
+namespace RPG.Character.Stats
 {
     class Attributes : IRestorable
     {
@@ -11,6 +13,25 @@
             _strength = new Strength(strength);
             _dexterity = new Dexterity(dexterity);
             _intelligence = new Intelligence(intelligence);
+        }
+
+        public void Increase(AttributesEnum attribute)
+        {
+            switch (attribute)
+            {
+                case AttributesEnum.Strength:
+                    _strength.Increase();
+                    break;
+                case AttributesEnum.Dexterity:
+                    _dexterity.Increase();
+                    break;
+                case AttributesEnum.Intelligence:
+                    _intelligence.Increase();
+                    break;
+                case AttributesEnum.None:
+                default:
+                    throw new Exception("Invalid attribute.");
+            }
         }
 
         public Strength GetStrength()

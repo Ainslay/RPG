@@ -1,6 +1,8 @@
 ﻿using RPG.Character.Enemies;
 using RPG.Character.Proffesions;
 using RPG.Character.Stats;
+using RPG.Input;
+using RPG.Input.Result;
 using RPG.Utilities;
 using System;
 using System.Collections.Generic;
@@ -53,7 +55,38 @@ namespace RPG.Character.Player
 
         private void LevelUp()
         {
-            Console.WriteLine($"Congratulations! You reached level {_level.GetValue()}!");
+            var levelUpInput = new LevelUpInput();
+
+            int pointsToDistribute = 5;
+
+            while(pointsToDistribute > 0)
+            {
+                Console.WriteLine($"Congratulations! You reached level {_level.GetValue()}!\n");
+
+                PrintStatus();
+
+                Console.WriteLine($"Points left: {pointsToDistribute}\n");
+
+                var input = TryGetLevelUpInput(levelUpInput).GetValidInput();
+
+                Attributes.Increase(input);
+
+                pointsToDistribute--;
+                Console.Clear();
+            }
+        }
+
+        private InputResult<AttributesEnum> TryGetLevelUpInput(LevelUpInput levelUpInput)
+        {
+            InputResult<AttributesEnum> input;
+            do
+            {
+                input = levelUpInput.GetInput();
+
+            }
+            while (!input.IsValid());
+
+            return input;
         }
     }
 }
