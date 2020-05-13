@@ -40,12 +40,20 @@ namespace RPG.Character.Player
 
         public void AddExperience(int amount)
         {
-            _level.AddExperience(amount);
+            if(_level.AddExperience(amount))
+            {
+                LevelUp();
+            }
         }
 
         public void SubstractExperience(int amount)
         {
             _level.SubstractExperience(amount);
+        }
+
+        private void LevelUp()
+        {
+            Console.WriteLine($"Congratulations! You reached level {_level.GetValue()}!");
         }
     }
 }
