@@ -49,10 +49,7 @@ namespace RPG.Character.Player
 
         public void AddExperience(int amount)
         {
-            if(_level.AddExperience(amount))
-            {
-                LevelUp();
-            }
+            _level.AddExperience(amount);
         }
 
         public void SubstractExperience(int amount)
@@ -60,25 +57,34 @@ namespace RPG.Character.Player
             _level.SubstractExperience(amount);
         }
 
-        private void LevelUp()
+        public void LevelUp()
         {
-            var levelUpInput = new LevelUpInput();
-
-            int pointsToDistribute = 5;
-
-            while(pointsToDistribute > 0)
+            if(_level.IsLevelUp())
             {
+                var levelUpInput = new LevelUpInput();
+
+                int pointsToDistribute = 5;
+
+                while (pointsToDistribute > 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"Congratulations! You reached level {_level.GetValue()}!\n");
+
+                    PrintStatus();
+
+                    Console.WriteLine($"Points left: {pointsToDistribute}\n");
+
+                    var input = TryGetLevelUpInput(levelUpInput).GetValidInput();
+
+                    Attributes.Increase(input);
+
+                    pointsToDistribute--;
+                    Console.Clear();
+                }
+
                 Console.WriteLine($"Congratulations! You reached level {_level.GetValue()}!\n");
-
-                PrintStatus();
-
-                Console.WriteLine($"Points left: {pointsToDistribute}\n");
-
-                var input = TryGetLevelUpInput(levelUpInput).GetValidInput();
-
-                Attributes.Increase(input);
-
-                pointsToDistribute--;
+                Console.WriteLine("You've spent all of your points.");
+                Console.ReadKey(true);
                 Console.Clear();
             }
         }

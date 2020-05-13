@@ -17,28 +17,30 @@ namespace RPG.Character.Stats
             CalculateNextLevel();
         }
 
-        public bool AddExperience(int amount)
+        public void AddExperience(int amount)
         {
             if (amount >= 0)
             {
                 _experience += amount;
-
-                if (_experience >= _nextLevel)
-                {
-                    _value++;
-                    _experience -= _nextLevel;
-                    CalculateNextLevel();
-                    return true;
-                }
             }
             else
             {
                 throw new ArgumentException("Amount was lower than 0.");
             }
+        }
+
+        public bool IsLevelUp()
+        {
+            if (_experience >= _nextLevel)
+            {
+                _value++;
+                _experience -= _nextLevel;
+                CalculateNextLevel();
+                return true;
+            }
 
             return false;
         }
-
         public void SubstractExperience(int amount)
         {
             if(amount >= 0)

@@ -39,10 +39,11 @@ namespace RPG.Combat.Battles
                 }
             }
 
-            _player.RestoreStatus();
-
             Console.WriteLine("\nYour status has been restored.");
-            Console.ReadKey();
+            Console.ReadKey(true);
+
+            _player.RestoreStatus();
+            _player.LevelUp();
         }
 
         private void Victory()
