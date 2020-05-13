@@ -15,6 +15,12 @@ namespace RPG.Character.Stats
             _currentValue = baseValue;
         }
 
+        public void Increase()
+        {
+            _baseValue += 1;
+            // TODO: Recalculate() _currentValue;
+        }
+
         public virtual int GetBaseValue()
         {
             return _baseValue;
