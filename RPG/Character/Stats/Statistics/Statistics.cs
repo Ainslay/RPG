@@ -51,11 +51,7 @@ namespace RPG.Character.Stats
         public void RestoreBaseValue()
         {
             var restorableStats = new List<IRestorable> { _physicalAttack, _magicAttack, _hitChance, _resistances, _iniciative };
-
             restorableStats.ForEach(stat => stat.RestoreBaseValue());
-            _resistances.RestoreBaseValue();
-            _iniciative.RestoreBaseValue();
-            _hitChance.RestoreBaseValue();
         }
     }
 }
