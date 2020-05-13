@@ -19,7 +19,7 @@ namespace RPG.Character
             Alive = true;
         }
 
-        public void PrintStatus()
+        public virtual void PrintStatus()
         {
             Console.WriteLine($"{Name} status:");
             Console.WriteLine($"Health: {Health.GetCurrentValue()} {Resource.GetName()}: {Resource.GetCurrentValue()}");

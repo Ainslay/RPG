@@ -66,6 +66,11 @@ namespace RPG.Character.Stats
             return _experience;
         }
 
+        public int GetNextLevelExperience()
+        {
+            return _nextLevel;
+        }
+
         private void CalculateNextLevel()
         {
             _nextLevel = _value * 50;

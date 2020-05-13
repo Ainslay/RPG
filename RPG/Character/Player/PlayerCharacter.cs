@@ -40,6 +40,13 @@ namespace RPG.Character.Player
             Alive = true;
         }
 
+        public override void PrintStatus()
+        {
+            base.PrintStatus();
+            Console.WriteLine($"Level: {_level.GetValue()}");
+            Console.WriteLine($"Experience: {_level.GetExperience()}/{_level.GetNextLevelExperience()}\n");
+        }
+
         public void AddExperience(int amount)
         {
             if(_level.AddExperience(amount))
