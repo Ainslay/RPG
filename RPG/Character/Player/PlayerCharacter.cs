@@ -34,12 +34,7 @@ namespace RPG.Character.Player
         public void RestoreStatus()
         {
             var restorableStats = new List<IRestorable> { Health, Resource, Attributes, Statistics };
-
-            foreach (var stat in restorableStats)
-            {
-                stat.RestoreBaseValue();
-            }
-
+            restorableStats.ForEach(stat => stat.RestoreBaseValue());
             Alive = true;
         }
 
