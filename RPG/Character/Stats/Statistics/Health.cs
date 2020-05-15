@@ -1,4 +1,5 @@
-﻿using RPG.Utilities;
+﻿using RPG.Items;
+using RPG.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -36,9 +37,9 @@ namespace RPG.Character.Stats
             }
         }
 
-        public void RecalculateBaseValue(Strength strength)
+        public void RecalculateBaseValue(Strength strength, Equipment equipment)
         {
-            BaseValue = strength.GetBaseValue() * 2;
+            BaseValue = strength.GetBaseValue() * 2 + equipment.GetBonusStrength();
         }
     }
 }

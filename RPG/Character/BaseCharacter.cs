@@ -35,13 +35,13 @@ namespace RPG.Character
 
         public void RecalculateBaseStats()
         {
-            Health.RecalculateBaseValue(Attributes.GetStrength());
-            Statistics.RecalculateBaseStatistics(Attributes);
+            Health.RecalculateBaseValue(Attributes.GetStrength(), Equipment);
+            Statistics.RecalculateBaseStatistics(Attributes, Equipment);
         }
 
         public void RecalculateCurrentStats()
         {
-            Statistics.RecalculateCurrentStatistics(Attributes);
+            Statistics.RecalculateCurrentStatistics(Attributes, Equipment);
         }
 
         public void TakeDamage(int amount)

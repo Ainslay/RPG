@@ -1,4 +1,5 @@
-﻿using RPG.Utilities;
+﻿using RPG.Items;
+using RPG.Utilities;
 
 namespace RPG.Character.Stats
 {
@@ -15,16 +16,16 @@ namespace RPG.Character.Stats
             MagicResistance = new MagicResistance(intelligence);
         }
 
-        public void RecalculateBaseResistances(Intelligence intelligence)
+        public void RecalculateBaseResistances(Intelligence intelligence, Equipment equipment)
         {
-            PhysicalResistance.RecalculateBaseValue(intelligence);
-            MagicResistance.RecalculateBaseValue(intelligence);
+            PhysicalResistance.RecalculateBaseValue(intelligence, equipment);
+            MagicResistance.RecalculateBaseValue(intelligence, equipment);
         }
 
-        public void RecalculateCurrentResistances(Intelligence intelligence)
+        public void RecalculateCurrentResistances(Intelligence intelligence, Equipment equipment)
         {
-            PhysicalResistance.RecalculateCurrentValue(intelligence);
-            MagicResistance.RecalculateCurrentValue(intelligence);
+            PhysicalResistance.RecalculateCurrentValue(intelligence, equipment);
+            MagicResistance.RecalculateCurrentValue(intelligence, equipment);
         }
 
         public int GetPhysicalResistanceCurrentValue()

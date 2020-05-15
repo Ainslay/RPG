@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using RPG.Items;
 
 namespace RPG.Character.Stats
 {
@@ -10,14 +11,14 @@ namespace RPG.Character.Stats
             : base(dexterity)
         { }
 
-        public void RecalculateBaseValue(Dexterity dexterity)
+        public void RecalculateBaseValue(Dexterity dexterity, Equipment equipment)
         {
-            BaseValue = dexterity.GetBaseValue();
+            BaseValue = dexterity.GetBaseValue() + equipment.GetBonusDexterity();
         }
 
-        public void RecalculateCurrentValue(Dexterity dexterity)
+        public void RecalculateCurrentValue(Dexterity dexterity, Equipment equipment)
         {
-            CurrentValue = dexterity.GetCurrentValue();
+            CurrentValue = dexterity.GetCurrentValue() + equipment.GetBonusDexterity();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace RPG.Character.Stats
+﻿using RPG.Items;
+
+namespace RPG.Character.Stats
 {
     class PhysicalAttack : BaseStatistic
     {
@@ -6,14 +8,14 @@
             : base(strength)
         { }
 
-        public void RecalculateBaseValue(Strength  strength)
+        public void RecalculateBaseValue(Strength  strength, Equipment equipment)
         {
-            BaseValue = strength.GetBaseValue();
+            BaseValue = strength.GetBaseValue() + equipment.GetBonusStrength();
         }
 
-        public void RecalculateCurrentValue(Strength strength)
+        public void RecalculateCurrentValue(Strength strength, Equipment equipment)
         {
-            CurrentValue = strength.GetCurrentValue();
+            CurrentValue = strength.GetCurrentValue() + equipment.GetBonusStrength();
         }
     }
 }

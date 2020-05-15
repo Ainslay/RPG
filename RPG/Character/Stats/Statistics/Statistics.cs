@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using RPG.Items;
 
 namespace RPG.Character.Stats
 {
@@ -19,22 +20,22 @@ namespace RPG.Character.Stats
             _hitChance = new HitChance(attributes.GetDexterity());
         }
 
-        public void RecalculateBaseStatistics(Attributes attributes)
+        public void RecalculateBaseStatistics(Attributes attributes, Equipment equipment)
         {
-            _physicalAttack.RecalculateBaseValue(attributes.GetStrength());
-            _magicAttack.RecalculateBaseValue(attributes.GetIntelligence());
-            _iniciative.RecalculateBaseValue(attributes.GetDexterity());
-            _hitChance.RecalculateBaseValue(attributes.GetDexterity());
-            _resistances.RecalculateBaseResistances(attributes.GetIntelligence());
+            _physicalAttack.RecalculateBaseValue(attributes.GetStrength(), equipment);
+            _magicAttack.RecalculateBaseValue(attributes.GetIntelligence(), equipment);
+            _iniciative.RecalculateBaseValue(attributes.GetDexterity(), equipment);
+            _hitChance.RecalculateBaseValue(attributes.GetDexterity(), equipment);
+            _resistances.RecalculateBaseResistances(attributes.GetIntelligence(), equipment);
         }
 
-        public void RecalculateCurrentStatistics(Attributes attributes)
+        public void RecalculateCurrentStatistics(Attributes attributes, Equipment equipment)
         {
-            _physicalAttack.RecalculateCurrentValue(attributes.GetStrength());
-            _magicAttack.RecalculateCurrentValue(attributes.GetIntelligence());
-            _iniciative.RecalculateCurrentValue(attributes.GetDexterity());
-            _hitChance.RecalculateCurrentValue(attributes.GetDexterity());
-            _resistances.RecalculateCurrentResistances(attributes.GetIntelligence());
+            _physicalAttack.RecalculateCurrentValue(attributes.GetStrength(), equipment);
+            _magicAttack.RecalculateCurrentValue(attributes.GetIntelligence(), equipment);
+            _iniciative.RecalculateCurrentValue(attributes.GetDexterity(), equipment);
+            _hitChance.RecalculateCurrentValue(attributes.GetDexterity(), equipment);
+            _resistances.RecalculateCurrentResistances(attributes.GetIntelligence(), equipment);
         }
 
         public int GetCurrentPhysicalResistance()

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RPG.Items;
 
 namespace RPG.Character.Stats
 {
@@ -10,14 +8,14 @@ namespace RPG.Character.Stats
             : base(intelligence)
         { }
 
-        public void RecalculateBaseValue(Intelligence intelligence)
+        public void RecalculateBaseValue(Intelligence intelligence, Equipment equipment)
         {
-            BaseValue = intelligence.GetBaseValue();
+            BaseValue = intelligence.GetBaseValue() + equipment.GetBonusIntelligence();
         }
 
-        public void RecalculateCurrentValue(Intelligence intelligence)
+        public void RecalculateCurrentValue(Intelligence intelligence, Equipment equipment)
         {
-            CurrentValue = intelligence.GetCurrentValue();
+            CurrentValue = intelligence.GetCurrentValue() + equipment.GetBonusIntelligence();
         }
     }
 }
