@@ -9,5 +9,15 @@ namespace RPG.Character.Stats
         public HitChance(Dexterity dexterity)
             : base(dexterity)
         { }
+
+        public void RecalculateBaseValue(Dexterity dexterity)
+        {
+            BaseValue = dexterity.GetBaseValue();
+        }
+
+        public void RecalculateCurrentValue(Dexterity dexterity)
+        {
+            CurrentValue = dexterity.GetCurrentValue();
+        }
     }
 }

@@ -19,6 +19,24 @@ namespace RPG.Character.Stats
             _hitChance = new HitChance(attributes.GetDexterity());
         }
 
+        public void RecalculateBaseStatistics(Attributes attributes)
+        {
+            _physicalAttack.RecalculateBaseValue(attributes.GetStrength());
+            _magicAttack.RecalculateBaseValue(attributes.GetIntelligence());
+            _iniciative.RecalculateBaseValue(attributes.GetDexterity());
+            _hitChance.RecalculateBaseValue(attributes.GetDexterity());
+            _resistances.RecalculateBaseResistances(attributes.GetIntelligence());
+        }
+
+        public void RecalculateCurrentStatistics(Attributes attributes)
+        {
+            _physicalAttack.RecalculateCurrentValue(attributes.GetStrength());
+            _magicAttack.RecalculateCurrentValue(attributes.GetIntelligence());
+            _iniciative.RecalculateCurrentValue(attributes.GetDexterity());
+            _hitChance.RecalculateCurrentValue(attributes.GetDexterity());
+            _resistances.RecalculateCurrentResistances(attributes.GetIntelligence());
+        }
+
         public int GetCurrentPhysicalResistance()
         {
             return _resistances.GetPhysicalResistanceCurrentValue();

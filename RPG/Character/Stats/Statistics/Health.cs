@@ -35,5 +35,10 @@ namespace RPG.Character.Stats
                 CurrentValue = 0;
             }
         }
+
+        public void RecalculateBaseValue(Strength strength)
+        {
+            BaseValue = strength.GetBaseValue() * 2;
+        }
     }
 }

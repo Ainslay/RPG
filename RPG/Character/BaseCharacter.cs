@@ -30,18 +30,21 @@ namespace RPG.Character
             Console.WriteLine();
         }
 
+        public void RecalculateBaseStats()
+        {
+            Health.RecalculateBaseValue(Attributes.GetStrength());
+            Statistics.RecalculateBaseStatistics(Attributes);
+        }
+
+        public void RecalculateCurrentStats()
+        {
+            Statistics.RecalculateCurrentStatistics(Attributes);
+        }
+
         public void TakeDamage(int amount)
         {
             Health.LowerHealth(amount);
             CheckIsAlive();
-        }
-
-        protected void CheckIsAlive()
-        {
-            if(Health.GetCurrentValue() == 0)
-            {
-                Alive = false;
-            }
         }
 
         public Statistics GetStatistics()
@@ -62,6 +65,14 @@ namespace RPG.Character
         public string GetName()
         {
             return Name;
+        }
+        
+        protected void CheckIsAlive()
+        {
+            if(Health.GetCurrentValue() == 0)
+            {
+                Alive = false;
+            }
         }
     }
 }
