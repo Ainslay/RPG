@@ -86,6 +86,8 @@ namespace RPG.Character.Player
                 Console.WriteLine("You've spent all of your points.");
                 Console.ReadKey(true);
                 Console.Clear();
+
+                RecalculateBaseStats();
             }
         }
 
