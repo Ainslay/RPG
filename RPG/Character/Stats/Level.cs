@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RPG.Utilities;
 
 namespace RPG.Character.Stats
 {
@@ -17,19 +15,7 @@ namespace RPG.Character.Stats
             CalculateNextLevel();
         }
 
-        public void AddExperience(int amount)
-        {
-            if (amount >= 0)
-            {
-                _experience += amount;
-            }
-            else
-            {
-                throw new ArgumentException("Amount was lower than 0.");
-            }
-        }
-
-        public bool IsLevelUp()
+        public bool IsEligibleForLevelUp()
         {
             if (_experience >= _nextLevel)
             {
@@ -41,20 +27,23 @@ namespace RPG.Character.Stats
 
             return false;
         }
+        
+        public void AddExperience(int amount)
+        {
+            ParamCheck.IsBelowZero(amount);
+
+             _experience += amount;
+        }
+
         public void SubstractExperience(int amount)
         {
-            if(amount >= 0)
-            {
-                _experience -= amount;
+            ParamCheck.IsBelowZero(amount);
 
-                if (_experience < 0)
-                {
-                    _experience = 0;
-                }
-            }
-            else
+            _experience -= amount;
+
+            if (_experience < 0)
             {
-                throw new ArgumentException("Amount was lower than 0.");
+                _experience = 0;
             }
         }
 
@@ -75,7 +64,7 @@ namespace RPG.Character.Stats
 
         private void CalculateNextLevel()
         {
-            _nextLevel = _value * 50;
+            _nextLevel = _value * 30;
         }
     }
 }

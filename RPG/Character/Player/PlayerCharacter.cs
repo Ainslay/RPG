@@ -59,7 +59,7 @@ namespace RPG.Character.Player
 
         public void LevelUp()
         {
-            if(_level.IsLevelUp())
+            if(_level.IsEligibleForLevelUp())
             {
                 var levelUpInput = new LevelUpInput();
 
