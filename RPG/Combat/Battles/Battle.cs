@@ -60,10 +60,12 @@ namespace RPG.Combat.Battles
 
         private void HandlePlayerTurn()
         {
+            _player.RecalculateCurrentStats();
+
             var actionHandler = new PlayerActionHandler(new BattleInfo(this));
             _battleInterface.PrintStatuses();
 
-            InputResult<BasicAction> inputResult = TryGetInputResult(new BattleInput());
+            var inputResult = TryGetInputResult(new BattleInput());
 
             actionHandler.ExecuteAction(inputResult.GetValidInput());
 
@@ -85,6 +87,8 @@ namespace RPG.Combat.Battles
 
         private void HandleEnemyTurn()
         {
+            _enemy.RecalculateCurrentStats();
+
             var actionHandler = new EnemyActionHandler(new BattleInfo(this));
 
             _battleInterface.PrintStatuses();

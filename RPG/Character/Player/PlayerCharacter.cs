@@ -88,6 +88,7 @@ namespace RPG.Character.Player
                 Console.Clear();
 
                 RecalculateBaseStats();
+                RestoreStatus();
             }
         }
 
