@@ -5,14 +5,13 @@ namespace RPG.Items
 {
     abstract class Item
     {
-        private string _name;
-        private string _flavorText;
-        private int _value;
-        private int _weight;
-
-        private int _bonusStrength;
-        private int _bonusDexterity;
-        private int _bonusIntelligence;
+        protected readonly string Name;
+        protected readonly string FlavorText;
+        protected readonly int Value;
+        protected readonly int Weight;
+        protected readonly int BonusStrength;
+        protected readonly int BonusDexterity;
+        protected readonly int BonusIntelligence;
 
         public Item(string name, string flavorText, int bonusStrength, int bonusDexterity, int bonusIntelligence, int value, int weight)
         {
@@ -24,55 +23,55 @@ namespace RPG.Items
             ParamCheck.IsBelowZero(value);
             ParamCheck.IsBelowZero(weight);
 
-            _name = name;
-            _flavorText = flavorText;
-            _bonusStrength = bonusStrength;
-            _bonusDexterity = bonusDexterity;
-            _bonusIntelligence = bonusIntelligence;
-            _value = value;
-            _weight = weight;
+            Name = name;
+            FlavorText = flavorText;
+            BonusStrength = bonusStrength;
+            BonusDexterity = bonusDexterity;
+            BonusIntelligence = bonusIntelligence;
+            Value = value;
+            Weight = weight;
         }
 
         public string GetName()
         {
-            return _name;
+            return Name;
         }
 
         public string GetFlavorText()
         {
-            return _flavorText;
+            return FlavorText;
         }
 
         public int GetBonusStrength()
         {
-            return _bonusStrength;
+            return BonusStrength;
         }
 
         public int GetBonusDexterity()
         {
-            return _bonusDexterity;
+            return BonusDexterity;
         }
 
         public int GetBonusIntelligence()
         {
-            return _bonusIntelligence;
+            return BonusIntelligence;
         }
 
         public int GetValue()
         {
-            return _value;
+            return Value;
         }
 
         public int GetWeight()
         {
-            return _weight;
+            return Weight;
         }
 
-        public void PrintDetails()
+        public virtual void PrintDetails()
         {
-            Console.WriteLine(_name);
-            Console.WriteLine(_flavorText);
-            Console.WriteLine($"Value: {_value}\tWeight: {_weight}");
+            Console.WriteLine(Name);
+            Console.WriteLine(FlavorText);
+            Console.WriteLine($"Value: {Value}\tWeight: {Weight}");
         }
     }
 }
