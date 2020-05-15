@@ -26,7 +26,7 @@ namespace RPG.Character
         {
             Console.WriteLine($"{Name} status:");
             Console.WriteLine($"Health: {Health.GetCurrentValue()} {Resource.GetName()}: {Resource.GetCurrentValue()}");
-            Console.WriteLine($"Strength: {Attributes.GetStrengthValue()} Dexterity: {Attributes.GetDexterityValue()} Inteligence: {Attributes.GetIntelligenceValue()}");
+            Console.WriteLine($"Strength: {Attributes.GetStrengthCurrentValue()} Dexterity: {Attributes.GetDexterityCurrentValue()} Inteligence: {Attributes.GetIntelligenceCurrentValue()}");
             Console.WriteLine($"Iniciative: {Statistics.GetCurrentIniciative()} Hit chance: {Statistics.GetCurrentHitChance()}");
             Console.WriteLine($"Physical attack: {Statistics.GetPhysicalAttack()} Magic attack: {Statistics.GetMagicAttack()}");
             Console.WriteLine($"Physical resistance: {Statistics.GetCurrentPhysicalResistance()} Magic resistance: {Statistics.GetCurrentMagicResistance()}");
@@ -36,12 +36,14 @@ namespace RPG.Character
         public void RecalculateBaseStats()
         {
             Health.RecalculateBaseValue(Attributes.GetStrength(), Equipment);
+            Attributes.RecalculateBaseAttributes(Equipment);
             Statistics.RecalculateBaseStatistics(Attributes, Equipment);
         }
 
         public void RecalculateCurrentStats()
         {
             Statistics.RecalculateCurrentStatistics(Attributes, Equipment);
+            Attributes.RecalculateCurrentAttributes(Equipment);
         }
 
         public void TakeDamage(int amount)

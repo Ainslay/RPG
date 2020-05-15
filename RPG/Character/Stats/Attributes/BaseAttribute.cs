@@ -4,36 +4,35 @@ namespace RPG.Character.Stats
 {
     abstract class BaseAttribute : IAttribute, IRestorable
     {
-        private int _baseValue;
-        private int _currentValue;
+        protected int BaseValue;
+        protected int CurrentValue;
 
         public BaseAttribute(int baseValue)
         {
             ParamCheck.IsBelowZero(baseValue);
 
-            _baseValue = baseValue;
-            _currentValue = baseValue;
+            BaseValue = baseValue;
+            CurrentValue = baseValue;
         }
 
         public void Increase()
         {
-            _baseValue += 1;
-            // TODO: Recalculate() _currentValue;
+            BaseValue += 1;
         }
 
         public virtual int GetBaseValue()
         {
-            return _baseValue;
+            return BaseValue;
         }
 
         public int GetCurrentValue()
         {
-            return _currentValue;
+            return CurrentValue;
         }
 
         public void RestoreBaseValue()
         {
-            _currentValue = _baseValue;
+            CurrentValue = BaseValue;
         }
     }
 }

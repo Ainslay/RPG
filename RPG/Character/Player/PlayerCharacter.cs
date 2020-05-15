@@ -30,6 +30,9 @@ namespace RPG.Character.Player
 
             Equipment.Armor = new Armor("Adventurer's jacket", "Worn by all aspiring adventurers, provides basic protecion.", 2, 1, 1, 10, 1);
             Equipment.Boots = new Boots("Adventurer's gloves", "You don't want to hurt you feet when running from a dungeon!", 0, 2, 0, 5, 1);
+
+            RecalculateBaseStats();
+            RecalculateCurrentStats();
         }
 
         public virtual int GetLevelValue()

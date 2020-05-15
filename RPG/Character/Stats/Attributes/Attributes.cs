@@ -1,4 +1,5 @@
 ﻿using System;
+using RPG.Items;
 
 namespace RPG.Character.Stats
 {
@@ -13,6 +14,20 @@ namespace RPG.Character.Stats
             _strength = new Strength(strength);
             _dexterity = new Dexterity(dexterity);
             _intelligence = new Intelligence(intelligence);
+        }
+
+        public void RecalculateBaseAttributes(Equipment equipment)
+        {
+            _strength.RecalculateBaseValue(equipment);
+            _dexterity.RecalculateBaseValue(equipment);
+            _intelligence.RecalculateBaseValue(equipment);
+        }
+
+        public void RecalculateCurrentAttributes(Equipment equipment)
+        {
+            _strength.RecalculateCurrentValue(equipment);
+            _dexterity.RecalculateCurrentValue(equipment);
+            _intelligence.RecalculateCurrentValue(equipment);
         }
 
         public void Increase(AttributesEnum attribute)
@@ -49,19 +64,34 @@ namespace RPG.Character.Stats
             return _intelligence;
         }
 
-        public int GetStrengthValue()
+        public int GetStrengthBaseValue()
         {
             return _strength.GetBaseValue();
         }
 
-        public int GetDexterityValue()
+        public int GetDexterityBaseValue()
         {
             return _dexterity.GetBaseValue();
         }
 
-        public int GetIntelligenceValue()
+        public int GetIntelligenceBaseValue()
         {
             return _intelligence.GetBaseValue();
+        }
+
+        public int GetStrengthCurrentValue()
+        {
+            return _strength.GetCurrentValue();
+        }
+
+        public int GetDexterityCurrentValue()
+        {
+            return _dexterity.GetCurrentValue();
+        }
+
+        public int GetIntelligenceCurrentValue()
+        {
+            return _intelligence.GetCurrentValue();
         }
 
         public void RestoreBaseValue()
