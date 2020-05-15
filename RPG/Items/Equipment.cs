@@ -5,11 +5,17 @@ namespace RPG.Items
 {
     class Equipment
     {
-        public Helmet Helmet { get { return Helmet; } set { ParamCheck.IsNull(value); Helmet = value; OnEquip(); } }
-        public Armor Armor   { get { return Armor; }  set { ParamCheck.IsNull(value); Armor = value; OnEquip(); } }
-        public Gloves Gloves { get { return Gloves; } set { ParamCheck.IsNull(value); Gloves = value; OnEquip(); } }
-        public Weapon Weapon { get { return Weapon; } set { ParamCheck.IsNull(value); Weapon = value; OnEquip(); } }
-        public Boots Boots   { get { return Boots; }  set { ParamCheck.IsNull(value); Boots = value; OnEquip(); } }
+        private Helmet _helmet;
+        private Armor _armor;
+        private Gloves _gloves;
+        private Weapon _weapon;
+        private Boots _boots;
+
+        public Helmet Helmet { get { return _helmet; } set { ParamCheck.IsNull(value); _helmet = value; OnEquip(); } }
+        public Armor Armor   { get { return _armor; }  set { ParamCheck.IsNull(value); _armor = value; OnEquip(); } }
+        public Gloves Gloves { get { return _gloves; } set { ParamCheck.IsNull(value); _gloves = value; OnEquip(); } }
+        public Weapon Weapon { get { return _weapon; } set { ParamCheck.IsNull(value); _weapon = value; OnEquip(); } }
+        public Boots Boots   { get { return _boots; }  set { ParamCheck.IsNull(value); _boots = value; OnEquip(); } }
 
         private int _bonusStrength;
         private int _bonusDexterity;
@@ -41,9 +47,12 @@ namespace RPG.Items
 
             items.ForEach(item =>
             {
-                strengthSum += item.GetBonusStrength();
-                dexteritySum += item.GetBonusDexterity();
-                intelligenceSum += item.GetBonusIntelligence();
+                if(item != null)
+                {
+                    strengthSum += item.GetBonusStrength();
+                    dexteritySum += item.GetBonusDexterity();
+                    intelligenceSum += item.GetBonusIntelligence();
+                }
             });
 
             _bonusStrength = strengthSum;
