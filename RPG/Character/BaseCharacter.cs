@@ -2,6 +2,7 @@
 
 using RPG.Character.Resources;
 using RPG.Character.Stats;
+using RPG.Items;
 
 namespace RPG.Character
 {
@@ -12,10 +13,12 @@ namespace RPG.Character
         protected Resource Resource;
         protected Attributes Attributes;
         protected Statistics Statistics;
+        protected Equipment Equipment;
         protected bool Alive;
         
         public BaseCharacter()
         {
+            Equipment = new Equipment();
             Alive = true;
         }
 

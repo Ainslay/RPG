@@ -3,6 +3,7 @@ using RPG.Character.Proffesions;
 using RPG.Character.Stats;
 using RPG.Input;
 using RPG.Input.Result;
+using RPG.Items;
 using RPG.Utilities;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,9 @@ namespace RPG.Character.Player
             Health = new Health(Attributes.GetStrength());
             _level = new Level();
             Statistics = new Statistics(Attributes);
+
+            Equipment.Armor = new Armor("Adventurer's jacket", "Worn by all aspiring adventurers, provides basic protecion.", 2, 1, 1, 10, 1);
+            Equipment.Boots = new Boots("Adventurer's gloves", "You don't want to hurt you feet when running from a dungeon!", 0, 2, 0, 5, 1);
         }
 
         public virtual int GetLevelValue()
