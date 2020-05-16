@@ -28,8 +28,8 @@ namespace RPG.Character.Player
             _level = new Level();
             Statistics = new Statistics(Attributes);
 
-            Equipment.Armor = new Armor("Adventurer's jacket", "Worn by all aspiring adventurers, provides basic protecion.", 2, 1, 1, 10, 1);
-            Equipment.Boots = new Boots("Adventurer's gloves", "You don't want to hurt you feet when running from a dungeon!", 0, 2, 0, 5, 1);
+            Equipment.Equip(new Armor("Adventurer's jacket", "Worn by all aspiring adventurers, provides basic protecion.", 2, 1, 1, 10, 1));
+            Equipment.Equip(new Boots("Adventurer's gloves", "You don't want to hurt you feet when running from a dungeon!", 0, 2, 0, 5, 1));
 
             RecalculateBaseStats();
             RecalculateCurrentStats();
@@ -45,7 +45,7 @@ namespace RPG.Character.Player
             Console.Clear();
             Console.WriteLine("Your equipment: ");
             Equipment.Print();
-            Console.ReadKey();
+            Console.ReadKey(true);
         }
 
         public void RestoreStatus()

@@ -12,12 +12,6 @@ namespace RPG.Items
         private Weapon _weapon;
         private Boots _boots;
 
-        public Helmet Helmet { get { return _helmet; } set { ParamCheck.IsNull(value); _helmet = value; OnEquip(); } }
-        public Armor Armor   { get { return _armor; }  set { ParamCheck.IsNull(value); _armor = value; OnEquip(); } }
-        public Gloves Gloves { get { return _gloves; } set { ParamCheck.IsNull(value); _gloves = value; OnEquip(); } }
-        public Weapon Weapon { get { return _weapon; } set { ParamCheck.IsNull(value); _weapon = value; OnEquip(); } }
-        public Boots Boots   { get { return _boots; }  set { ParamCheck.IsNull(value); _boots = value; OnEquip(); } }
-
         private int _bonusStrength;
         private int _bonusDexterity;
         private int _bonusIntelligence;
@@ -29,6 +23,35 @@ namespace RPG.Items
             _gloves = new Gloves();
             _weapon = new Weapon();
             _boots = new Boots();
+        }
+
+        public void Equip(Item item)
+        {
+            ParamCheck.IsNull(item);
+
+            switch (item.GetItemType())
+            {
+                case ItemType.Helmet:
+                    _helmet = (Helmet)item;
+                    break;
+                case ItemType.Armor:
+                    _armor = (Armor)item;
+                    break;
+                case ItemType.Gloves:
+                    _gloves = (Gloves)item;
+                    break;
+                case ItemType.Weapon:
+                    _weapon = (Weapon)item;
+                    break;
+                case ItemType.Boots:
+                    _boots = (Boots)item;
+                    break;
+                case ItemType.None:
+                default:
+                    throw new Exception("Invalid item type");
+            }
+
+            OnEquip();
         }
 
         public int GetBonusStrength()
@@ -48,19 +71,19 @@ namespace RPG.Items
 
         public void Print()
         {
-            var items = new List<Item> { Helmet, Armor, Gloves, Weapon, Boots };
+            var items = new List<Item> { _helmet, _armor, _gloves, _weapon, _boots };
 
             foreach (var item in items)
             {
                 if(item.GetName() != "None")
                 {
-                    Console.WriteLine($"{item.GetType().Name}:");
+                    Console.WriteLine($"{item.GetItemType()}:");
                     item.PrintDetails();
                     Console.WriteLine();
                 }
                 else
                 {
-                    Console.WriteLine($"{item.GetType().Name}: None");
+                    Console.WriteLine($"{item.GetItemType()}: None");
                     Console.WriteLine();
                 }
             }
@@ -68,7 +91,7 @@ namespace RPG.Items
 
         private void OnEquip()
         {
-            var items = new List<Item> { Helmet, Armor, Gloves, Weapon, Boots };
+            var items = new List<Item> { _helmet, _armor, _gloves, _weapon, _boots };
             int strengthSum = 0, dexteritySum = 0, intelligenceSum = 0;
 
             _bonusStrength = 0;
