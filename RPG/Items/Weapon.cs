@@ -8,6 +8,9 @@ namespace RPG.Items
         private readonly int _bonusPhysicalAttack;
         private readonly int _bonusMagicAttack;
 
+        public Weapon()
+        { }
+
         public Weapon(string name, string flavorText, int bonusPhysicalAttack, int bonusMagicAttack, int bonusStrength, int bonusDexterity, int bonusIntelligence, int value, int weight) 
             : base(name, flavorText, bonusStrength, bonusDexterity, bonusIntelligence, value, weight)
         {

@@ -38,6 +38,7 @@ namespace RPG.States
             Console.WriteLine("Do you wish to fight it?");
             Console.WriteLine($"{(char)KeyBindings.Key1}. Yes");
             Console.WriteLine($"{(char)KeyBindings.Key2}. Hell nah");
+            Console.WriteLine($"{(char)KeyBindings.Key3}. Inventory");
             Console.WriteLine();
 
             var input = (KeyBindings)Console.ReadKey(true).Key;
@@ -50,6 +51,9 @@ namespace RPG.States
                 case KeyBindings.Key2:
                     Console.WriteLine("Coward! You ran to your rabbit hole.");
                     Console.ReadKey();
+                    break;
+                case KeyBindings.Key3:
+                    _player.PrintEquipment();
                     break;
                 default:
                     break;

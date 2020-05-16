@@ -40,6 +40,14 @@ namespace RPG.Character.Player
             return _level.GetValue();
         }
 
+        public void PrintEquipment()
+        {
+            Console.Clear();
+            Console.WriteLine("Your equipment: ");
+            Equipment.Print();
+            Console.ReadKey();
+        }
+
         public void RestoreStatus()
         {
             var restorableStats = new List<IRestorable> { Health, Resource, Attributes, Statistics };

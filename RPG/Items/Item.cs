@@ -13,6 +13,11 @@ namespace RPG.Items
         protected readonly int BonusDexterity;
         protected readonly int BonusIntelligence;
 
+        public Item()
+        {
+            Name = "None";
+        }
+
         public Item(string name, string flavorText, int bonusStrength, int bonusDexterity, int bonusIntelligence, int value, int weight)
         {
             ParamCheck.IsNullOrWhitespace(name);

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RPG.Utilities;
-
+using System.Reflection;
 namespace RPG.Items
 {
     class Equipment
@@ -21,6 +22,15 @@ namespace RPG.Items
         private int _bonusDexterity;
         private int _bonusIntelligence;
 
+        public Equipment()
+        {
+            _helmet = new Helmet();
+            _armor = new Armor();
+            _gloves = new Gloves();
+            _weapon = new Weapon();
+            _boots = new Boots();
+        }
+
         public int GetBonusStrength()
         {
             return _bonusStrength;
@@ -34,6 +44,26 @@ namespace RPG.Items
         public int GetBonusIntelligence()
         {
             return _bonusIntelligence;
+        }
+
+        public void Print()
+        {
+            var items = new List<Item> { Helmet, Armor, Gloves, Weapon, Boots };
+
+            foreach (var item in items)
+            {
+                if(item.GetName() != "None")
+                {
+                    Console.WriteLine($"{item.GetType().Name}:");
+                    item.PrintDetails();
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine($"{item.GetType().Name}: None");
+                    Console.WriteLine();
+                }
+            }
         }
 
         private void OnEquip()
