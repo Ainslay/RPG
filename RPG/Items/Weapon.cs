@@ -9,7 +9,9 @@ namespace RPG.Items
         private readonly int _bonusMagicAttack;
 
         public Weapon()
-        { }
+        {
+            Type = ItemType.Weapon;
+        }
 
         public Weapon(string name, string flavorText, int bonusPhysicalAttack, int bonusMagicAttack, int bonusStrength, int bonusDexterity, int bonusIntelligence, int value, int weight) 
             : base(name, flavorText, bonusStrength, bonusDexterity, bonusIntelligence, value, weight)
@@ -19,6 +21,7 @@ namespace RPG.Items
 
             _bonusPhysicalAttack = bonusPhysicalAttack;
             _bonusMagicAttack = bonusMagicAttack;
+            Type = ItemType.Weapon;
         }
 
         public int GetBonusPhysicalAttack()

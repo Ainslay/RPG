@@ -12,6 +12,7 @@ namespace RPG.Items
         protected readonly int BonusStrength;
         protected readonly int BonusDexterity;
         protected readonly int BonusIntelligence;
+        protected ItemType Type;
 
         public Item()
         {
@@ -35,6 +36,11 @@ namespace RPG.Items
             BonusIntelligence = bonusIntelligence;
             Value = value;
             Weight = weight;
+        }
+
+        public ItemType GetItemType()
+        {
+            return Type;
         }
 
         public string GetName()
