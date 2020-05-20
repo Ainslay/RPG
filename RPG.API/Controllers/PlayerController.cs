@@ -29,6 +29,25 @@ namespace RPG.API.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("get_player")]
+        public IActionResult GetPlayer(int id)
+        {
+            if (id < 0)
+            {
+                return BadRequest("Gicen id was invalid");                          // Lepiej rzucić wyjątek czy zwrócić BadRequest?
+            }
+
+            var response = _context.Players.Where(player => player.Id == id);
+
+            if(response.Any())
+            {
+                return Ok(response.First());
+            }
+
+            return BadRequest("There is no player with given id");
+        }
+
         [HttpDelete]
         [Route("remove_player")]
         public IActionResult RemovePlayer(int id)
