@@ -62,6 +62,24 @@ namespace RPG.API.Controllers
             return BadRequest("There are no players in database");
         }
 
+        [HttpPut]
+        [Route("update_player")]
+        public IActionResult UpdatePlayer(Player player)
+        {
+            // Chciałem sprawdzić najpierw czy gościu z takim id istnieje, jak to zrobić????
+            //var response = _context.Players.Find(player.Id);
+
+            //if(response != null)
+            //{
+                _context.Players.Update(player);
+                _context.SaveChanges();
+
+                return Ok();
+            //}
+
+            //return BadRequest("There is no player with matching id to update");
+        }
+
         [HttpDelete]
         [Route("remove_player")]
         public IActionResult RemovePlayer(int id)
