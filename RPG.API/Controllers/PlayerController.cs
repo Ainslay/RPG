@@ -20,12 +20,34 @@ namespace RPG.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult SavePlayer(Player player)
+        [Route("add_player")]
+        public IActionResult AddPlayer(Player player)
         {
             _context.Players.Add(player);
             _context.SaveChanges();
 
             return Ok();
+        }
+
+        [HttpDelete]
+        [Route("remove_player")]
+        public IActionResult RemovePlayer(int id)
+        {
+            if(id < 0 )
+            {
+                throw new ArgumentException("Invalid id");
+            }
+            var response = _context.Players.Where(player => player.Id == id);
+
+            if(response.Any())
+            {
+                _context.Remove(response.First());
+                _context.SaveChanges();
+
+                return Ok();
+            }
+
+            return BadRequest("There is no player with given id");
         }
     }
 }
