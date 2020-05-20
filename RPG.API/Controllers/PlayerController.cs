@@ -48,6 +48,20 @@ namespace RPG.API.Controllers
             return BadRequest("There is no player with given id");
         }
 
+        [HttpGet]
+        [Route("get_players")]
+        public IActionResult GetPlayers()
+        {
+            var response = _context.Players.Select(player => player);
+
+            if (response.Any())
+            {
+                return Ok(response.ToList());
+            }
+
+            return BadRequest("There are no players in database");
+        }
+
         [HttpDelete]
         [Route("remove_player")]
         public IActionResult RemovePlayer(int id)
@@ -66,7 +80,7 @@ namespace RPG.API.Controllers
                 return Ok();
             }
 
-            return BadRequest("There is no player with given id");
+            return BadRequest(new Exception("There is no player with given id"));       // Taki test, raczej nie powinienem tak robić
         }
     }
 }
