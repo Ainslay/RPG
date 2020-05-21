@@ -6,8 +6,8 @@ using RPG.API.Model;
 
 namespace RPG.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ItemController : ControllerBase
     {
         private ApplicationDbContext _context;
@@ -68,6 +68,28 @@ namespace RPG.API.Controllers
             _context.SaveChanges();
 
             return Ok();
+        }
+
+        [HttpDelete]
+        [Route("delete_item")]
+        public IActionResult DeleteItem(int id)
+        {
+            if (id < 0)
+            {
+                return BadRequest("Given id was invalid");
+            }
+
+            var response = _context.Items.Where(item => item.Id == id);
+
+            if(response.Any())
+            {
+                _context.Remove(response.First());
+                _context.SaveChanges();
+
+                return Ok();
+            }
+
+            return BadRequest("There is no item with given id");
         }
     }
 }
