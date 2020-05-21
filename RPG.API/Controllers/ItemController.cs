@@ -59,5 +59,15 @@ namespace RPG.API.Controllers
 
             return BadRequest("There are no items in database");
         }
+
+        [HttpPut]
+        [Route("update_item")]
+        public IActionResult UpdateItem(Item item)
+        {
+            _context.Items.Update(item);
+            _context.SaveChanges();
+
+            return Ok();
+        }
     }
 }
