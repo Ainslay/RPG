@@ -45,5 +45,19 @@ namespace RPG.API.Controllers
 
             return BadRequest("There is no item with given id");
         }
+
+        [HttpGet]
+        [Route("get_items")]
+        public IActionResult GetItems()
+        {
+            var response = _context.Items.Select(item => item);
+
+            if(response.Any())
+            {
+                return Ok(response.ToList());
+            }
+
+            return BadRequest("There are no items in database");
+        }
     }
 }
