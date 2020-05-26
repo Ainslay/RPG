@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
+
 using RPG.API.Commands;
-using RPG.API.Database;
-using RPG.API.Model;
 using RPG.API.Queries;
 
 namespace RPG.API.Controllers
@@ -14,8 +12,8 @@ namespace RPG.API.Controllers
     [Route("api/[controller]")]
     public class ItemController : ControllerBase
     {
-        private ApplicationDbContext _context;
         private IMediator _mediator;
+
         public ItemController(IMediator mediator)
         {
             _mediator = mediator;
@@ -25,12 +23,25 @@ namespace RPG.API.Controllers
         public async Task<IActionResult> AddItem(AddItemCommand command)
         {
             await _mediator.Send(command);
+            return Ok();
+        }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateItem(UpdateItemCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteItem(DeleteItemCommand command)
+        {
+            await _mediator.Send(command);
             return Ok();
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetItem([FromQuery][Required]GetItemQuery query)
+        public async Task<IActionResult> GetItem([FromQuery]GetItemQuery query)
         {
             var item = await _mediator.Send(query);
             return Ok(item);
@@ -44,32 +55,5 @@ namespace RPG.API.Controllers
             return Ok(items);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateItem(UpdateItemCommand command)
-        {
-            await _mediator.Send(command);
-            return Ok();
-        }
-
-        [HttpDelete]
-        public IActionResult DeleteItem(int id)
-        {
-            if (id < 0)
-            {
-                return BadRequest("Given id was invalid");
-            }
-
-            var response = _context.Items.Where(item => item.Id == id);
-
-            if (response.Any())
-            {
-                _context.Remove(response.First());
-                _context.SaveChanges();
-
-                return Ok();
-            }
-
-            return BadRequest("There is no item with given id");
-        }
     }
 }
