@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG.Tests", "RPG.Tests\RPG.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG.API", "RPG.API\RPG.API.csproj", "{88044537-2045-4BB9-8112-BD5A5649B89A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG.Utilities", "RPG.Utilities\RPG.Utilities.csproj", "{53B4930D-C34C-488F-B601-68C24875948D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG.Utilities", "RPG.Utilities\RPG.Utilities.csproj", "{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{88044537-2045-4BB9-8112-BD5A5649B89A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88044537-2045-4BB9-8112-BD5A5649B89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88044537-2045-4BB9-8112-BD5A5649B89A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53B4930D-C34C-488F-B601-68C24875948D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53B4930D-C34C-488F-B601-68C24875948D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53B4930D-C34C-488F-B601-68C24875948D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53B4930D-C34C-488F-B601-68C24875948D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
