@@ -6,7 +6,7 @@ using RPG.API.Model;
 
 namespace RPG.API.Services
 {
-    interface IPlayerService
+    public interface IPlayerService
     {
         void AddPlayer(Player player);
         Player GetPlayerById(int id);

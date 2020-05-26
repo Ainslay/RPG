@@ -12,7 +12,7 @@ namespace RPG.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    class PlayerController : ControllerBase
+    public class PlayerController : ControllerBase
     {
         private ApplicationDbContext _context;
         private IPlayerService _playerService;
