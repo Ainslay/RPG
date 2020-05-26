@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RPG.Utilities
 {
-    class ParamCheck
+    public static class ParamCheck
     {
         /// <summary>Checks given object for null reference.</summary> 
         public static void IsNull(object obj)
@@ -26,12 +26,12 @@ namespace RPG.Utilities
         /// <summary>Checks if given collection is null or empty.</summary>  
         public static void IsNullOrEmpty<T>(ICollection<T> collection)
         {
-            if(collection == null)
+            if (collection == null)
             {
                 throw new ArgumentNullException();
             }
 
-            if(collection.Count == 0)
+            if (collection.Count == 0)
             {
                 throw new ArgumentException();
             }
@@ -44,9 +44,9 @@ namespace RPG.Utilities
         /// <param name="value"></param>
         public static void IsBelowZero<T>(T value) where T : struct, IComparable<T>
         {
-            if(value.CompareTo(default) < 0)
+            if (value.CompareTo(default) < 0)
             {
-                throw new Exception("Value was below zero.");
+                throw new ArgumentException("Value was below zero.");
             }
         }
 
