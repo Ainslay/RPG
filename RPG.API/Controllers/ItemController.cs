@@ -30,9 +30,8 @@ namespace RPG.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetItem([Required]int id)
+        public async Task<IActionResult> GetItem([FromQuery][Required]GetItemQuery query)
         {
-            var query = new GetItemQuery() { Id = id };
             var item = await _mediator.Send(query);
             return Ok(item);
         }
@@ -46,11 +45,9 @@ namespace RPG.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateItem(Item item)
+        public async Task<IActionResult> UpdateItem(UpdateItemCommand command)
         {
-            _context.Items.Update(item);
-            _context.SaveChanges();
-
+            await _mediator.Send(command);
             return Ok();
         }
 

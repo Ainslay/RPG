@@ -9,7 +9,8 @@ using RPG.API.DTOs;
 
 namespace RPG.API.Queries
 {
-    public class GetItemsQueryHandler : IRequestHandler<GetItemsQuery, ICollection<ItemDTO>>
+    // Derived from base class because the request is completly synchronous
+    public class GetItemsQueryHandler : RequestHandler<GetItemsQuery, ICollection<ItemDTO>>
     {
         private ApplicationDbContext _context;
 
@@ -18,7 +19,7 @@ namespace RPG.API.Queries
             _context = context;
         }
 
-        public async Task<ICollection<ItemDTO>> Handle(GetItemsQuery query, CancellationToken cancellationToken)
+        protected override ICollection<ItemDTO> Handle(GetItemsQuery request)
         {
             var items = _context.Items.ToList();
             var itemsDTO = new List<ItemDTO>();
