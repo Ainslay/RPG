@@ -31,22 +31,22 @@ namespace RPG.Items
 
             switch (item.GetItemType())
             {
-                case ItemType.Helmet:
+                case ItemTypes.Helmet:
                     _helmet = (Helmet)item;
                     break;
-                case ItemType.Armor:
+                case ItemTypes.Armor:
                     _armor = (Armor)item;
                     break;
-                case ItemType.Gloves:
+                case ItemTypes.Gloves:
                     _gloves = (Gloves)item;
                     break;
-                case ItemType.Weapon:
+                case ItemTypes.Weapon:
                     _weapon = (Weapon)item;
                     break;
-                case ItemType.Boots:
+                case ItemTypes.Boots:
                     _boots = (Boots)item;
                     break;
-                case ItemType.None:
+                case ItemTypes.None:
                 default:
                     throw new Exception("Invalid item type");
             }

@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RPG.API.Database;
 using Microsoft.OpenApi.Models;
+using RPG.API.Services;
+using MediatR;
 
 namespace RPG.API
 {
@@ -27,8 +29,12 @@ namespace RPG.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMediatR(typeof(Startup));
+
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ApplicationDbContext")));
+            
+            services.AddScoped<IPlayerService, PlayerService>();
 
             services.AddSwaggerGen(c =>
             {

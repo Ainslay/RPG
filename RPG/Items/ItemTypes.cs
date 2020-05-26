@@ -1,6 +1,6 @@
 ﻿namespace RPG.Items
 {
-    enum ItemType
+    enum ItemTypes
     {
         None = 0,
         Helmet,

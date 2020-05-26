@@ -1,8 +1,12 @@
-﻿using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
+using RPG.API.Commands;
 using RPG.API.Database;
 using RPG.API.Model;
+using RPG.API.Queries;
 
 namespace RPG.API.Controllers
 {
@@ -11,57 +15,37 @@ namespace RPG.API.Controllers
     public class ItemController : ControllerBase
     {
         private ApplicationDbContext _context;
-
-        public ItemController(ApplicationDbContext context)
+        private IMediator _mediator;
+        public ItemController(IMediator mediator)
         {
-            _context = context;
+            _mediator = mediator;
         }
 
         [HttpPost]
-        [Route("add_item")]
-        public IActionResult AddItem(Item item)
+        public async Task<IActionResult> AddItem(AddItemCommand command)
         {
-            _context.Items.Add(item);
-            _context.SaveChanges();
+            await _mediator.Send(command);
 
             return Ok();
         }
 
         [HttpGet]
-        [Route("get_item")]
-        public IActionResult GetItem(int id)
+        public async Task<IActionResult> GetItem([Required]int id)
         {
-            if(id < 0)
-            {
-                return BadRequest("Given id was invalid");
-            }
-
-            var response = _context.Items.Where(item => item.Id == id);
-
-            if(response.Any())
-            {
-                return Ok(response.First());
-            }
-
-            return BadRequest("There is no item with given id");
+            var query = new GetItemQuery() { Id = id };
+            var item = await _mediator.Send(query);
+            return Ok(item);
         }
 
         [HttpGet]
-        [Route("get_items")]
-        public IActionResult GetItems()
+        [Route("all")]
+        public async Task<IActionResult> GetItems()
         {
-            var response = _context.Items.Select(item => item);
-
-            if(response.Any())
-            {
-                return Ok(response.ToList());
-            }
-
-            return BadRequest("There are no items in database");
+            var items = await _mediator.Send(new GetItemsQuery());
+            return Ok(items);
         }
 
         [HttpPut]
-        [Route("update_item")]
         public IActionResult UpdateItem(Item item)
         {
             _context.Items.Update(item);
@@ -71,7 +55,6 @@ namespace RPG.API.Controllers
         }
 
         [HttpDelete]
-        [Route("delete_item")]
         public IActionResult DeleteItem(int id)
         {
             if (id < 0)
@@ -81,7 +64,7 @@ namespace RPG.API.Controllers
 
             var response = _context.Items.Where(item => item.Id == id);
 
-            if(response.Any())
+            if (response.Any())
             {
                 _context.Remove(response.First());
                 _context.SaveChanges();

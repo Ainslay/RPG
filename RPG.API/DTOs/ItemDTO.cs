@@ -1,11 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RPG.API.Model;
 
-namespace RPG.API.Model
+namespace RPG.API.DTOs
 {
-    public class Item
+    public class ItemDTO
     {
-        [Key]
-        public int Id { get; set; }
         public string Name { get; set; }
         public string FlavorText { get; set; }
         public int Value { get; set; }
@@ -15,7 +13,7 @@ namespace RPG.API.Model
         public int BonusIntelligence { get; set; }
         public ItemTypes Type { get; set; }
 
-        public Item(string name, string flavorText, int value, int weight, int bonusStrength, int bonusDexterity, int bonusIntelligence, ItemTypes type)
+        public ItemDTO(string name, string flavorText, int value, int weight, int bonusStrength, int bonusDexterity, int bonusIntelligence, ItemTypes type)
         {
             Name = name;
             FlavorText = flavorText;
