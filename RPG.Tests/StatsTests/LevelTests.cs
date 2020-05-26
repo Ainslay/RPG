@@ -28,20 +28,6 @@ namespace RPG.Tests.StatsTests
         }
 
         [Fact]
-        public void Given_SufficientAmountToLevelUp_When_CallingAddExperience_Then_LevelUps()
-        {
-            var level = new Level();
-            var expToGain = 60;
-            var expectedLevel = 2;
-            var expectedExp = 10;
-
-            level.AddExperience(expToGain);
-
-            Assert.Equal(expectedLevel, level.GetValue());
-            Assert.Equal(expectedExp, level.GetExperience());
-        }
-
-        [Fact]
         public void Given_ValidAmountParameter_When_CallingSubstractExperience_Then_SubstractsExperience()
         {
             var level = new Level();

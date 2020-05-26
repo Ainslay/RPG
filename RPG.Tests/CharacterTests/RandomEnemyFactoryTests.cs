@@ -18,12 +18,12 @@ namespace RPG.Tests.CharacterTests
         }
 
         [Fact]
-        public void Given_InvalidLevel_When_CallingCreate_Then_ThrowsException()
+        public void Given_InvalidLevel_When_CallingCreate_Then_ThrowsArgumentException()
         {
             var mockedStatMultiplier = new Mock<IStatMultiplier>();
             var invalidLevel = -1;
 
-            Assert.Throws<Exception>(() => RandomEnemyFactory.Create(invalidLevel, mockedStatMultiplier.Object));
+            Assert.Throws<ArgumentException>(() => RandomEnemyFactory.Create(invalidLevel, mockedStatMultiplier.Object));
         }
 
         [Fact]

@@ -38,24 +38,24 @@ namespace RPG.Tests.UtilitiesTests
         }
 
         [Fact]
-        public void Given_IntValueBelowZero_When_CallingIsBelowZero_Then_ThrowsException()
+        public void Given_IntValueBelowZero_When_CallingIsBelowZero_Then_ThrowsArgumentException()
         {
             int value = -1;
-            Assert.Throws<Exception>(() => ParamCheck.IsBelowZero(value));
+            Assert.Throws<ArgumentException>(() => ParamCheck.IsBelowZero(value));
         }
 
         [Fact]
-        public void Given_DoubleValueBelowZero_When_CallingIsBelowZero_Then_ThrowsException()
+        public void Given_DoubleValueBelowZero_When_CallingIsBelowZero_Then_ThrowsArgumentException()
         {
             double value = -1.0;
-            Assert.Throws<Exception>(() => ParamCheck.IsBelowZero(value));
+            Assert.Throws<ArgumentException>(() => ParamCheck.IsBelowZero(value));
         }
 
         [Fact]
-        public void Given_FloatValueBelowZero_When_CallingIsBelowZero_Then_ThrowsException()
+        public void Given_FloatValueBelowZero_When_CallingIsBelowZero_Then_ThrowsArgumentException()
         {
             float value = -1.0f;
-            Assert.Throws<Exception>(() => ParamCheck.IsBelowZero(value));
+            Assert.Throws<ArgumentException>(() => ParamCheck.IsBelowZero(value));
         }
 
         [Fact]
