@@ -15,6 +15,7 @@ namespace RPG.API.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ItemConfiguration());
+            modelBuilder.ApplyConfiguration(new PlayerConfiguration());
         }
     }
 }
