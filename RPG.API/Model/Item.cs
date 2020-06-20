@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace RPG.API.Model
+﻿namespace RPG.API.Model
 {
     public class Item
     {
