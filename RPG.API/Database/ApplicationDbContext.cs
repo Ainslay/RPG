@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RPG.API.Model;
+using RPG.API.Model.Configurations;
 
 namespace RPG.API.Database
 {
@@ -10,5 +11,10 @@ namespace RPG.API.Database
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ItemConfiguration());
+        }
     }
 }

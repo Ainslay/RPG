@@ -4,8 +4,8 @@ namespace RPG.API.Model
 {
     public class Item
     {
-        [Key]
         public int Id { get; set; }
+        public Player Player { get; set; }
         public string Name { get; set; }
         public string FlavorText { get; set; }
         public int Value { get; set; }
