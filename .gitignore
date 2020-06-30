@@ -1,3 +1,5 @@
 .vs/
 bin/
 obj/
+
+RPG.API/appsettings.Development.json

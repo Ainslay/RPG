@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RPG.API.Database.Configurations;
 using RPG.API.Model;
-using RPG.API.Model.Configurations;
 
 namespace RPG.API.Database
 {
