@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG.Tests", "RPG.Tests\RPG.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG.API", "RPG.API\RPG.API.csproj", "{88044537-2045-4BB9-8112-BD5A5649B89A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG.Utilities", "RPG.Utilities\RPG.Utilities.csproj", "{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG.Utilities", "RPG.Utilities\RPG.Utilities.csproj", "{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG.API.IntegrationTests", "RPG.API.IntegrationTests\RPG.API.IntegrationTests.csproj", "{EA17FE6B-CFF8-41F6-9DCC-85E7B4B44F84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAAA91F7-7E40-4AC3-B5A0-102AD1D6781B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA17FE6B-CFF8-41F6-9DCC-85E7B4B44F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA17FE6B-CFF8-41F6-9DCC-85E7B4B44F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA17FE6B-CFF8-41F6-9DCC-85E7B4B44F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA17FE6B-CFF8-41F6-9DCC-85E7B4B44F84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
