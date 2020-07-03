@@ -12,6 +12,7 @@ namespace RPG.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Produces("application/json")]
     public class PlayerController : ControllerBase
     {
         private ApplicationDbContext _context;

@@ -29,7 +29,7 @@ namespace RPG.API.IntegrationTests
 
                 services.AddDbContext<ApplicationDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase(Guid.NewGuid().ToString());
+                    options.UseInMemoryDatabase("InMemoryTestDb");
                 });
 
                 var serviceProvider = services.BuildServiceProvider();
@@ -40,22 +40,6 @@ namespace RPG.API.IntegrationTests
                     var db = scopedServices.GetRequiredService<ApplicationDbContext>();
 
                     db.Database.EnsureCreated();
-
-                    db.Players.Add(new Player
-                    {
-                        Id = 1,
-                        Name = "Tester",
-                        Proffesion = "Warrior",
-                        Health = 100,
-                        Resource = 1,
-                        Strength = 1,
-                        Dexterity = 1,
-                        Intelligence = 1,
-                        Level = 1,
-                        Items = new List<Item>()
-                    });
-
-                    db.SaveChanges();
                 }
             });
         }

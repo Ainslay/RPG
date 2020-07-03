@@ -33,7 +33,8 @@ namespace RPG.API
 
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ApplicationDbContext")));
-            
+            services.AddMvc();
+
             services.AddScoped<IPlayerService, PlayerService>();
 
             services.AddSwaggerGen(c =>
