@@ -38,23 +38,3 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
-
-- stage: Deploy
-  jobs:
-  - job: Deploy
-    pool:
-      vmImage: 'windows-latest'
-    steps:
-    - task: DownloadBuildArtifacts@0
-      inputs:
-        buildType: 'current'
-        downloadType: 'single'
-        downloadPath: '$(System.ArtifactsDirectory)'
-        artifactName: 'drop'
-    - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'rpg-api-sub'
-        appType: 'webApp'
-        WebAppName: 'rpg-api-ains'
-        packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
