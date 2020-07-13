@@ -13,8 +13,8 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- script: dotnet build RPG.API/RPG.API.csproj --configuration $(buildConfiguration)
+  displayName: 'Build $(buildConfiguration)'
 - task: DotNetCoreCLI@2
   inputs:
     command: test
