@@ -15,23 +15,36 @@ stages:
       vmImage: 'windows-latest'
 
     variables:
-      buildConfiguration: 'Release'
+    - group: env-global
+    - name: buildConfiguration
+      value: 'Release'
 
     steps:
     - script: dotnet build RPG.API/RPG.API.csproj --configuration $(buildConfiguration)
       displayName: 'Build $(buildConfiguration)'
+
+    - task: efcore-migration-script-generator-task@0
+      displayName: 'Generate migration script'
+      inputs:
+        projectpath: 'RPG.API/RPG.API.csproj'
+        databasecontexts: 'ApplicationDbContext'
+        targetfolder: '$(build.artifactstagingdirectory)/migrations'
+        installdependencies: true
+
     - task: DotNetCoreCLI@2
       displayName: 'Tests'
       inputs:
         command: test
         projects: '**/*Tests/*.csproj'
         arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+        
     - task: DotNetCoreCLI@2
       inputs:
         command: publish
         publishWebProjects: True
         arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: True
+        
     - task: PublishBuildArtifacts@1
       displayName: 'Publish'
       inputs:
