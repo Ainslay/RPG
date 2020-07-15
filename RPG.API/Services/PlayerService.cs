@@ -26,7 +26,7 @@ namespace RPG.API.Services
         {
             // Wymyślone wymagania biznesowe
             // ...
-            return _context.Players.Single(player => player.Id == id);
+            return _context.Players.Single(player => player.PlayerId == id);
         }
 
         public ICollection<Player> GetPlayers()

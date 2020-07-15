@@ -6,5 +6,6 @@
         public int PlayerId { get; set; }
         public int ItemId { get; set; }
         public bool IsEquiped { get; set; }
+        public Player Player { get; set; }
     }
 }
