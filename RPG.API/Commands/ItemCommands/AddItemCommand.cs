@@ -5,7 +5,7 @@ using RPG.API.Model;
 
 namespace RPG.API.Commands.ItemCommands
 {
-    public class AddItemCommand : IRequest
+    public class AddItemCommand : IRequest<Guid>
     {
         [Required(AllowEmptyStrings = false)]
         [StringLength(30)]

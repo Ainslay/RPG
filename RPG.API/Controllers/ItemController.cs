@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using MediatR;
 using RPG.API.Commands.ItemCommands;
@@ -21,8 +20,8 @@ namespace RPG.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddItem(AddItemCommand command)
         {
-            await _mediator.Send(command);
-            return Ok();
+            var response = await _mediator.Send(command);
+            return Ok(response);
         }
 
         [HttpPut]

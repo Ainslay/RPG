@@ -8,8 +8,7 @@ namespace RPG.API.Commands.ItemCommands
     public class UpdateItemCommand : IRequest
     {
         [Required]
-        [Range(0, int.MaxValue)]
-        public int Id { get; set; }
+        public Guid ItemId { get; set; }
         [Required(AllowEmptyStrings = false)]
         [StringLength(30)]
         public string Name { get; set; }

@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RPG.API.Model
 {
     public class Item
     {
-        public int ItemId { get; set; }
+        public int Id { get; set; }
+        public Guid ItemId { get; set; }
         public string Name { get; set; }
         public string FlavorText { get; set; }
         public int Strength { get; set; }
@@ -15,6 +17,7 @@ namespace RPG.API.Model
 
         public Item(string name, string flavorText, int strength, int dexterity, int intelligence, ItemTypes type)
         {
+            ItemId = Guid.NewGuid();
             Name = name;
             FlavorText = flavorText;
             Strength = strength;

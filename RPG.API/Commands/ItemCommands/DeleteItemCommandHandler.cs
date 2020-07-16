@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -19,7 +17,7 @@ namespace RPG.API.Commands.ItemCommands
 
         public async Task<Unit> Handle(DeleteItemCommand command, CancellationToken cancellationToken)
         {
-            var itemToBeRemoved = _context.Items.SingleOrDefault(item => item.ItemId == command.Id);
+            var itemToBeRemoved = _context.Items.SingleOrDefault(item => item.ItemId == command.ItemId);
 
             if (itemToBeRemoved != null)
             {

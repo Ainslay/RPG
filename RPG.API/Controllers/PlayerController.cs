@@ -20,8 +20,8 @@ namespace RPG.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPlayer(AddPlayerCommand command)
         {
-            await _mediator.Send(command);
-            return Ok();
+            var response = await _mediator.Send(command);
+            return Ok(response);
         }
 
         [HttpGet]
