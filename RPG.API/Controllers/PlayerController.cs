@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RPG.API.Commands.PlayerCommands;
-using RPG.API.Database;
 using RPG.API.Model;
+using RPG.API.Queries.PlayerQueries;
 using RPG.API.Services;
 
 namespace RPG.API.Controllers
@@ -31,9 +31,9 @@ namespace RPG.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetPlayer([Required][Range(0, int.MaxValue)] int id)
+        public async Task<IActionResult> GetPlayer(GetPlayerQuery query)
         {
-            var player = _playerService.GetPlayerById(id);
+            var player = await _mediator.Send(query);
             return Ok(player);
         }
 
