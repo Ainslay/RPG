@@ -10,7 +10,8 @@ namespace RPG.API.Database.Configurations
         public void Configure(EntityTypeBuilder<Player> builder)
         {
             builder.ToTable("Players");
-            builder.HasKey(p => p.PlayerId);
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.PlayerId).IsRequired();
             builder.Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Property(p => p.Proffesion).IsRequired().HasConversion(new EnumToStringConverter<Proffesions>());
             builder.HasMany(p => p.Items).WithOne(i => i.Player).IsRequired();

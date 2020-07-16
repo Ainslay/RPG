@@ -22,5 +22,9 @@
     <ProjectReference Include="..\RPG.Utilities\RPG.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 
 </Project>
