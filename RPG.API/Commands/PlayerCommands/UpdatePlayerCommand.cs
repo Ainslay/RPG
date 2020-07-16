@@ -8,8 +8,6 @@ namespace RPG.API.Commands.PlayerCommands
     public class UpdatePlayerCommand : IRequest
     {
         [Required]
-        [Range(0, int.MaxValue)]
-        public int Id { get; set; }
         public Guid PlayerId { get; set; }
         public string Name { get; set; }
         public Proffesions Proffesion { get; set; }
