@@ -5,7 +5,7 @@ using RPG.API.Model;
 
 namespace RPG.API.Commands.PlayerCommands
 {
-    public class AddPlayerCommand : IRequest
+    public class AddPlayerCommand : IRequest<Guid>
     {
         public string Name { get; set; }
         public Proffesions Proffesion { get; set; }

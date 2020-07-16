@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -9,7 +7,7 @@ using RPG.API.Database;
 using RPG.API.Model;
 namespace RPG.API.Commands.PlayerCommands
 {
-    public class AddPlayerCommandHandler : IRequestHandler<AddPlayerCommand>
+    public class AddPlayerCommandHandler : IRequestHandler<AddPlayerCommand, Guid>
     {
         private ApplicationDbContext _context;
 
@@ -18,7 +16,7 @@ namespace RPG.API.Commands.PlayerCommands
             _context = context;
         }
 
-        public async Task<Unit> Handle(AddPlayerCommand command, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(AddPlayerCommand command, CancellationToken cancellationToken)
         {
             var player = new Player(command.Name, command.Proffesion, command.Level, 
                 command.Experience, command.Strength, command.Dexterity, command.Intelligence);
@@ -26,7 +24,7 @@ namespace RPG.API.Commands.PlayerCommands
             _context.Players.Add(player);
             await _context.SaveChangesAsync();
 
-            return Unit.Value;
+            return player.PlayerId;
         }
     }
 }
