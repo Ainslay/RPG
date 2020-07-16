@@ -39,16 +39,10 @@ namespace RPG.API.Controllers
 
         [HttpGet]
         [Route("all")]
-        public IActionResult GetPlayers()
+        public async Task<IActionResult> GetPlayers(GetPlayersQuery query)
         {
-            var players = _playerService.GetPlayers();
-
-            if (players.Any())
-            {
-                return Ok(players);
-            }
-
-            return BadRequest("There are no players in database");
+            var players = await _mediator.Send(query);
+            return Ok(players);
         }
 
         [HttpPut]
