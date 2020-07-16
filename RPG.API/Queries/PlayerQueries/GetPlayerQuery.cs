@@ -9,6 +9,6 @@ namespace RPG.API.Queries.PlayerQueries
     {
         [Required]
         [Range(0, int.MaxValue)]
-        public int PlayerId { get; set; }
+        public Guid PlayerId { get; set; }
     }
 }
