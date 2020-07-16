@@ -2,9 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using MediatR;
-
-using RPG.API.Commands;
-using RPG.API.Queries;
+using RPG.API.Commands.ItemCommands;
+using RPG.API.Queries.ItemQueries;
 
 namespace RPG.API.Controllers
 {

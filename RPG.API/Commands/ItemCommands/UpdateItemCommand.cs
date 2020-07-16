@@ -3,13 +3,15 @@ using System.ComponentModel.DataAnnotations;
 using MediatR;
 using RPG.API.Model;
 
-namespace RPG.API.Commands
+namespace RPG.API.Commands.ItemCommands
 {
     public class UpdateItemCommand : IRequest
     {
-        [Required][Range(0, int.MaxValue)]
+        [Required]
+        [Range(0, int.MaxValue)]
         public int Id { get; set; }
-        [Required(AllowEmptyStrings = false)][StringLength(30)]
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(30)]
         public string Name { get; set; }
         public string FlavorText { get; set; }
         public int Strength { get; set; }

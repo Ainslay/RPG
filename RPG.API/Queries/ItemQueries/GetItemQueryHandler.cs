@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RPG.API.Database;
 using RPG.API.DTOs;
 
-namespace RPG.API.Queries
+namespace RPG.API.Queries.ItemQueries
 {
     public class GetItemQueryHandler : IRequestHandler<GetItemQuery, ItemDTO>
     {

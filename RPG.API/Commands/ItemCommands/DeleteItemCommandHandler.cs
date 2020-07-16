@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using RPG.API.Database;
 
-namespace RPG.API.Commands
+namespace RPG.API.Commands.ItemCommands
 {
     public class DeleteItemCommandHandler : IRequestHandler<DeleteItemCommand>
     {

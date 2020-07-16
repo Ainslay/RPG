@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using MediatR;
 using RPG.API.Model;
 
-namespace RPG.API.Commands
+namespace RPG.API.Commands.ItemCommands
 {
     public class AddItemCommand : IRequest
     {

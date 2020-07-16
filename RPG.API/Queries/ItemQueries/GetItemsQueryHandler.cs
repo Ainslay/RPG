@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using MediatR;
 using RPG.API.Database;
 using RPG.API.DTOs;
 
-namespace RPG.API.Queries
+namespace RPG.API.Queries.ItemQueries
 {
-    // Derived from base class because the request is completly synchronous
     public class GetItemsQueryHandler : RequestHandler<GetItemsQuery, ICollection<ItemDTO>>
     {
         private ApplicationDbContext _context;

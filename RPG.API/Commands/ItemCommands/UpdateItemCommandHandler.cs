@@ -4,24 +4,24 @@ using MediatR;
 using RPG.API.Database;
 using RPG.API.Model;
 
-namespace RPG.API.Commands
+namespace RPG.API.Commands.ItemCommands
 {
-    class AddItemCommandHandler : IRequestHandler<AddItemCommand>
+    public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand>
     {
         private ApplicationDbContext _context;
 
-        public AddItemCommandHandler(ApplicationDbContext context)
+        public UpdateItemCommandHandler(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public async Task<Unit> Handle(AddItemCommand command, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateItemCommand command, CancellationToken cancellationToken)
         {
             var item = new Item(command.Name, command.FlavorText, command.Strength, command.Dexterity, command.Intelligence, command.Type);
-            
-            _context.Add(item);
-            await _context.SaveChangesAsync();
+            item.ItemId = command.Id;
 
+            _context.Update(item);
+            await _context.SaveChangesAsync();
             return Unit.Value;
         }
     }
