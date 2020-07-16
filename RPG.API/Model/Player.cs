@@ -13,5 +13,17 @@ namespace RPG.API.Model
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
         public ICollection<PlayerItem> Items { get; set; }
+
+        public Player(string name, Proffesions proffesion, int level, int experience,
+            int strength, int dexterity, int intelligence)
+        {
+            Name = name;
+            Proffesion = proffesion;
+            Level = level;
+            Experience = experience;
+            Strength = strength;
+            Dexterity = dexterity;
+            Intelligence = intelligence;
+        }
     }
 }
