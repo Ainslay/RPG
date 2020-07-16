@@ -46,9 +46,9 @@ namespace RPG.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdatePlayer([Required]Player player)
+        public async Task<IActionResult> UpdatePlayer(UpdatePlayerCommand command)
         {
-            _playerService.UpdatePlayer(player);
+            await _mediator.Send(command);
             return Ok();
         }
 

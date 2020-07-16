@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RPG.API.Model
 {
     public class Player
     {
-        public int PlayerId { get; set; }
+        public int Id { get; set; }
+        public Guid PlayerId { get; set; }
         public string Name { get; set; }
         public Proffesions Proffesion { get; set; }
         public int Level { get; set; }
@@ -17,6 +19,7 @@ namespace RPG.API.Model
         public Player(string name, Proffesions proffesion, int level, int experience,
             int strength, int dexterity, int intelligence)
         {
+            PlayerId = Guid.NewGuid();
             Name = name;
             Proffesion = proffesion;
             Level = level;
