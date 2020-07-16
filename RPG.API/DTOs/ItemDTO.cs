@@ -6,22 +6,18 @@ namespace RPG.API.DTOs
     {
         public string Name { get; set; }
         public string FlavorText { get; set; }
-        public int Value { get; set; }
-        public int Weight { get; set; }
-        public int BonusStrength { get; set; }
-        public int BonusDexterity { get; set; }
-        public int BonusIntelligence { get; set; }
+        public int Strength { get; set; }
+        public int Dexterity { get; set; }
+        public int Intelligence { get; set; }
         public ItemTypes Type { get; set; }
 
-        public ItemDTO(string name, string flavorText, int value, int weight, int bonusStrength, int bonusDexterity, int bonusIntelligence, ItemTypes type)
+        public ItemDTO(string name, string flavorText, int strength, int dexterity, int intelligence, ItemTypes type)
         {
             Name = name;
             FlavorText = flavorText;
-            Value = value;
-            Weight = weight;
-            BonusStrength = bonusStrength;
-            BonusDexterity = bonusDexterity;
-            BonusIntelligence = bonusIntelligence;
+            Strength = strength;
+            Dexterity = dexterity;
+            Intelligence = intelligence;
             Type = type;
         }
     }

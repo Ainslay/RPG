@@ -17,8 +17,8 @@ namespace RPG.API.Commands
 
         public async Task<Unit> Handle(UpdateItemCommand command, CancellationToken cancellationToken)
         {
-            var item = new Item(command.Name, command.FlavorText, command.Value, command.Weight, command.BonusStrength, command.BonusDexterity, command.BonusIntelligence, command.Type);
-            item.Id = command.Id;
+            var item = new Item(command.Name, command.FlavorText, command.Strength, command.Dexterity, command.Intelligence, command.Type);
+            item.ItemId = command.Id;
 
             _context.Update(item);
             await _context.SaveChangesAsync();

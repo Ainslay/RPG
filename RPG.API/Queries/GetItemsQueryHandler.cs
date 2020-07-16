@@ -26,7 +26,7 @@ namespace RPG.API.Queries
 
             foreach (var item in items)
             {
-                itemsDTO.Add(new ItemDTO(item.Name, item.FlavorText, item.Value, item.Weight, item.BonusStrength, item.BonusDexterity, item.BonusIntelligence, item.Type));
+                itemsDTO.Add(new ItemDTO(item.Name, item.FlavorText, item.Strength, item.Dexterity, item.Intelligence, item.Type));
             }
 
             return itemsDTO;

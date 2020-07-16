@@ -21,9 +21,9 @@ namespace RPG.API.Queries
 
         public async Task<ItemDTO> Handle(GetItemQuery query, CancellationToken cancellationToken)
         {
-            var item = await _context.Items.SingleAsync(item => item.Id == query.Id);
+            var item = await _context.Items.SingleAsync(item => item.ItemId == query.Id);
 
-            return new ItemDTO(item.Name, item.FlavorText, item.Value, item.Weight, item.BonusStrength, item.BonusDexterity, item.BonusIntelligence, item.Type);
+            return new ItemDTO(item.Name, item.FlavorText, item.Strength, item.Dexterity, item.Intelligence, item.Type);
         }
     }
 }

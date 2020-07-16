@@ -11,16 +11,12 @@ namespace RPG.API.Commands
         [StringLength(30)]
         public string Name { get; set; }
         public string FlavorText { get; set; }
-        [Range(0, 9999)]
-        public int Value { get; set; }
         [Range(0, 999)]
-        public int Weight { get; set; }
+        public int Strength { get; set; }
         [Range(0, 999)]
-        public int BonusStrength { get; set; }
+        public int Dexterity { get; set; }
         [Range(0, 999)]
-        public int BonusDexterity { get; set; }
-        [Range(0, 999)]
-        public int BonusIntelligence { get; set; }
+        public int Intelligence { get; set; }
         public ItemTypes Type { get; set; }
     }
 }

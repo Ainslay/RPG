@@ -10,10 +10,11 @@ namespace RPG.API.Database.Configurations
         public void Configure(EntityTypeBuilder<Item> builder)
         {
             builder.ToTable("Items");
-            builder.HasKey(i => i.Id);
+            builder.HasKey(i => i.ItemId);
             builder.Property(i => i.Name).IsRequired().HasMaxLength(50);
-            builder.Property(i => i.FlavorText).HasMaxLength(300);
+            builder.Property(i => i.FlavorText).HasMaxLength(500);
             builder.Property(i => i.Type).HasConversion(new EnumToStringConverter<ItemTypes>());
+            builder.HasMany(i => i.PlayerItems).WithOne(pi => pi.Item).IsRequired();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace RPG.API.Commands
 
         public async Task<Unit> Handle(DeleteItemCommand command, CancellationToken cancellationToken)
         {
-            var itemToBeRemoved = _context.Items.SingleOrDefault(item => item.Id == command.Id);
+            var itemToBeRemoved = _context.Items.SingleOrDefault(item => item.ItemId == command.Id);
 
             if (itemToBeRemoved != null)
             {
