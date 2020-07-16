@@ -1,13 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MediatR;
 using RPG.API.Commands.PlayerCommands;
-using RPG.API.Model;
 using RPG.API.Queries.PlayerQueries;
-using RPG.API.Services;
 
 namespace RPG.API.Controllers
 {
@@ -15,7 +10,6 @@ namespace RPG.API.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
-        private IPlayerService _playerService;
         private IMediator _mediator;
 
         public PlayerController(IMediator mediator)
@@ -53,9 +47,9 @@ namespace RPG.API.Controllers
         }
 
         [HttpDelete]
-        public IActionResult RemovePlayer([Required][Range(0, int.MaxValue)] int id)
+        public async Task<IActionResult> DeletePlayer(DeletePlayerCommand command)
         {
-            _playerService.RemoveAtId(id);
+            await _mediator.Send(command);
             return Ok();
         }
     }
