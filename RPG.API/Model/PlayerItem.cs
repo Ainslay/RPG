@@ -1,8 +1,11 @@
-﻿namespace RPG.API.Model
+﻿using System;
+
+namespace RPG.API.Model
 {
     public class PlayerItem
     {
-        public int PlayerItemId { get; set; }
+        public int Id { get; set; }
+        public Guid PlayerItemId { get; set; }
         public int PlayerId { get; set; }
         public int ItemId { get; set; }
         public bool IsEquiped { get; set; }

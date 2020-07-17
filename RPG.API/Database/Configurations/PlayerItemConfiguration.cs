@@ -9,7 +9,8 @@ namespace RPG.API.Database.Configurations
         public void Configure(EntityTypeBuilder<PlayerItem> builder)
         {
             builder.ToTable("PlayerItems");
-            builder.HasKey(i => i.PlayerItemId);
+            builder.HasKey(i => i.Id);
+            builder.Property(i => i.PlayerItemId).IsRequired();
             builder.Property(i => i.PlayerId).IsRequired();
             builder.Property(i => i.ItemId).IsRequired();
             builder.Property(i => i.IsEquiped).IsRequired();
