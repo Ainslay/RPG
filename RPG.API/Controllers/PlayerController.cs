@@ -33,9 +33,9 @@ namespace RPG.API.Controllers
 
         [HttpGet]
         [Route("all")]
-        public async Task<IActionResult> GetPlayers([FromQuery]GetPlayersQuery query)
+        public async Task<IActionResult> GetPlayers()
         {
-            var players = await _mediator.Send(query);
+            var players = await _mediator.Send(new GetPlayersQuery());
             return Ok(players);
         }
 
