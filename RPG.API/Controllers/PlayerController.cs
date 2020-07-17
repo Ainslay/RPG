@@ -25,7 +25,7 @@ namespace RPG.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPlayer(GetPlayerQuery query)
+        public async Task<IActionResult> GetPlayer([FromQuery]GetPlayerQuery query)
         {
             var player = await _mediator.Send(query);
             return Ok(player);
@@ -33,7 +33,7 @@ namespace RPG.API.Controllers
 
         [HttpGet]
         [Route("all")]
-        public async Task<IActionResult> GetPlayers(GetPlayersQuery query)
+        public async Task<IActionResult> GetPlayers([FromQuery]GetPlayersQuery query)
         {
             var players = await _mediator.Send(query);
             return Ok(players);
