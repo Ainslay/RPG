@@ -14,12 +14,12 @@ namespace RPG.API.Model
         public Guid PlayerGuid { get; set; }
         public Guid ItemGuid { get; set; }
 
-        public PlayerItem(int playerId, int itemId, bool isEquiped, Guid playerGuid, Guid itemGuid)
+        public PlayerItem(int playerId, int itemId, bool isEquipped, Guid playerGuid, Guid itemGuid)
         {
             PlayerItemId = Guid.NewGuid();
             PlayerId = playerId;
             ItemId = itemId;
-            IsEquipped = isEquiped;
+            IsEquipped = isEquipped;
             PlayerGuid = playerGuid;
             ItemGuid = itemGuid;
         }
