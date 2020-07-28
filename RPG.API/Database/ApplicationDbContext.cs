@@ -8,6 +8,7 @@ namespace RPG.API.Database
     {
         public DbSet<Player> Players { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<PlayerItem> PlayerItems { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
@@ -16,6 +17,7 @@ namespace RPG.API.Database
         {
             modelBuilder.ApplyConfiguration(new ItemConfiguration());
             modelBuilder.ApplyConfiguration(new PlayerConfiguration());
+            modelBuilder.ApplyConfiguration(new PlayerItemConfiguration());
         }
     }
 }
