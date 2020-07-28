@@ -14,6 +14,8 @@ namespace RPG.API.Database.Configurations
             builder.Property(i => i.PlayerId).IsRequired();
             builder.Property(i => i.ItemId).IsRequired();
             builder.Property(i => i.IsEquiped).IsRequired();
+            builder.Property(i => i.PlayerGuid).IsRequired();
+            builder.Property(i => i.ItemGuid).IsRequired();
         }
     }
 }

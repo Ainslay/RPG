@@ -11,5 +11,7 @@ namespace RPG.API.Model
         public bool IsEquiped { get; set; }
         public Player Player { get; set; }
         public Item Item { get; set; }
+        public Guid PlayerGuid { get; set; }
+        public Guid ItemGuid { get; set; }
     }
 }
